@@ -13,9 +13,11 @@ import javax.sound.sampled.Clip;
  * @author lucho
  */
 public class Pantalla_Home {
-
+    
     public static void main(String[] args) {
-        Vista_Home vistaHome = new Vista_Home();                
+        Music_Nav m = new Music_Nav();
+        //m.performMusic();
+        Vista_Home vistaHome = new Vista_Home(m);                
         vistaHome.setLocationRelativeTo(null);
         vistaHome.setVisible(true);
         

@@ -127,7 +127,7 @@ public class Vista_SeleccionModo extends javax.swing.JFrame {
                 boton_multijugadorActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_multijugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 120, 50));
+        jPanel1.add(boton_multijugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 120, 50));
 
         label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
         jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
@@ -196,7 +196,8 @@ public class Vista_SeleccionModo extends javax.swing.JFrame {
         Vista_SeleccionDificultad home = new Vista_SeleccionDificultad();
         home.setLocationRelativeTo(null);
         home.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
+        //this.dispose();
     }//GEN-LAST:event_boton_individualActionPerformed
 
     private void boton_multijugadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_multijugadorMouseClicked
