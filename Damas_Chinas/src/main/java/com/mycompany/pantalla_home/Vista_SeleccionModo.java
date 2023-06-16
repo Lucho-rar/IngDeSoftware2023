@@ -205,6 +205,10 @@ public class Vista_SeleccionModo extends javax.swing.JFrame {
 
     private void boton_multijugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_multijugadorActionPerformed
         // TODO add your handling code here:
+        Vista_LoginMultijugador mult = new Vista_LoginMultijugador();
+        mult.setLocationRelativeTo(null);
+        mult.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_boton_multijugadorActionPerformed
 
     /**

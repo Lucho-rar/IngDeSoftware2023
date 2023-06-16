@@ -44,67 +44,40 @@ public class Vista_Tablero extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.GridLayout());
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 130, 80));
+        jButton5.setText("jButton5");
+        jPanel1.add(jButton5);
 
-        jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 130, 80));
-
-        jButton3.setText("jButton3");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 130, 80));
-
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setText("jButton4");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 130, 80));
+        jPanel1.add(jButton4);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        jButton6.setText("jButton6");
+        jPanel1.add(jButton6);
+
+        jButton7.setText("jButton7");
+        jPanel1.add(jButton7);
+
+        getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:\
-       // if(this.jButton4.getBackground().equals(Color.RED)){
-        //    this.jButton4.setBackground(Color.CYAN);
-       // }
-       
-       chequearTipoDeBoton(this.jButton4);
-        
-    }//GEN-LAST:event_jButton4MouseClicked
-
     
     private void chequearTipoDeBoton(JButton j){
-        if(j.getBackground().equals(Color.RED)){
-            this.jButton4.setBackground(Color.CYAN);
-        }
+
     }
     /**
      * @param args the command line arguments
@@ -143,10 +116,10 @@ public class Vista_Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
