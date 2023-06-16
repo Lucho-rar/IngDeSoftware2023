@@ -208,6 +208,10 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
 
     private void boton_facilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_facilActionPerformed
         // TODO add your handling code here:
+        Vista_LoginIndividual login = new Vista_LoginIndividual();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_boton_facilActionPerformed
 
     private void boton_dificilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_dificilMouseClicked
@@ -216,6 +220,10 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
 
     private void boton_dificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_dificilActionPerformed
         // TODO add your handling code here:
+        Vista_LoginIndividual login = new Vista_LoginIndividual();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_boton_dificilActionPerformed
 
     private void boton_medioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_medioMouseClicked
@@ -224,6 +232,11 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
 
     private void boton_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_medioActionPerformed
         // TODO add your handling code here:
+        Vista_LoginIndividual login = new Vista_LoginIndividual();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_boton_medioActionPerformed
 
     /**

@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.pantalla_home;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
@@ -58,19 +61,19 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         boton_muted = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txt_signup = new javax.swing.JLabel();
+        txt_psw_signup = new javax.swing.JLabel();
+        txt_user_user = new javax.swing.JLabel();
+        fieldpsw_signup = new javax.swing.JPasswordField();
+        fielduser_signup = new javax.swing.JTextField();
+        btn_submit_signup = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txt_login = new javax.swing.JLabel();
+        txt_psw_login = new javax.swing.JLabel();
+        txt_user_login = new javax.swing.JLabel();
+        fieldpsw_login = new javax.swing.JPasswordField();
+        fielduser_login = new javax.swing.JTextField();
+        btn_submit_login = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,31 +119,29 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(173, 211, 1));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
 
-        jLabel1.setFont(new java.awt.Font("Bebas", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("SIGN UP");
+        txt_signup.setFont(new java.awt.Font("Bebas", 3, 36)); // NOI18N
+        txt_signup.setForeground(new java.awt.Color(255, 255, 255));
+        txt_signup.setText("SIGN UP");
 
-        jLabel2.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("PASSWORD");
+        txt_psw_signup.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
+        txt_psw_signup.setForeground(new java.awt.Color(255, 255, 255));
+        txt_psw_signup.setText("PASSWORD");
 
-        jLabel3.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("USER");
+        txt_user_user.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
+        txt_user_user.setForeground(new java.awt.Color(255, 255, 255));
+        txt_user_user.setText("USER");
 
-        jPasswordField1.setText("jPasswordField1");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        fielduser_signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                fielduser_signupActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Bebas", 3, 12)); // NOI18N
-        jButton1.setText("SUBMIT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_submit_signup.setFont(new java.awt.Font("Bebas", 3, 12)); // NOI18N
+        btn_submit_signup.setText("SUBMIT");
+        btn_submit_signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_submit_signupActionPerformed(evt);
             }
         });
 
@@ -153,37 +154,37 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_user_user, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_psw_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1))
+                            .addComponent(fielduser_signup, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldpsw_signup))
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_submit_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(txt_signup)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(txt_user_user)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fielduser_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(txt_psw_signup)
                 .addGap(2, 2, 2)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldpsw_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(btn_submit_signup)
                 .addGap(24, 24, 24))
         );
 
@@ -192,31 +193,35 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(202, 25, 45));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
 
-        jLabel5.setFont(new java.awt.Font("Bebas", 3, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("LOGIN");
+        txt_login.setFont(new java.awt.Font("Bebas", 3, 36)); // NOI18N
+        txt_login.setForeground(new java.awt.Color(255, 255, 255));
+        txt_login.setText("LOGIN");
 
-        jLabel6.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("PASSWORD");
+        txt_psw_login.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
+        txt_psw_login.setForeground(new java.awt.Color(255, 255, 255));
+        txt_psw_login.setText("PASSWORD");
 
-        jLabel7.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("USER");
+        txt_user_login.setFont(new java.awt.Font("Bebas", 3, 14)); // NOI18N
+        txt_user_login.setForeground(new java.awt.Color(255, 255, 255));
+        txt_user_login.setText("USER");
 
-        jPasswordField2.setText("jPasswordField1");
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        fieldpsw_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                fieldpsw_loginActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Bebas", 3, 12)); // NOI18N
-        jButton2.setText("SUBMIT");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        fielduser_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                fielduser_loginActionPerformed(evt);
+            }
+        });
+
+        btn_submit_login.setFont(new java.awt.Font("Bebas", 3, 12)); // NOI18N
+        btn_submit_login.setText("SUBMIT");
+        btn_submit_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_submit_loginActionPerformed(evt);
             }
         });
 
@@ -229,38 +234,38 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_user_login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_psw_login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField2))
+                            .addComponent(fielduser_login, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldpsw_login))
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 57, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_submit_login, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(61, 61, 61))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel5)
+                .addComponent(txt_login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(txt_user_login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fielduser_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(txt_psw_login)
                 .addGap(2, 2, 2)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldpsw_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton2)
+                .addComponent(btn_submit_login)
                 .addGap(24, 24, 24))
         );
 
@@ -312,9 +317,9 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
     private void boton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_backActionPerformed
         // TODO add your handling code here:
-        Vista_Home home = new Vista_Home();
-        home.setLocationRelativeTo(null);
-        home.setVisible(true);
+        Vista_SeleccionDificultad dif = new Vista_SeleccionDificultad();
+        dif.setLocationRelativeTo(null);
+        dif.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_boton_backActionPerformed
@@ -324,21 +329,100 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
     }//GEN-LAST:event_boton_backMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_submit_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_signupActionPerformed
+        
+        /* Esta parte del codigo se fija si no existe un usuario identico sino lo agrega al LOG*/
+        
+        boolean permitido = true;
+        String user = fielduser_signup.getText(); // Usuario ingresado
+        String psw = ""; // Password ingresado
+        char[] psw_field = fieldpsw_signup.getPassword();
+        for (int i = 0 ;i<psw_field.length;i++){
+            psw+=psw_field[i];
+        }
+        /* Primero me fijo que el usuario no sea repetido */ 
+        try{
+            File archivo = new File("log.txt");
+            FileReader lector = new FileReader (archivo);
+            BufferedReader buffer = new BufferedReader(lector);
+            FileWriter escritor = new FileWriter(archivo,true);
+            String linea;
+            while ((linea=buffer.readLine())!=null){
+                if (linea.contains(user+" ")){
+                    permitido=false;
+                }
+            }
+            buffer.close();
+            lector.close();
+            /* Si no esta repetido lo ingreso */
+            if(permitido==false){
+                JOptionPane.showMessageDialog(null, "El usuario ya existe, ingrese otro.");
+            }else{
+                escritor.write(user+" "+psw);
+                escritor.write("\n");
+                JOptionPane.showMessageDialog(null, "¡Registro correcto!");
+                escritor.close();
+            }
+        }catch(Exception e){
+            System.out.println("Error con el log");
+        }
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btn_submit_signupActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_submit_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        boolean permitido = false;
+        String user = fielduser_login.getText(); // Usuario ingresado
+        String psw = ""; // Password ingresado
+        char[] psw_field = fieldpsw_login.getPassword();
+        for (int i = 0 ;i<psw_field.length;i++){
+            psw+=psw_field[i];
+        }
+        /* Primero me fijo que el usuario no sea repetido */ 
+        try{
+            File archivo = new File("log.txt");
+            FileReader lector = new FileReader (archivo);
+            BufferedReader buffer = new BufferedReader(lector);
+            FileWriter escritor = new FileWriter(archivo,true);
+            String linea;
+            while ((linea=buffer.readLine())!=null){
+                if (linea.equals(user+" "+psw)){
+                    permitido=true;
+                }
+            }
+            buffer.close();
+            lector.close();
+            /* Si no esta repetido lo ingreso */
+            if(permitido==false){
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.");
+            }else{
+                JOptionPane.showMessageDialog(null,"¡Ingreso correcto!");
+            }
+        }catch(Exception e){
+            System.out.println("Error con el log");
+        }
+       
+       
+    }//GEN-LAST:event_btn_submit_loginActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void fielduser_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fielduser_loginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        
+    }//GEN-LAST:event_fielduser_loginActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void fielduser_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fielduser_signupActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_fielduser_signupActionPerformed
+
+    private void fieldpsw_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldpsw_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldpsw_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,22 +469,22 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_back;
     private javax.swing.JButton boton_muted;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btn_submit_login;
+    private javax.swing.JButton btn_submit_signup;
+    private javax.swing.JPasswordField fieldpsw_login;
+    private javax.swing.JPasswordField fieldpsw_signup;
+    private javax.swing.JTextField fielduser_login;
+    private javax.swing.JTextField fielduser_signup;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel label_fondo;
+    private javax.swing.JLabel txt_login;
+    private javax.swing.JLabel txt_psw_login;
+    private javax.swing.JLabel txt_psw_signup;
+    private javax.swing.JLabel txt_signup;
+    private javax.swing.JLabel txt_user_login;
+    private javax.swing.JLabel txt_user_user;
     // End of variables declaration//GEN-END:variables
 }
