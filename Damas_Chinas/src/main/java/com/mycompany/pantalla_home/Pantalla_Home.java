@@ -4,6 +4,10 @@
 
 package com.mycompany.pantalla_home;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+
+
 /**
  *
  * @author lucho
@@ -11,10 +15,11 @@ package com.mycompany.pantalla_home;
 public class Pantalla_Home {
 
     public static void main(String[] args) {
-        Vista_Home vistaHome = new Vista_Home();
-        
-                
+        Vista_Home vistaHome = new Vista_Home();                
+        vistaHome.setLocationRelativeTo(null);
         vistaHome.setVisible(true);
+        
+//this.setLocationRelativeTo(null);
         
     }
 }

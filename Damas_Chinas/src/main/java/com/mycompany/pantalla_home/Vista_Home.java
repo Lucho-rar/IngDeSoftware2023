@@ -25,18 +25,18 @@ public class Vista_Home extends javax.swing.JFrame {
     //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_Home() {
-        this.setLocationRelativeTo(null);
-       
+        
         initComponents();
+        this.setLocationRelativeTo(null);
         inicioDeSonido("musicHome.wav");
-        this.jLabel2.setVisible(false);
-        this.jButton6.setVisible(false);
+        this.label_reglas.setVisible(false);
+        this.boton_cerrar_reglas.setVisible(false);
     }
     public void inicioDeSonido(String dir){
                 try{
             File musicPath = new File(dir);
             if(musicPath.exists()){
-                audioInput = AudioSystem.getAudioInputStream(musicPath);
+                this.audioInput = AudioSystem.getAudioInputStream(musicPath);
                 this.clip= AudioSystem.getClip();
                 this.clip.open(audioInput);
                // if(sonidoMuted==false){
@@ -71,15 +71,15 @@ public class Vista_Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        boton_jugar = new javax.swing.JButton();
+        boton_muted = new javax.swing.JButton();
+        boton_reglas = new javax.swing.JButton();
+        boton_stats = new javax.swing.JButton();
+        boton_exit = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        boton_cerrar_reglas = new javax.swing.JButton();
+        label_reglas = new javax.swing.JLabel();
+        label_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -91,94 +91,94 @@ public class Vista_Home extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonJugar.jpg"))); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        boton_jugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonJugar.jpg"))); // NOI18N
+        boton_jugar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_jugar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                boton_jugarMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        boton_jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                boton_jugarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 120, 50));
+        jPanel1.add(boton_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 120, 50));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonidoMuted.jpg"))); // NOI18N
-        jButton3.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        boton_muted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonidoMuted.jpg"))); // NOI18N
+        boton_muted.setBorder(new javax.swing.border.MatteBorder(null));
+        boton_muted.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                boton_mutedMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        boton_muted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                boton_mutedActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
+        jPanel1.add(boton_muted, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonReglas.png"))); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        boton_reglas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonReglas.png"))); // NOI18N
+        boton_reglas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_reglas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                boton_reglasMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_reglas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_reglasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 382, 120, 50));
+        jPanel1.add(boton_reglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 382, 120, 50));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonStats.png"))); // NOI18N
-        jButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        boton_stats.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonStats.png"))); // NOI18N
+        boton_stats.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_stats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                boton_statsActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 120, 50));
+        jPanel1.add(boton_stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 120, 50));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonSalir.png"))); // NOI18N
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        boton_exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonSalir.png"))); // NOI18N
+        boton_exit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        boton_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                boton_exitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 502, 120, 50));
+        jPanel1.add(boton_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 502, 120, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucho\\Documents\\DAMASCHINASDESIGN\\rayo.gif")); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 50, 110));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucho\\Documents\\DAMASCHINASDESIGN\\botonBack.png")); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        boton_cerrar_reglas.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucho\\Documents\\DAMASCHINASDESIGN\\botonBack.png")); // NOI18N
+        boton_cerrar_reglas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                boton_cerrar_reglasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 20, 20));
+        jPanel1.add(boton_cerrar_reglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 20, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reglas.png"))); // NOI18N
-        jLabel2.addKeyListener(new java.awt.event.KeyAdapter() {
+        label_reglas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reglas.png"))); // NOI18N
+        label_reglas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jLabel2KeyPressed(evt);
+                label_reglasKeyPressed(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 660, 590));
+        jPanel1.add(label_reglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 660, 590));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
+        jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void boton_mutedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_mutedActionPerformed
         // TODO add your handling code here:
         String filepath = "musicHome.wav";
         
@@ -190,32 +190,34 @@ public class Vista_Home extends javax.swing.JFrame {
         vuelta = new ImageIcon(getClass().getResource("/sonidoMuted.jpg"));
         
         if(sonidoMuted==false){
-            jButton3.setIcon(icon);
+            boton_muted.setIcon(icon);
             sonidoFondoInicial(filepath,sonidoMuted);
             sonidoMuted = true;
             
         }else{
-            jButton3.setIcon(vuelta);
+            boton_muted.setIcon(vuelta);
             sonidoFondoInicial(filepath,sonidoMuted);
             sonidoMuted = false;
             
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_boton_mutedActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void boton_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_jugarActionPerformed
         // TODO add your handling code here:
-        Vista_Tablero tablero = new Vista_Tablero();
-        tablero.setVisible(true);
+        //Vista_Tablero tablero = new Vista_Tablero();
+        Vista_SeleccionModo seleccion = new Vista_SeleccionModo();
+        seleccion.setLocationRelativeTo(null);
+        seleccion.setVisible(true);
         this.dispose();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_boton_jugarActionPerformed
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void boton_jugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_jugarMouseClicked
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_boton_jugarMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void boton_mutedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_mutedMouseClicked
         // TODO add your handling code here:
         
 
@@ -225,40 +227,40 @@ public class Vista_Home extends javax.swing.JFrame {
         
         
         
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_boton_mutedMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_reglasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_reglasActionPerformed
         // TODO add your handling code here:
         //this.jLabel4.setVisible(false);
-        this.jLabel2.setVisible(reglasVisible);
-        this.jButton6.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.label_reglas.setVisible(reglasVisible);
+        this.boton_cerrar_reglas.setVisible(true);
+    }//GEN-LAST:event_boton_reglasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void boton_statsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_statsActionPerformed
         // TODO add your handling code here:
       //  this.jLabel5.setText("nice");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_boton_statsActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void boton_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_exitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_boton_exitActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void boton_reglasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_reglasMouseClicked
         // TODO add your handling code here:
-        this.jLabel2.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+        this.label_reglas.setVisible(true);
+    }//GEN-LAST:event_boton_reglasMouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void boton_cerrar_reglasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cerrar_reglasActionPerformed
         // TODO add your handling code here:
-        this.jLabel2.setVisible(false);
-        this.jButton6.setVisible(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+        this.label_reglas.setVisible(false);
+        this.boton_cerrar_reglas.setVisible(false);
+    }//GEN-LAST:event_boton_cerrar_reglasActionPerformed
 
-    private void jLabel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel2KeyPressed
+    private void label_reglasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_label_reglasKeyPressed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jLabel2KeyPressed
+    }//GEN-LAST:event_label_reglasKeyPressed
 
     /**
      * @param args the command line arguments
@@ -296,15 +298,15 @@ public class Vista_Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton boton_cerrar_reglas;
+    private javax.swing.JButton boton_exit;
+    private javax.swing.JButton boton_jugar;
+    private javax.swing.JButton boton_muted;
+    private javax.swing.JButton boton_reglas;
+    private javax.swing.JButton boton_stats;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel label_fondo;
+    private javax.swing.JLabel label_reglas;
     // End of variables declaration//GEN-END:variables
 }

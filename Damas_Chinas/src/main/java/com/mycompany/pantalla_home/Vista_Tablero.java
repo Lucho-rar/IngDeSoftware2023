@@ -27,7 +27,7 @@ public class Vista_Tablero extends javax.swing.JFrame {
     //this.jLabel1.setVisible(false);
     public Vista_Tablero() {
         this.setLocationRelativeTo(null);
-       
+        
         initComponents();
 
     }
