@@ -39,6 +39,7 @@ com\mycompany\pantalla_home\Vista_Home$8.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$5.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$2.class
+com\mycompany\pantalla_home\Singleton.class
 com\mycompany\pantalla_home\Vista_Tablero$1.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$6.class
 com\mycompany\pantalla_home\Vista_Home$2.class
