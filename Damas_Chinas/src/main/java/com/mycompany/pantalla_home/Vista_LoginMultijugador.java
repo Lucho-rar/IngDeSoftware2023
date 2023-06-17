@@ -3,15 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.pantalla_home;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.AudioSystem;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 /**
  *
  * @author lucho
@@ -23,29 +16,21 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
      */
     public Clip clip;
     public AudioInputStream audioInput;
-    boolean sonidoMuted = false;
-    boolean reglasVisible =false;
-    //boolean backReglas
-    //this.jLabel1.setVisible(false);
+    Music m;
+    Vista_Config config = new Vista_Config();
     public Vista_LoginMultijugador() {
-        
-       
         initComponents();
         this.setLocationRelativeTo(null);
         //inicioDeSonido("musicHome.wav");
+    }
+    
+    public Vista_LoginMultijugador(Music m, Vista_Config c){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.m = m;
+        this.config=c;
+    }
 
-        
-    }
-   
-    public void sonidoFondoInicial(String dir,boolean a){
-        //if 
-        if(a == false){
-            this.clip.stop();
-        }else{
-            this.clip.start();
-        }
-        
-    }
     
    
     /**
@@ -57,9 +42,9 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         boton_back = new javax.swing.JButton();
-        boton_muted = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         combo_cantidad = new javax.swing.JComboBox<>();
@@ -79,6 +64,15 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
+        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
+
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,20 +90,6 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(boton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, 50));
-
-        boton_muted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonidoMuted.jpg"))); // NOI18N
-        boton_muted.setBorder(new javax.swing.border.MatteBorder(null));
-        boton_muted.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_mutedMouseClicked(evt);
-            }
-        });
-        boton_muted.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_mutedActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_muted, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucho\\Documents\\DAMASCHINASDESIGN\\rayo.gif")); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 50, 110));
@@ -225,45 +205,9 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boton_mutedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_mutedActionPerformed
-        // TODO add your handling code here:
-        String filepath = "musicHome.wav";
-        
-        ImageIcon  icon;
-        //icon.
-        //new javax.swing.ImageIcon(getClass().getResource("/botonJugar.jpg"));
-        icon = new ImageIcon(getClass().getResource("/rojo.jpg"));
-        ImageIcon vuelta;
-        vuelta = new ImageIcon(getClass().getResource("/sonidoMuted.jpg"));
-        
-        if(sonidoMuted==false){
-            boton_muted.setIcon(icon);
-            sonidoFondoInicial(filepath,sonidoMuted);
-            sonidoMuted = true;
-            
-        }else{
-            boton_muted.setIcon(vuelta);
-            sonidoFondoInicial(filepath,sonidoMuted);
-            sonidoMuted = false;
-            
-        }
-    }//GEN-LAST:event_boton_mutedActionPerformed
-
-    private void boton_mutedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_mutedMouseClicked
-        // TODO add your handling code here:
-        
-
-        //jButton3.setIconImage(icon.getImage());
-        //this.setIcon(new javax.swing.ImageIcon());
-        
-        
-        
-        
-    }//GEN-LAST:event_boton_mutedMouseClicked
-
     private void boton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_backActionPerformed
         // TODO add your handling code here:
-        Vista_SeleccionDificultad dif = new Vista_SeleccionDificultad();
+        Vista_SeleccionDificultad dif = new Vista_SeleccionDificultad(m,config);
         dif.setLocationRelativeTo(null);
         dif.setVisible(true);
         this.dispose();
@@ -310,6 +254,15 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:\
+        // this.musicaH.sonar(0);
+
+        this.config.setVisible(true);
+        this.config.recibirMusica(m);
+        /*this.m.disperformMusic();*/
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,7 +316,6 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_back;
-    private javax.swing.JButton boton_muted;
     private javax.swing.JComboBox<String> combo_cantidad;
     private javax.swing.JTextField field_user1;
     private javax.swing.JTextField field_user2;
@@ -373,6 +325,7 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
     private javax.swing.JTextField field_user6;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;

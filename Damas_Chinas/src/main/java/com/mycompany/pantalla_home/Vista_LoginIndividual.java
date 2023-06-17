@@ -23,8 +23,8 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
      */
     public Clip clip;
     public AudioInputStream audioInput;
-    boolean sonidoMuted = false;
-    boolean reglasVisible =false;
+    Music m;
+    Vista_Config config = new Vista_Config();
     //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_LoginIndividual() {
@@ -34,6 +34,13 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //inicioDeSonido("musicHome.wav");
         
+    }
+    
+    public Vista_LoginIndividual(Music m, Vista_Config c){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.m=m;
+        this.config=c;
     }
    
     public void sonidoFondoInicial(String dir,boolean a){
@@ -58,7 +65,6 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         boton_back = new javax.swing.JButton();
-        boton_muted = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txt_signup = new javax.swing.JLabel();
@@ -74,6 +80,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         fieldpsw_login = new javax.swing.JPasswordField();
         fielduser_login = new javax.swing.JTextField();
         btn_submit_login = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,20 +105,6 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
         });
         jPanel1.add(boton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, 50));
-
-        boton_muted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonidoMuted.jpg"))); // NOI18N
-        boton_muted.setBorder(new javax.swing.border.MatteBorder(null));
-        boton_muted.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_mutedMouseClicked(evt);
-            }
-        });
-        boton_muted.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_mutedActionPerformed(evt);
-            }
-        });
-        jPanel1.add(boton_muted, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucho\\Documents\\DAMASCHINASDESIGN\\rayo.gif")); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 50, 110));
@@ -271,6 +264,15 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 230, 250));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));
+
         label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
         jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -279,45 +281,9 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void boton_mutedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_mutedActionPerformed
-        // TODO add your handling code here:
-        String filepath = "musicHome.wav";
-        
-        ImageIcon  icon;
-        //icon.
-        //new javax.swing.ImageIcon(getClass().getResource("/botonJugar.jpg"));
-        icon = new ImageIcon(getClass().getResource("/rojo.jpg"));
-        ImageIcon vuelta;
-        vuelta = new ImageIcon(getClass().getResource("/sonidoMuted.jpg"));
-        
-        if(sonidoMuted==false){
-            boton_muted.setIcon(icon);
-            sonidoFondoInicial(filepath,sonidoMuted);
-            sonidoMuted = true;
-            
-        }else{
-            boton_muted.setIcon(vuelta);
-            sonidoFondoInicial(filepath,sonidoMuted);
-            sonidoMuted = false;
-            
-        }
-    }//GEN-LAST:event_boton_mutedActionPerformed
-
-    private void boton_mutedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_mutedMouseClicked
-        // TODO add your handling code here:
-        
-
-        //jButton3.setIconImage(icon.getImage());
-        //this.setIcon(new javax.swing.ImageIcon());
-        
-        
-        
-        
-    }//GEN-LAST:event_boton_mutedMouseClicked
-
     private void boton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_backActionPerformed
         // TODO add your handling code here:
-        Vista_SeleccionDificultad dif = new Vista_SeleccionDificultad();
+        Vista_SeleccionDificultad dif = new Vista_SeleccionDificultad(m,config);
         dif.setLocationRelativeTo(null);
         dif.setVisible(true);
         this.dispose();
@@ -424,6 +390,15 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldpsw_loginActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:\
+        // this.musicaH.sonar(0);
+
+        this.config.setVisible(true);
+        this.config.recibirMusica(m);
+        /*this.m.disperformMusic();*/
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -468,13 +443,13 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_back;
-    private javax.swing.JButton boton_muted;
     private javax.swing.JButton btn_submit_login;
     private javax.swing.JButton btn_submit_signup;
     private javax.swing.JPasswordField fieldpsw_login;
     private javax.swing.JPasswordField fieldpsw_signup;
     private javax.swing.JTextField fielduser_login;
     private javax.swing.JTextField fielduser_signup;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

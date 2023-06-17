@@ -4,8 +4,6 @@
 
 package com.mycompany.pantalla_home;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.Clip;
 
 
 /**
@@ -16,8 +14,11 @@ public class Pantalla_Home {
     
     public static void main(String[] args) {
         Music_Nav m = new Music_Nav();
-        //m.performMusic();
-        Vista_Home vistaHome = new Vista_Home(m);                
+        m.performMusic();
+        Vista_Config config = new Vista_Config();
+        config.setLocationRelativeTo(null);
+        config.setVisible(false);
+        Vista_Home vistaHome = new Vista_Home(m,config);                
         vistaHome.setLocationRelativeTo(null);
         vistaHome.setVisible(true);
         
