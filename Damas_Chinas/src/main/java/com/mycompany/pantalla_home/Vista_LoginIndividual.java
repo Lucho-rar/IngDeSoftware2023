@@ -25,6 +25,8 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     public AudioInputStream audioInput;
     Music m;
     Vista_Config config = new Vista_Config();
+    Singleton_BD singleton_bd = Singleton_BD.getInstance();
+    
     //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_LoginIndividual() {
@@ -306,7 +308,25 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         for (int i = 0 ;i<psw_field.length;i++){
             psw+=psw_field[i];
         }
-        /* Primero me fijo que el usuario no sea repetido */ 
+        
+        for(int i =0 ;i<singleton_bd.getLista().size();i++){
+            if(singleton_bd.getLista().get(i).getUsuario().equals(user)){
+                permitido = false;
+            }
+        }
+        if(permitido){
+            //JOptionPane.showMessageDialog(null, "Ta bien!");
+            //singleton_bd
+            //singleton_bd.actualizarLog();
+            
+            Usuario nuevo = new Usuario(user,psw,"0");
+            singleton_bd.agregarUsuario(nuevo);
+            singleton_bd.actualizarLog();
+        }else{
+            JOptionPane.showMessageDialog(null, "yaexiste!");
+        }
+        /*
+        /* Primero me fijo que el usuario no sea repetido 
         try{
             File archivo = new File("log.txt");
             FileReader lector = new FileReader (archivo);
@@ -320,7 +340,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
             buffer.close();
             lector.close();
-            /* Si no esta repetido lo ingreso */
+            /* Si no esta repetido lo ingreso 
             if(permitido==false){
                 JOptionPane.showMessageDialog(null, "El usuario ya existe, ingrese otro.");
             }else{
@@ -331,7 +351,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
         }catch(Exception e){
             System.out.println("Error con el log");
-        }
+        }*/
         
         
         
@@ -343,6 +363,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
     private void btn_submit_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_loginActionPerformed
         // TODO add your handling code here:
+        
         boolean permitido = false;
         String user = fielduser_login.getText(); // Usuario ingresado
         String psw = ""; // Password ingresado
@@ -350,7 +371,19 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         for (int i = 0 ;i<psw_field.length;i++){
             psw+=psw_field[i];
         }
-        /* Primero me fijo que el usuario no sea repetido */ 
+        for(int i =0 ;i<singleton_bd.getLista().size();i++){
+            if(singleton_bd.getLista().get(i).getUsuario().equals(user) && 
+                    singleton_bd.getLista().get(i).getPassword().equals(psw)){
+                permitido = true;
+            }
+        }
+        if(permitido){
+            JOptionPane.showMessageDialog(null, "Ingreso correcto!");
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario/PSW Incorrecto!");
+        }
+        /*
+        /* Primero me fijo que el usuario no sea repetido 
         try{
             File archivo = new File("log.txt");
             FileReader lector = new FileReader (archivo);
@@ -364,7 +397,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
             buffer.close();
             lector.close();
-            /* Si no esta repetido lo ingreso */
+            /* Si no esta repetido lo ingreso 
             if(permitido==false){
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.");
             }else{
@@ -373,8 +406,8 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println("Error con el log");
         }
-       
-       
+        */
+        
     }//GEN-LAST:event_btn_submit_loginActionPerformed
 
     private void fielduser_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fielduser_loginActionPerformed

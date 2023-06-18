@@ -22,6 +22,7 @@ public class Vista_Home extends javax.swing.JFrame {
     //MusicaHome musicaH=new MusicaHome();
     Music m ;
     Vista_Config config = new Vista_Config();
+    
 //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_Home(Music m, Vista_Config c) {
@@ -182,6 +183,11 @@ public class Vista_Home extends javax.swing.JFrame {
     private void boton_statsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_statsActionPerformed
         // TODO add your handling code here:
       //  this.jLabel5.setText("nice");
+        Stats st = new Stats();
+        st.setLocationRelativeTo(null);
+        st.setVisible(true);
+        
+        
     }//GEN-LAST:event_boton_statsActionPerformed
 
     private void boton_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_exitActionPerformed

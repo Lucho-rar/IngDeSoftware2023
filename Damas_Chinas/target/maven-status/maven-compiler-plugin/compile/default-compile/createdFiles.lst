@@ -1,5 +1,6 @@
 com\mycompany\pantalla_home\Vista_Config$2.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$8.class
+com\mycompany\pantalla_home\Stats.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$4.class
 com\mycompany\pantalla_home\Vista_Home$10.class
 com\mycompany\pantalla_home\Music_Juego.class
@@ -16,6 +17,7 @@ com\mycompany\pantalla_home\Vista_SeleccionModo$4.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$1.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador$4.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$1.class
+com\mycompany\pantalla_home\Usuario.class
 com\mycompany\pantalla_home\Vista_Tablero.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$3.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador$2.class
@@ -37,6 +39,7 @@ com\mycompany\pantalla_home\Vista_SeleccionDificultad$6.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$3.class
 com\mycompany\pantalla_home\Vista_Home$8.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$5.class
+com\mycompany\pantalla_home\Stats$1.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$2.class
 com\mycompany\pantalla_home\Singleton.class
@@ -53,10 +56,12 @@ com\mycompany\pantalla_home\Vista_LoginIndividual$9.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$5.class
 com\mycompany\pantalla_home\Vista_Config$3.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$2.class
+com\mycompany\pantalla_home\Stats$2.class
 com\mycompany\pantalla_home\Vista_Home$9.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$5.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador$6.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$8.class
+com\mycompany\pantalla_home\Singleton_BD.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$10.class
 com\mycompany\pantalla_home\Vista_Home$6.class
 com\mycompany\pantalla_home\Vista_Home.class
