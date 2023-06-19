@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.pantalla_home;
+import java.awt.event.ActionEvent;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -23,8 +26,14 @@ public class Vista_Home extends javax.swing.JFrame {
     Music m ;
     Vista_Config config = new Vista_Config();
     
-//boolean backReglas
-    //this.jLabel1.setVisible(false);
+    
+    /* Variables usadas en TESTS*/
+    
+    boolean exit_pulse = false;
+    boolean stats_pulse = false;
+    boolean config_pulse = false;
+    
+    
     public Vista_Home(Music m, Vista_Config c) {
         this.m = m;
         initComponents();
@@ -46,6 +55,53 @@ public class Vista_Home extends javax.swing.JFrame {
         this.boton_cerrar_reglas.setVisible(false);
     }
     
+    /* Metodos usados en TEST*/
+    public boolean getReglasVisible(){
+        return this.label_reglas.isVisible();
+    }
+    
+    public boolean getBCReglasVisible(){
+        return this.boton_cerrar_reglas.isVisible();
+    }
+    
+    public JButton getBotonExit(){
+        return this.boton_exit;
+    }
+    public boolean  getAux(){
+        return this.exit_pulse;
+    }
+    
+    public JButton getBotonJugar(){
+        return this.boton_jugar;
+    }
+    
+    public JButton getBotonReglas(){
+        return this.boton_reglas;
+    }
+    
+    public JButton getBotonCerrarReglas(){
+        return this.boton_cerrar_reglas;
+    }
+    
+    public JLabel getLayoutReglas(){
+        return this.label_reglas;
+    }
+    
+    public JButton getBotonStats(){
+        return this.boton_stats;
+    }
+    
+    public boolean getMuestraStats(){
+        return this.stats_pulse;
+    }
+    
+    public JButton getBotonConfig(){
+        return this.boton_config;
+    }
+    
+    public boolean getMuestraConfig(){
+        return this.config_pulse;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,7 +118,7 @@ public class Vista_Home extends javax.swing.JFrame {
         boton_exit = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         boton_cerrar_reglas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        boton_config = new javax.swing.JButton();
         label_reglas = new javax.swing.JLabel();
         label_fondo = new javax.swing.JLabel();
 
@@ -133,14 +189,14 @@ public class Vista_Home extends javax.swing.JFrame {
         });
         jPanel1.add(boton_cerrar_reglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 20, 20));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
+        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_config.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_configActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
+        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
 
         label_reglas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reglas.png"))); // NOI18N
         label_reglas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -161,6 +217,7 @@ public class Vista_Home extends javax.swing.JFrame {
     private void boton_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_jugarActionPerformed
         // TODO add your handling code here:
         //Vista_Tablero tablero = new Vista_Tablero();
+        
         Vista_SeleccionModo seleccion = new Vista_SeleccionModo(m,config);
         seleccion.setLocationRelativeTo(null);
         seleccion.setVisible(true);
@@ -176,7 +233,7 @@ public class Vista_Home extends javax.swing.JFrame {
     private void boton_reglasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_reglasActionPerformed
         // TODO add your handling code here:
         //this.jLabel4.setVisible(false);
-        this.label_reglas.setVisible(reglasVisible);
+        this.label_reglas.setVisible(true);
         this.boton_cerrar_reglas.setVisible(true);
     }//GEN-LAST:event_boton_reglasActionPerformed
 
@@ -186,12 +243,15 @@ public class Vista_Home extends javax.swing.JFrame {
         Stats st = new Stats();
         st.setLocationRelativeTo(null);
         st.setVisible(true);
+        this.stats_pulse = true; // FLAG TEST
         
         
     }//GEN-LAST:event_boton_statsActionPerformed
 
     private void boton_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_exitActionPerformed
         // TODO add your handling code here:
+
+        this.exit_pulse=true; //FLAG TEST
         System.exit(0);
     }//GEN-LAST:event_boton_exitActionPerformed
 
@@ -211,15 +271,16 @@ public class Vista_Home extends javax.swing.JFrame {
         
     }//GEN-LAST:event_label_reglasKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
         // TODO add your handling code here:\
        // this.musicaH.sonar(0);
      
        
        this.config.setVisible(true);
+       this.config_pulse = this.config.isVisible();
        this.config.recibirMusica(m);
        /*this.m.disperformMusic();*/
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_configActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,11 +319,11 @@ public class Vista_Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_cerrar_reglas;
+    private javax.swing.JButton boton_config;
     private javax.swing.JButton boton_exit;
     private javax.swing.JButton boton_jugar;
     private javax.swing.JButton boton_reglas;
     private javax.swing.JButton boton_stats;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_fondo;

@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  * @author lucho
  */
 public class Pantalla_Home {
-    
+  
     public static void main(String[] args) {
         /*
         Music_Nav m = new Music_Nav();
