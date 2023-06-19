@@ -6,6 +6,7 @@ package com.mycompany.pantalla_home;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
+import javax.swing.JButton;
 /**
  *
  * @author lucho
@@ -36,8 +37,37 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
         this.m=m;
         this.config=c;
     }
-   
-
+    
+    /* Getters para test */
+    
+    public JButton getBotonFacil(){
+        return this.boton_facil;
+    }
+    
+    public JButton getBotonMedio(){
+        return this.boton_medio;
+    }
+    
+    public JButton getBotonDificil(){
+        return this.boton_dificil;
+    }
+    
+    public JButton getBotonBack(){
+        return this.boton_back;
+    }
+    
+    public JButton getBotonConfig(){
+        return this.boton_config;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
    
     /**
@@ -55,7 +85,7 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
         boton_facil = new javax.swing.JButton();
         boton_dificil = new javax.swing.JButton();
         boton_medio = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        boton_config = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,14 +156,14 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
         });
         jPanel1.add(boton_medio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 120, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
+        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_config.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_configActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
+        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
 
         label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
         jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
@@ -194,14 +224,14 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
         
     }//GEN-LAST:event_boton_medioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
         // TODO add your handling code here:\
         // this.musicaH.sonar(0);
 
         this.config.setVisible(true);
         this.config.recibirMusica(m);
         /*this.m.disperformMusic();*/
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_configActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,10 +277,10 @@ public class Vista_SeleccionDificultad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_back;
+    private javax.swing.JButton boton_config;
     private javax.swing.JButton boton_dificil;
     private javax.swing.JButton boton_facil;
     private javax.swing.JButton boton_medio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_fondo;

@@ -4,6 +4,10 @@
 
 package com.mycompany.pantalla_home;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
 
 
 /**
@@ -11,7 +15,7 @@ package com.mycompany.pantalla_home;
  * @author lucho
  */
 public class Pantalla_Home {
-    
+  
     public static void main(String[] args) {
         /*
         Music_Nav m = new Music_Nav();
@@ -23,6 +27,11 @@ public class Pantalla_Home {
         vistaHome.setLocationRelativeTo(null);
         vistaHome.setVisible(true);
         */
+       
+       
+        //Singleton_BD singleton_bd = Singleton_BD.getInstance();
+        //singleton.imprimirLista();
+        //singleton.actualizarLog();
         Singleton singleton = Singleton.getInstance();
 //this.setLocationRelativeTo(null);
         

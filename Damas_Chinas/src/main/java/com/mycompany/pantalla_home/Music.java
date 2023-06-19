@@ -22,8 +22,9 @@ public abstract class Music {
         musicBehavior = mb;
     }
     
-    public void performMusic(){
+    public boolean performMusic(){
        this.clip =  musicBehavior.sonido();
+       return true;
     }
     public void disperformMusic(){
         this.clip.stop();
