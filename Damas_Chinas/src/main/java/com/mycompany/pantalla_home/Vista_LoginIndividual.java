@@ -83,6 +83,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         fielduser_login = new javax.swing.JTextField();
         btn_submit_login = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -275,6 +276,14 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+
         label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
         jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -432,6 +441,17 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         /*this.m.disperformMusic();*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //NewJFrame nw =  new NewJFrame ();
+        //nw.setVisible(true);
+        //nw.
+        //this.dispose();
+        GridTeclas a = new GridTeclas();
+        a.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -483,6 +503,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     private javax.swing.JTextField fielduser_login;
     private javax.swing.JTextField fielduser_signup;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
