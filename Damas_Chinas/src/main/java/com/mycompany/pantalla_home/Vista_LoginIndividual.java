@@ -25,6 +25,8 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     public AudioInputStream audioInput;
     Music m;
     Vista_Config config = new Vista_Config();
+    Singleton_BD singleton_bd = Singleton_BD.getInstance();
+    
     //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_LoginIndividual() {
@@ -81,6 +83,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         fielduser_login = new javax.swing.JTextField();
         btn_submit_login = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -273,6 +276,14 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+
         label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
         jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -306,7 +317,25 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         for (int i = 0 ;i<psw_field.length;i++){
             psw+=psw_field[i];
         }
-        /* Primero me fijo que el usuario no sea repetido */ 
+        
+        for(int i =0 ;i<singleton_bd.getLista().size();i++){
+            if(singleton_bd.getLista().get(i).getUsuario().equals(user)){
+                permitido = false;
+            }
+        }
+        if(permitido){
+            //JOptionPane.showMessageDialog(null, "Ta bien!");
+            //singleton_bd
+            //singleton_bd.actualizarLog();
+            
+            Usuario nuevo = new Usuario(user,psw,"0");
+            singleton_bd.agregarUsuario(nuevo);
+            singleton_bd.actualizarLog();
+        }else{
+            JOptionPane.showMessageDialog(null, "yaexiste!");
+        }
+        /*
+        /* Primero me fijo que el usuario no sea repetido 
         try{
             File archivo = new File("log.txt");
             FileReader lector = new FileReader (archivo);
@@ -320,7 +349,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
             buffer.close();
             lector.close();
-            /* Si no esta repetido lo ingreso */
+            /* Si no esta repetido lo ingreso 
             if(permitido==false){
                 JOptionPane.showMessageDialog(null, "El usuario ya existe, ingrese otro.");
             }else{
@@ -331,7 +360,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
         }catch(Exception e){
             System.out.println("Error con el log");
-        }
+        }*/
         
         
         
@@ -343,6 +372,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
     private void btn_submit_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_loginActionPerformed
         // TODO add your handling code here:
+        
         boolean permitido = false;
         String user = fielduser_login.getText(); // Usuario ingresado
         String psw = ""; // Password ingresado
@@ -350,7 +380,19 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         for (int i = 0 ;i<psw_field.length;i++){
             psw+=psw_field[i];
         }
-        /* Primero me fijo que el usuario no sea repetido */ 
+        for(int i =0 ;i<singleton_bd.getLista().size();i++){
+            if(singleton_bd.getLista().get(i).getUsuario().equals(user) && 
+                    singleton_bd.getLista().get(i).getPassword().equals(psw)){
+                permitido = true;
+            }
+        }
+        if(permitido){
+            JOptionPane.showMessageDialog(null, "Ingreso correcto!");
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario/PSW Incorrecto!");
+        }
+        /*
+        /* Primero me fijo que el usuario no sea repetido 
         try{
             File archivo = new File("log.txt");
             FileReader lector = new FileReader (archivo);
@@ -364,7 +406,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
             buffer.close();
             lector.close();
-            /* Si no esta repetido lo ingreso */
+            /* Si no esta repetido lo ingreso 
             if(permitido==false){
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.");
             }else{
@@ -373,8 +415,8 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println("Error con el log");
         }
-       
-       
+        */
+        
     }//GEN-LAST:event_btn_submit_loginActionPerformed
 
     private void fielduser_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fielduser_loginActionPerformed
@@ -398,6 +440,17 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         this.config.recibirMusica(m);
         /*this.m.disperformMusic();*/
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //NewJFrame nw =  new NewJFrame ();
+        //nw.setVisible(true);
+        //nw.
+        //this.dispose();
+        GridTeclas a = new GridTeclas();
+        a.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,6 +503,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     private javax.swing.JTextField fielduser_login;
     private javax.swing.JTextField fielduser_signup;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
