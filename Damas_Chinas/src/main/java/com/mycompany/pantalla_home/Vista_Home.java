@@ -240,7 +240,7 @@ public class Vista_Home extends javax.swing.JFrame {
     private void boton_statsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_statsActionPerformed
         // TODO add your handling code here:
       //  this.jLabel5.setText("nice");
-        Stats st = new Stats();
+        Vista_Stats st = new Vista_Stats();
         st.setLocationRelativeTo(null);
         st.setVisible(true);
         this.stats_pulse = true; // FLAG TEST
