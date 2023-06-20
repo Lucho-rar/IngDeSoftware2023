@@ -22,13 +22,5 @@ public class Pantalla_HomeTest {
     /**
      * Test of main method, of class Pantalla_Home.
      */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Pantalla_Home.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
 }
