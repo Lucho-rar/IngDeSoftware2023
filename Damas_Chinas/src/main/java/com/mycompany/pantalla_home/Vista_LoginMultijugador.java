@@ -5,6 +5,10 @@
 package com.mycompany.pantalla_home;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 /**
  *
  * @author lucho
@@ -32,7 +36,65 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
     }
 
     
-   
+   /* Getters para TESTS */
+    
+    public JButton getBotonBack(){
+        return this.boton_back;
+    }
+    
+    public JButton getBotonIniciar(){
+        return this.boton_iniciar;
+    }
+    
+    public JButton getBotonConfig(){
+        return this.boton_config;
+    }
+    
+    public JLabel getLabelCantidad(){
+        return this.txt_cantidad;
+    }
+    
+    public JComboBox getCombo(){
+        return this.combo_cantidad;
+    }
+    
+    public JTextField getUser1(){
+        return this.field_user1;
+    }
+    
+    public JTextField getUser2(){
+        return this.field_user2;
+    }
+    
+    public JTextField getUser3(){
+        return this.field_user3;
+    }
+    
+    public JTextField getUser4(){
+        return this.field_user4;
+    }
+    
+    public JTextField getUser5(){
+        return this.field_user5;
+    }
+    
+    public JTextField getUser6(){
+        return this.field_user6;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +104,7 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
+        boton_config = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         boton_back = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -55,7 +117,7 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
         field_user4 = new javax.swing.JTextField();
         field_user2 = new javax.swing.JTextField();
         field_user6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        boton_iniciar = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
@@ -64,14 +126,14 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
+        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_config.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                boton_configActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
+        getContentPane().add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
@@ -126,15 +188,15 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
 
         field_user6.setText("User6");
 
-        jButton1.setBackground(new java.awt.Color(204, 0, 0));
-        jButton1.setFont(new java.awt.Font("Bebas", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("INICIAR");
-        jButton1.setToolTipText("");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_iniciar.setBackground(new java.awt.Color(204, 0, 0));
+        boton_iniciar.setFont(new java.awt.Font("Bebas", 1, 14)); // NOI18N
+        boton_iniciar.setForeground(new java.awt.Color(255, 255, 255));
+        boton_iniciar.setText("INICIAR");
+        boton_iniciar.setToolTipText("");
+        boton_iniciar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_iniciarActionPerformed(evt);
             }
         });
 
@@ -167,7 +229,7 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
                                 .addComponent(field_user6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boton_iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -188,7 +250,7 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
                     .addComponent(field_user2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(field_user6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(boton_iniciar)
                 .addContainerGap())
         );
 
@@ -251,18 +313,18 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_user1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_iniciarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_iniciarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
         // TODO add your handling code here:\
         // this.musicaH.sonar(0);
 
         this.config.setVisible(true);
         this.config.recibirMusica(m);
         /*this.m.disperformMusic();*/
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_boton_configActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,6 +378,8 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_back;
+    private javax.swing.JButton boton_config;
+    private javax.swing.JButton boton_iniciar;
     private javax.swing.JComboBox<String> combo_cantidad;
     private javax.swing.JTextField field_user1;
     private javax.swing.JTextField field_user2;
@@ -323,9 +387,7 @@ public class Vista_LoginMultijugador extends javax.swing.JFrame {
     private javax.swing.JTextField field_user4;
     private javax.swing.JTextField field_user5;
     private javax.swing.JTextField field_user6;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;

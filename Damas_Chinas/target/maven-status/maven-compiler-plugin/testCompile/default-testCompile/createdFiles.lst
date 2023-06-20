@@ -2,6 +2,7 @@ com\mycompany\pantalla_home\Vista_LoginIndividualTest.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultadTest.class
 com\mycompany\pantalla_home\Vista_StatsTest.class
 com\mycompany\pantalla_home\Vista_SeleccionModoTest.class
+com\mycompany\pantalla_home\Vista_LoginMultijugadorTest.class
 com\mycompany\pantalla_home\SingletonTest.class
 com\mycompany\pantalla_home\Vista_ConfigTest.class
 com\mycompany\pantalla_home\Vista_HomeTest.class
