@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.pantalla_home;
+import java.awt.TextField;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,7 +12,11 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioSystem;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 /**
  *
  * @author lucho
@@ -26,7 +31,8 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     Music m;
     Vista_Config config = new Vista_Config();
     Singleton_BD singleton_bd = Singleton_BD.getInstance();
-    
+    boolean ingresoCorrecto =false;
+    boolean registroIncorrecto=false;
     //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_LoginIndividual() {
@@ -55,6 +61,86 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         
     }
     
+    /* Getters para TESTS */
+    
+    public JButton getBotonBack(){
+        return this.boton_back;
+    }
+    
+    public JButton getBotonSubmitLogin(){
+        return this.btn_submit_login;
+    }
+    
+    public JButton getBotonSubmitSignup(){
+        return this.btn_submit_signup;
+    }
+    
+    public JButton getBotonConfig(){
+        return this.boton_config;
+    }
+    
+    public JLabel getLabelLogin(){
+        return this.txt_login;
+    }
+    
+    public JLabel getLabelSignup(){
+        return this.txt_signup;
+    }
+    
+    public JLabel getLabelPswLogin(){
+        return this.txt_psw_login;
+    }
+    
+    public JLabel getLabelPswSignup(){
+        return this.txt_psw_signup;
+    }
+    
+    public JLabel getLabelUserLogin(){
+        return this.txt_user_login;
+    }
+    
+    public JLabel getLabelUserSignup(){
+        return this.txt_user_user;
+    }
+    
+    public JTextField getFieldUserLogin(){
+        return this.fielduser_login;
+    }
+    
+    public JTextField getFieldUserSignup(){
+        return this.fielduser_signup;
+    }
+    
+    public JPasswordField getFieldPswLogin(){
+        return this.fieldpsw_login;
+    }
+    
+    public JPasswordField getFieldPswSignUp(){
+        return this.fieldpsw_signup;
+    }
+    
+    public boolean getIngresoCorrecto(){
+        return this.ingresoCorrecto;
+    }
+    
+    public boolean getRegistroIncorrecto(){
+        return this.registroIncorrecto;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +168,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         fieldpsw_login = new javax.swing.JPasswordField();
         fielduser_login = new javax.swing.JTextField();
         btn_submit_login = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        boton_config = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         label_fondo = new javax.swing.JLabel();
 
@@ -267,14 +353,14 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 230, 250));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
+        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_config.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_configActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));
+        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -327,11 +413,12 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(null, "Ta bien!");
             //singleton_bd
             //singleton_bd.actualizarLog();
-            
+            this.registroIncorrecto = true;
             Usuario nuevo = new Usuario(user,psw,"0");
             singleton_bd.agregarUsuario(nuevo);
             singleton_bd.actualizarLog();
         }else{
+            
             JOptionPane.showMessageDialog(null, "yaexiste!");
         }
         /*
@@ -387,6 +474,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             }
         }
         if(permitido){
+            this.ingresoCorrecto=true;
             JOptionPane.showMessageDialog(null, "Ingreso correcto!");
         }else{
             JOptionPane.showMessageDialog(null, "Usuario/PSW Incorrecto!");
@@ -432,14 +520,14 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldpsw_loginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
         // TODO add your handling code here:\
         // this.musicaH.sonar(0);
 
         this.config.setVisible(true);
         this.config.recibirMusica(m);
         /*this.m.disperformMusic();*/
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_configActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -496,13 +584,13 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_back;
+    private javax.swing.JButton boton_config;
     private javax.swing.JButton btn_submit_login;
     private javax.swing.JButton btn_submit_signup;
     private javax.swing.JPasswordField fieldpsw_login;
     private javax.swing.JPasswordField fieldpsw_signup;
     private javax.swing.JTextField fielduser_login;
     private javax.swing.JTextField fielduser_signup;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
