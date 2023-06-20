@@ -4,6 +4,9 @@
  */
 package com.mycompany.pantalla_home;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author lucho
@@ -25,6 +28,40 @@ public class Vista_Stats extends javax.swing.JFrame {
         this.label_tercero.setText(singleton_bd.getTOP3().getUsuario());
     }
     
+    /* Metodos para tests*/
+    public JButton getBotonCerrar(){
+        return this.boton_cerrar;
+    }
+    
+    public JLabel getLabelRanking(){
+        return this.label_ranking;
+    }
+    
+    public JLabel getLabelFirst(){
+        return this.label_primero;
+    }
+    
+    public JLabel getLabelSecond(){
+        return this.label_segundo;
+    }
+    
+    public JLabel getLabelThird(){
+        return this.label_tercero;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,7 +77,7 @@ public class Vista_Stats extends javax.swing.JFrame {
         label_segundo = new javax.swing.JLabel();
         label_primero = new javax.swing.JLabel();
         label_tercero = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        boton_cerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,13 +108,13 @@ public class Vista_Stats extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 320, 160));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonCruz.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonCruz.png"))); // NOI18N
+        boton_cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_cerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 40, 20));
+        getContentPane().add(boton_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 40, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondoRanking.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -85,10 +122,10 @@ public class Vista_Stats extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cerrarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_cerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,7 +164,7 @@ public class Vista_Stats extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton boton_cerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_primero;

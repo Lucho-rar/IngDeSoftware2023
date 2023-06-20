@@ -4,6 +4,9 @@
  */
 package com.mycompany.pantalla_home;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author lucho
@@ -23,6 +26,40 @@ public class Vista_Config extends javax.swing.JFrame{
     public void recibirMusica(Music m){
         this.m=m;
     }
+    
+    /* Metodos test */
+    
+    public JButton getBotonSwitch(){
+        return this.boton_mutear_desmutear;
+    }
+    
+    public JLabel getLabelEnabled(){
+        return this.label_enabled;
+    }
+    
+    public JLabel getLabelDisabled(){
+        return this.label_disabled;
+    }
+    
+    public JButton getBotonCerrar(){
+        return this.boton_cerrar;
+    }
+    
+    public boolean getEstaMute(){
+        return this.estaMute;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +70,7 @@ public class Vista_Config extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        boton_cerrar = new javax.swing.JButton();
         boton_mutear_desmutear = new javax.swing.JButton();
         label_enabled = new javax.swing.JLabel();
         label_disabled = new javax.swing.JLabel();
@@ -51,13 +88,13 @@ public class Vista_Config extends javax.swing.JFrame{
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonCruz.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        boton_cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonCruz.png"))); // NOI18N
+        boton_cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                boton_cerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 40, 20));
+        getContentPane().add(boton_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 40, 20));
 
         boton_mutear_desmutear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sonidoMuted.jpg"))); // NOI18N
         boton_mutear_desmutear.setBorder(new javax.swing.border.MatteBorder(null));
@@ -102,10 +139,10 @@ public class Vista_Config extends javax.swing.JFrame{
         
     }//GEN-LAST:event_formWindowClosed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void boton_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cerrarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_boton_cerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,8 +180,8 @@ public class Vista_Config extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_cerrar;
     private javax.swing.JButton boton_mutear_desmutear;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_disabled;
     private javax.swing.JLabel label_enabled;
