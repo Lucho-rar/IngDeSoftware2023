@@ -27,6 +27,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     public  int cont_mov;
     public  int score;
     public  Usuario sesion = new Usuario();
+    public  Usuario computador = new Usuario();
 /**
      * Creates new form Vista_Home
      */
