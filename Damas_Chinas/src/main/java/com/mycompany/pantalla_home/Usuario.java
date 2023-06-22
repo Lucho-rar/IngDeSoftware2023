@@ -35,6 +35,10 @@ public class Usuario {
     public String getRango(){
         return rango;
     }
+    public void setRango(int x){
+        this.puntos=puntos +x;
+        calculoRango();
+    }
     public void calculoRango(){
         if(puntos>0 && puntos<1000){
             this.rango="BRONCE";
@@ -47,5 +51,7 @@ public class Usuario {
             this.rango="PLATINO";
         }
     }
+    
+    
     
 }
