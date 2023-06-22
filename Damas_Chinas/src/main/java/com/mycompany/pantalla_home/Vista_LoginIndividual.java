@@ -33,6 +33,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     Singleton_BD singleton_bd = Singleton_BD.getInstance();
     boolean ingresoCorrecto =false;
     boolean registroIncorrecto=false;
+    Usuario sesion = new Usuario();
     //boolean backReglas
     //this.jLabel1.setVisible(false);
     public Vista_LoginIndividual() {
@@ -46,6 +47,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
     
     public Vista_LoginIndividual(Music m, Vista_Config c){
         initComponents();
+        this.jButton2.setVisible(false);
         this.setLocationRelativeTo(null);
         this.m=m;
         this.config=c;
@@ -362,13 +364,17 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         });
         jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));
 
-        jButton2.setText("jButton2");
+        jButton2.setBackground(new java.awt.Color(102, 255, 0));
+        jButton2.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("INICIAR");
+        jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 130, 70));
 
         label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo1.jpg"))); // NOI18N
         jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
@@ -421,33 +427,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "yaexiste!");
         }
-        /*
-        /* Primero me fijo que el usuario no sea repetido 
-        try{
-            File archivo = new File("log.txt");
-            FileReader lector = new FileReader (archivo);
-            BufferedReader buffer = new BufferedReader(lector);
-            FileWriter escritor = new FileWriter(archivo,true);
-            String linea;
-            while ((linea=buffer.readLine())!=null){
-                if (linea.contains(user+" ")){
-                    permitido=false;
-                }
-            }
-            buffer.close();
-            lector.close();
-            /* Si no esta repetido lo ingreso 
-            if(permitido==false){
-                JOptionPane.showMessageDialog(null, "El usuario ya existe, ingrese otro.");
-            }else{
-                escritor.write(user+" "+psw);
-                escritor.write("\n");
-                JOptionPane.showMessageDialog(null, "¡Registro correcto!");
-                escritor.close();
-            }
-        }catch(Exception e){
-            System.out.println("Error con el log");
-        }*/
+        
         
         
         
@@ -470,40 +450,19 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         for(int i =0 ;i<singleton_bd.getLista().size();i++){
             if(singleton_bd.getLista().get(i).getUsuario().equals(user) && 
                     singleton_bd.getLista().get(i).getPassword().equals(psw)){
+                sesion = singleton_bd.getLista().get(i);
                 permitido = true;
             }
         }
         if(permitido){
+            
             this.ingresoCorrecto=true;
+            this.jButton2.setVisible(true);
             JOptionPane.showMessageDialog(null, "Ingreso correcto!");
         }else{
             JOptionPane.showMessageDialog(null, "Usuario/PSW Incorrecto!");
         }
-        /*
-        /* Primero me fijo que el usuario no sea repetido 
-        try{
-            File archivo = new File("log.txt");
-            FileReader lector = new FileReader (archivo);
-            BufferedReader buffer = new BufferedReader(lector);
-            FileWriter escritor = new FileWriter(archivo,true);
-            String linea;
-            while ((linea=buffer.readLine())!=null){
-                if (linea.equals(user+" "+psw)){
-                    permitido=true;
-                }
-            }
-            buffer.close();
-            lector.close();
-            /* Si no esta repetido lo ingreso 
-            if(permitido==false){
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.");
-            }else{
-                JOptionPane.showMessageDialog(null,"¡Ingreso correcto!");
-            }
-        }catch(Exception e){
-            System.out.println("Error con el log");
-        }
-        */
+        
         
     }//GEN-LAST:event_btn_submit_loginActionPerformed
 
@@ -535,9 +494,11 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
         //nw.setVisible(true);
         //nw.
         //this.dispose();
-        GridTeclas a = new GridTeclas();
-        a.setLocationRelativeTo(null);
+        Vista_SeleccionTableroModoFacil seleccion = new Vista_SeleccionTableroModoFacil(sesion,m,config);
+        seleccion.setLocationRelativeTo(null);
+        seleccion.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
