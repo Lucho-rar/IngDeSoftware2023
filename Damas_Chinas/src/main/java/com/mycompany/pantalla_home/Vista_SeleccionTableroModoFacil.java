@@ -28,6 +28,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     public  int score;
     public  Usuario sesion = new Usuario();
     public  Usuario computador = new Usuario();
+    
 /**
      * Creates new form Vista_Home
      */
@@ -46,7 +47,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         this.setLocationRelativeTo(null);
         //inicioDeSonido("musicHome.wav");
         agregarBotones();
-        this.jLabel1.setText(u.getUsuario());
+        this.userName.setText(u.getUsuario());
         this.jLabel2.setText(u.getRango());
         this.sesion=u;
         StatsInGame obs = new StatsInGame();
@@ -340,8 +341,10 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jButton51 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton53 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
+        computer = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         titulo_mov = new javax.swing.JLabel();
         exit = new javax.swing.JButton();
         home = new javax.swing.JButton();
@@ -789,15 +792,25 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton53, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 30, 30));
 
-        jLabel1.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 255, 255));
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 170, 60));
+        userName.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
+        userName.setForeground(new java.awt.Color(0, 255, 255));
+        userName.setText("userName");
+        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 170, 60));
+
+        computer.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
+        computer.setForeground(new java.awt.Color(0, 255, 255));
+        computer.setText("computer");
+        jPanel1.add(computer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 170, 60));
 
         jLabel2.setFont(new java.awt.Font("Bebas", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 0));
         jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Bebas", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, -1, -1));
 
         titulo_mov.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
         titulo_mov.setForeground(new java.awt.Color(255, 255, 255));
@@ -1378,6 +1391,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     private javax.swing.JButton boton_azul;
     private javax.swing.JButton boton_config;
     private javax.swing.JButton boton_libre;
+    private javax.swing.JLabel computer;
     private javax.swing.JButton exit;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
@@ -1430,11 +1444,12 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_fondo1;
     private javax.swing.JLabel movimientos;
     private javax.swing.JLabel titulo_mov;
+    private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }
