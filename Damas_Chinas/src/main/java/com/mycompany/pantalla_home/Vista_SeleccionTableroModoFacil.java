@@ -52,6 +52,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         this.setLocationRelativeTo(null);
         //inicioDeSonido("musicHome.wav");
         agregarBotones();
+        computador.setUsuario("Computador");
         this.userNameLabel.setText(u.getUsuario());
         this.jLabel2.setText(u.getRango());
         this.computerLabel.setText(computador.getUsuario());
@@ -59,6 +60,8 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         this.sesion=u;
         StatsInGame obs = new StatsInGame();
         agregarObs(obs);
+         StatsInGame obsC = new StatsInGame();
+        agregarObs(obsC);
         //System.out.println(getBotonLibre().getWidth());
     }
     
@@ -117,6 +120,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
                 finalizarPartida();
                 //score=0;
                 
+               
                 
             }else{
                 this.faltaCompletar=false;
@@ -137,7 +141,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         //score=0;
         cont_mov++;
         //if(this.segundo.getBackground().equals(getBotonAzul().getBackground())){
-        //    score++;
+        score++;
         //}
         
                 
@@ -173,6 +177,12 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         for(int i =0; i<arrayBotones.size();i++){
             if(arrayBotones.get(i).equals(segundo)){
                 arrayBotones.get(i).setBackground(primero.getBackground());
+                 if(primero.getBackground().equals(boton_azul.getBackground())){
+                    sesion.setRango(10);
+                }
+                else if(primero.getBackground().equals(botonAmarillo.getBackground())){
+                    computador.setRango(10);
+                }
             }
         }
         primero.setBackground(getBotonLibre().getBackground());
@@ -361,9 +371,9 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         home = new javax.swing.JButton();
         movimientos = new javax.swing.JLabel();
         label_fondo1 = new javax.swing.JLabel();
+        botonAmarillo = new javax.swing.JButton();
         boton_azul = new javax.swing.JButton();
         boton_libre = new javax.swing.JButton();
-        botonAmarillo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -375,15 +385,13 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botonConfig.png"))); // NOI18N
-        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         boton_config.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_configActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));
+        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 50, 50));
 
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -392,7 +400,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 30, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 0));
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -401,7 +408,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 30, 30));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 0));
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -410,15 +416,13 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 30, 30));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 0));
-        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 30, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 30, 30));
 
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -426,7 +430,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 30, 30));
 
-        jButton7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -434,7 +437,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 30, 30));
 
-        jButton9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -443,7 +445,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 30, 30));
 
         jButton10.setBackground(new java.awt.Color(204, 0, 204));
-        jButton10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -452,7 +453,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 30, 30));
 
         jButton11.setBackground(new java.awt.Color(204, 255, 255));
-        jButton11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -461,7 +461,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 30, 30));
 
         jButton12.setBackground(new java.awt.Color(255, 204, 204));
-        jButton12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -470,7 +469,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 30, 30));
 
         jButton13.setBackground(new java.awt.Color(204, 255, 255));
-        jButton13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -478,7 +476,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 30, 30));
 
-        jButton14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -486,7 +483,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 30, 30));
 
-        jButton15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -494,7 +490,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 30, 30));
 
-        jButton16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
@@ -503,7 +498,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 30, 30));
 
         jButton17.setForeground(new java.awt.Color(204, 0, 204));
-        jButton17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton17ActionPerformed(evt);
@@ -512,7 +506,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 30, 30));
 
         jButton18.setBackground(new java.awt.Color(204, 0, 204));
-        jButton18.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -521,7 +514,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 30, 30));
 
         jButton19.setBackground(new java.awt.Color(204, 0, 204));
-        jButton19.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
@@ -530,7 +522,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 30, 30));
 
         jButton20.setBackground(new java.awt.Color(255, 204, 204));
-        jButton20.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
@@ -539,7 +530,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 30, 30));
 
         jButton21.setBackground(new java.awt.Color(255, 204, 204));
-        jButton21.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton21ActionPerformed(evt);
@@ -547,7 +537,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 30, 30));
 
-        jButton22.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton22ActionPerformed(evt);
@@ -556,7 +545,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 30, 30));
 
         jButton23.setBackground(new java.awt.Color(204, 255, 204));
-        jButton23.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton23ActionPerformed(evt);
@@ -565,7 +553,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 30, 30));
 
         jButton24.setBackground(new java.awt.Color(204, 255, 255));
-        jButton24.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton24ActionPerformed(evt);
@@ -573,7 +560,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 30, 30));
 
-        jButton25.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton25ActionPerformed(evt);
@@ -581,7 +567,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 30, 30));
 
-        jButton26.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton26ActionPerformed(evt);
@@ -589,7 +574,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 30, 30));
 
-        jButton27.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton27ActionPerformed(evt);
@@ -597,7 +581,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 30, 30));
 
-        jButton28.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton28ActionPerformed(evt);
@@ -605,7 +588,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 30, 30));
 
-        jButton30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton30ActionPerformed(evt);
@@ -613,7 +595,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 30, 30));
 
-        jButton31.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton31ActionPerformed(evt);
@@ -621,7 +602,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 30));
 
-        jButton32.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton32ActionPerformed(evt);
@@ -629,7 +609,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton32, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 30, 30));
 
-        jButton33.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton33ActionPerformed(evt);
@@ -637,7 +616,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 30, 30));
 
-        jButton34.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton34ActionPerformed(evt);
@@ -645,7 +623,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton34, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 30, 30));
 
-        jButton35.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton35ActionPerformed(evt);
@@ -653,7 +630,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton35, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, 30));
 
-        jButton36.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton36ActionPerformed(evt);
@@ -661,7 +637,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton36, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 30, 30));
 
-        jButton37.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton37ActionPerformed(evt);
@@ -669,7 +644,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 30, 30));
 
-        jButton38.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton38.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton38ActionPerformed(evt);
@@ -677,7 +651,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton38, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 30, 30));
 
-        jButton39.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton39ActionPerformed(evt);
@@ -686,7 +659,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton39, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 30, 30));
 
         jButton40.setBackground(new java.awt.Color(204, 255, 204));
-        jButton40.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton40ActionPerformed(evt);
@@ -694,7 +666,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 30, 30));
 
-        jButton41.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton41ActionPerformed(evt);
@@ -703,7 +674,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton41, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 30, 30));
 
         jButton42.setBackground(new java.awt.Color(204, 255, 204));
-        jButton42.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton42ActionPerformed(evt);
@@ -711,7 +681,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton42, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 30, 30));
 
-        jButton43.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton43ActionPerformed(evt);
@@ -719,7 +688,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton43, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 30, 30));
 
-        jButton44.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton44ActionPerformed(evt);
@@ -727,7 +695,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton44, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 30, 30));
 
-        jButton45.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton45ActionPerformed(evt);
@@ -735,7 +702,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton45, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 30, 30));
 
-        jButton46.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton46.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton46ActionPerformed(evt);
@@ -743,7 +709,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton46, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 30, 30));
 
-        jButton47.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton47ActionPerformed(evt);
@@ -752,7 +717,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton47, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 30, 30));
 
         jButton48.setBackground(new java.awt.Color(0, 0, 204));
-        jButton48.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton48ActionPerformed(evt);
@@ -761,7 +725,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton48, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 30, 30));
 
         jButton49.setBackground(new java.awt.Color(0, 0, 204));
-        jButton49.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton49ActionPerformed(evt);
@@ -769,7 +732,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton49, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 30, 30));
 
-        jButton50.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton50.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton50ActionPerformed(evt);
@@ -778,7 +740,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(jButton50, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 30, 30));
 
         jButton51.setBackground(new java.awt.Color(0, 0, 204));
-        jButton51.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton51ActionPerformed(evt);
@@ -796,7 +757,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, -1, -1));
 
-        jButton53.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton53.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton53ActionPerformed(evt);
@@ -815,12 +775,12 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(computerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 170, 60));
 
         jLabel2.setFont(new java.awt.Font("Bebas", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Bebas", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 0));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 380, -1, -1));
 
@@ -857,10 +817,17 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jPanel1.add(movimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, -1, -1));
 
         label_fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondoFacil.jpg"))); // NOI18N
-        jPanel1.add(label_fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        jPanel1.add(label_fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 800, 600));
+
+        botonAmarillo.setBackground(new java.awt.Color(255, 255, 0));
+        botonAmarillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAmarilloActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonAmarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 30, 30));
 
         boton_azul.setBackground(new java.awt.Color(0, 0, 204));
-        boton_azul.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         boton_azul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_azulActionPerformed(evt);
@@ -868,22 +835,13 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(boton_azul, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 30, 30));
 
-        boton_libre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        boton_libre.setEnabled(false);
         boton_libre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_libreActionPerformed(evt);
             }
         });
         jPanel1.add(boton_libre, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 30, 30));
-
-        botonAmarillo.setBackground(new java.awt.Color(255, 255, 0));
-        botonAmarillo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonAmarillo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAmarilloActionPerformed(evt);
-            }
-        });
-        jPanel1.add(botonAmarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 30, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 

@@ -23,6 +23,9 @@ public class Usuario {
         
     }
     
+    public void setUsuario(String name){
+        usuario= name;
+    }
     public String getUsuario(){
         return usuario;
     }

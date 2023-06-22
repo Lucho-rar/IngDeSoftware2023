@@ -41,7 +41,6 @@ com\mycompany\pantalla_home\Vista_Home$8.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$5.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$1.class
 com\mycompany\pantalla_home\Observador.class
-com\mycompany\pantalla_home\Vista_Tablero$1.class
 com\mycompany\pantalla_home\Vista_Home$2.class
 com\mycompany\pantalla_home\GridTeclas.class
 com\mycompany\pantalla_home\Vista_Config$4.class
@@ -61,6 +60,7 @@ com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$53.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador$3.class
 com\mycompany\pantalla_home\Vista_Config$2.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$8.class
+com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$57.class
 com\mycompany\pantalla_home\Vista_SeleccionDificultad$4.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$47.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$37.class
@@ -82,7 +82,6 @@ com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$14.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$17.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$24.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$27.class
-com\mycompany\pantalla_home\Vista_Tablero.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$3.class
 com\mycompany\pantalla_home\Vista_LoginMultijugador$2.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$11.class
@@ -115,6 +114,7 @@ com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$28.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$9.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$9.class
 com\mycompany\pantalla_home\Vista_LoginIndividual$2.class
+com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$56.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil.class
 com\mycompany\pantalla_home\Vista_SeleccionTableroModoFacil$21.class
 com\mycompany\pantalla_home\Vista_SeleccionModo$5.class
