@@ -136,19 +136,20 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
        
         
     }
+     public void calculo_mov_score(Usuario user){
+         user.setRango(100);
+         user.setCantidadMovimientos(1);
+     }
     
     public void calculo_mov_score(){
         //score=0;
         cont_mov++;
         //if(this.segundo.getBackground().equals(getBotonAzul().getBackground())){
-        score++;
+     //  sesion.setRango(100);
+  
         //}
-        
-                
-            
-        
-        
-        
+     
+  
         
     }
     
@@ -177,11 +178,12 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         for(int i =0; i<arrayBotones.size();i++){
             if(arrayBotones.get(i).equals(segundo)){
                 arrayBotones.get(i).setBackground(primero.getBackground());
-                 if(primero.getBackground().equals(boton_azul.getBackground())){
-                    sesion.setRango(10);
+                 
+                if(primero.getBackground().equals(boton_azul.getBackground())){
+                    calculo_mov_score(sesion);
                 }
                 else if(primero.getBackground().equals(botonAmarillo.getBackground())){
-                    computador.setRango(10);
+                    calculo_mov_score(computador);
                 }
             }
         }

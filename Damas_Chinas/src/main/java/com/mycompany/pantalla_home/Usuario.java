@@ -13,6 +13,7 @@ public class Usuario {
     String password;
     String rango;
     int puntos;
+    int cantidadMovimientos;
     public Usuario(String u,String p, String pts){
         this.usuario=u;
         this.password=p;
@@ -38,6 +39,15 @@ public class Usuario {
     public String getRango(){
         return rango;
     }
+
+    public int getCantidadMovimientos() {
+        return cantidadMovimientos;
+    }
+
+    public void setCantidadMovimientos(int cantidadMovimientos) {
+        this.cantidadMovimientos += cantidadMovimientos;
+    }
+    
     public void setRango(int x){
         this.puntos=puntos +x;
         calculoRango();
