@@ -26,8 +26,13 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     public  ArrayList<JButton> ganadores = new ArrayList<JButton>();
     public  int cont_mov;
     public  int score;
+    
+    
     public  Usuario sesion = new Usuario();
     public  Usuario computador = new Usuario();
+    
+    public  int cont_mov_compu;
+    public  int score_compu;
     
 /**
      * Creates new form Vista_Home
@@ -47,8 +52,10 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         this.setLocationRelativeTo(null);
         //inicioDeSonido("musicHome.wav");
         agregarBotones();
-        this.userName.setText(u.getUsuario());
+        this.userNameLabel.setText(u.getUsuario());
         this.jLabel2.setText(u.getRango());
+        this.computerLabel.setText(computador.getUsuario());
+        this.jLabel2.setText(computador.getRango());
         this.sesion=u;
         StatsInGame obs = new StatsInGame();
         agregarObs(obs);
@@ -86,6 +93,10 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     
     public JButton getBotonAzul(){
         return this.boton_azul;
+    }
+    
+     public JButton getBotonAamarillo(){
+        return this.botonAmarillo;
     }
     
     public void llenarGanadores(){
@@ -341,8 +352,8 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         jButton51 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton53 = new javax.swing.JButton();
-        userName = new javax.swing.JLabel();
-        computer = new javax.swing.JLabel();
+        userNameLabel = new javax.swing.JLabel();
+        computerLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         titulo_mov = new javax.swing.JLabel();
@@ -352,6 +363,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         label_fondo1 = new javax.swing.JLabel();
         boton_azul = new javax.swing.JButton();
         boton_libre = new javax.swing.JButton();
+        botonAmarillo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -404,7 +416,7 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 30, 30));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 30, 30));
 
         jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -792,15 +804,15 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         });
         jPanel1.add(jButton53, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 30, 30));
 
-        userName.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
-        userName.setForeground(new java.awt.Color(0, 255, 255));
-        userName.setText("userName");
-        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 170, 60));
+        userNameLabel.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
+        userNameLabel.setForeground(new java.awt.Color(0, 255, 255));
+        userNameLabel.setText("userName");
+        jPanel1.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 170, 60));
 
-        computer.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
-        computer.setForeground(new java.awt.Color(0, 255, 255));
-        computer.setText("computer");
-        jPanel1.add(computer, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 170, 60));
+        computerLabel.setFont(new java.awt.Font("Bebas", 1, 36)); // NOI18N
+        computerLabel.setForeground(new java.awt.Color(0, 255, 255));
+        computerLabel.setText("computer");
+        jPanel1.add(computerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 170, 60));
 
         jLabel2.setFont(new java.awt.Font("Bebas", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 0));
@@ -854,10 +866,24 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
                 boton_azulActionPerformed(evt);
             }
         });
-        jPanel1.add(boton_azul, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 30, 30));
+        jPanel1.add(boton_azul, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 30, 30));
 
         boton_libre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(boton_libre, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 30, 30));
+        boton_libre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_libreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(boton_libre, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 30, 30));
+
+        botonAmarillo.setBackground(new java.awt.Color(255, 255, 0));
+        botonAmarillo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonAmarillo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAmarilloActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonAmarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 30, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -1345,6 +1371,14 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
         this.dispose();
     }//GEN-LAST:event_homeActionPerformed
 
+    private void boton_libreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_libreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_libreActionPerformed
+
+    private void botonAmarilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAmarilloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonAmarilloActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1388,10 +1422,11 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAmarillo;
     private javax.swing.JButton boton_azul;
     private javax.swing.JButton boton_config;
     private javax.swing.JButton boton_libre;
-    private javax.swing.JLabel computer;
+    private javax.swing.JLabel computerLabel;
     private javax.swing.JButton exit;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
@@ -1450,6 +1485,6 @@ public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implemen
     private javax.swing.JLabel label_fondo1;
     private javax.swing.JLabel movimientos;
     private javax.swing.JLabel titulo_mov;
-    private javax.swing.JLabel userName;
+    private javax.swing.JLabel userNameLabel;
     // End of variables declaration//GEN-END:variables
 }
