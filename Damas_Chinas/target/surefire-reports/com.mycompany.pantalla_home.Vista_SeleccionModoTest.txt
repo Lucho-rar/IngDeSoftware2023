@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.mycompany.pantalla_home.Vista_SeleccionModoTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.87 s - in com.mycompany.pantalla_home.Vista_SeleccionModoTest

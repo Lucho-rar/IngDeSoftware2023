@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mycompany.pantalla_home.Vista_ConfigTest" time="1.056" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.936" tests="4" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.specification.version" value="17"/>
+    <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
     <property name="java.class.path" value="C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas\target\test-classes;C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas\target\classes;C:\Users\lucho\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE170\AbsoluteLayout-RELEASE170.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\lucho\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\lucho\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\lucho\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
@@ -12,11 +11,11 @@
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="America/Buenos_Aires"/>
     <property name="os.name" value="Windows 10"/>
-    <property name="java.vm.specification.version" value="17"/>
+    <property name="java.vm.specification.version" value="20"/>
     <property name="user.country" value="ES"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\lucho\AppData\Local\Temp\surefire13394832709858535773\surefirebooter-20230620135039973_3.jar C:\Users\lucho\AppData\Local\Temp\surefire13394832709858535773 2023-06-20T13-50-39_654-jvmRun1 surefire-20230620135039973_1tmp surefire_0-20230620135039973_2tmp"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
+    <property name="sun.java.command" value="C:\Users\lucho\AppData\Local\Temp\surefire15833769838497093434\surefirebooter17702185661012331.jar C:\Users\lucho\AppData\Local\Temp\surefire15833769838497093434 2023-10-05T11-01-02_662-jvmRun1 surefire7483570876327369332tmp surefire_01526749345691532664tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas\target\test-classes;C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas\target\classes;C:\Users\lucho\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE170\AbsoluteLayout-RELEASE170.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\lucho\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\lucho\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\lucho\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -24,42 +23,45 @@
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2023-04-18"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-20"/>
     <property name="file.separator" value="\"/>
     <property name="basedir" value="C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\lucho\AppData\Local\Temp\surefire13394832709858535773\surefirebooter-20230620135039973_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\lucho\AppData\Local\Temp\surefire15833769838497093434\surefirebooter17702185661012331.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="17.0.7+8-LTS-224"/>
+    <property name="java.runtime.version" value="20.0.1+9-29"/>
     <property name="user.name" value="lucho"/>
+    <property name="stdout.encoding" value="Cp1252"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="file.encoding" value="Cp1252"/>
+    <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="skipTests" value="false"/>
     <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-18\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="localRepository" value="C:\Users\lucho\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\lucho\AppData\Local\Temp\"/>
-    <property name="java.version" value="17.0.7"/>
+    <property name="java.version" value="20.0.1"/>
     <property name="user.dir" value="C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Eclipse Adoptium\jdk-17.0.7.7-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Workbench 8.0 CE;C:\Program Files\Docker\Docker\resources\bin;C:\maven\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.7.7-hotspot\\bin;C:\Users\lucho\AppData\Local\Microsoft\WindowsApps;C:\Users\lucho\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\6.0\bin;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Workbench 8.0 CE;C:\maven\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.7.7-hotspot\bin\bin;C:\Program Files\PuTTY\;C:\Program Files\MongoDB\Server\6.0\bin;C:\Program Files\nodejs\;C:\Program Files\php-8.2.8-Win32-vs16-x64;C:\Users\lucho\AppData\Local\Microsoft\WindowsApps;C:\Users\lucho\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\6.0\bin;C:\Users\lucho\AppData\Roaming\npm;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="17.0.7+8-LTS-224"/>
+    <property name="java.vm.version" value="20.0.1+9-29"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="java.class.version" value="61.0"/>
+    <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="test_mute" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.1"/>
-  <testcase name="test_cerrar" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.1"/>
-  <testcase name="test_desmute" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.266"/>
-  <testcase name="test_inicial" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.079"/>
+  <testcase name="test_mute" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.111"/>
+  <testcase name="test_cerrar" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.112"/>
+  <testcase name="test_desmute" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.304"/>
+  <testcase name="test_inicial" classname="com.mycompany.pantalla_home.Vista_ConfigTest" time="0.042"/>
 </testsuite>

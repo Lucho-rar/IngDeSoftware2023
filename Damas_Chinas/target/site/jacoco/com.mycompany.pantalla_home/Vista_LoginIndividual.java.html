@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vista_LoginIndividual.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Damas_Chinas</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.pantalla_home</a> &gt; <span class="el_source">Vista_LoginIndividual.java</span></div><h1>Vista_LoginIndividual.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.mycompany.pantalla_home;
+import java.awt.TextField;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+/**
+ *
+ * @author lucho
+ */
+public class Vista_LoginIndividual extends javax.swing.JFrame {
+
+    /**
+     * Creates new form Vista_Home
+     */
+    public Clip clip;
+    public AudioInputStream audioInput;
+    Music m;
+<span class="fc" id="L32">    Vista_Config config = new Vista_Config();</span>
+<span class="fc" id="L33">    Singleton_BD singleton_bd = Singleton_BD.getInstance();</span>
+<span class="fc" id="L34">    boolean ingresoCorrecto =false;</span>
+<span class="fc" id="L35">    boolean registroIncorrecto=false;</span>
+<span class="fc" id="L36">    Usuario sesion = new Usuario();</span>
+    //boolean backReglas
+    //this.jLabel1.setVisible(false);
+<span class="fc" id="L39">    public Vista_LoginIndividual() {</span>
+        
+       
+<span class="fc" id="L42">        initComponents();</span>
+<span class="fc" id="L43">        this.setLocationRelativeTo(null);</span>
+        //inicioDeSonido(&quot;musicHome.wav&quot;);
+        
+<span class="fc" id="L46">    }</span>
+    
+<span class="fc" id="L48">    public Vista_LoginIndividual(Music m, Vista_Config c){</span>
+<span class="fc" id="L49">        initComponents();</span>
+<span class="fc" id="L50">        this.jButton2.setVisible(false);</span>
+<span class="fc" id="L51">        this.setLocationRelativeTo(null);</span>
+<span class="fc" id="L52">        this.m=m;</span>
+<span class="fc" id="L53">        this.config=c;</span>
+<span class="fc" id="L54">    }</span>
+   
+    public void sonidoFondoInicial(String dir,boolean a){
+        //if 
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if(a == false){</span>
+<span class="nc" id="L59">            this.clip.stop();</span>
+        }else{
+<span class="nc" id="L61">            this.clip.start();</span>
+        }
+        
+<span class="nc" id="L64">    }</span>
+    
+    /* Getters para TESTS */
+    
+    public JButton getBotonBack(){
+<span class="fc" id="L69">        return this.boton_back;</span>
+    }
+    
+    public JButton getBotonSubmitLogin(){
+<span class="fc" id="L73">        return this.btn_submit_login;</span>
+    }
+    
+    public JButton getBotonSubmitSignup(){
+<span class="fc" id="L77">        return this.btn_submit_signup;</span>
+    }
+    
+    public JButton getBotonConfig(){
+<span class="fc" id="L81">        return this.boton_config;</span>
+    }
+    
+    public JLabel getLabelLogin(){
+<span class="fc" id="L85">        return this.txt_login;</span>
+    }
+    
+    public JLabel getLabelSignup(){
+<span class="fc" id="L89">        return this.txt_signup;</span>
+    }
+    
+    public JLabel getLabelPswLogin(){
+<span class="fc" id="L93">        return this.txt_psw_login;</span>
+    }
+    
+    public JLabel getLabelPswSignup(){
+<span class="fc" id="L97">        return this.txt_psw_signup;</span>
+    }
+    
+    public JLabel getLabelUserLogin(){
+<span class="fc" id="L101">        return this.txt_user_login;</span>
+    }
+    
+    public JLabel getLabelUserSignup(){
+<span class="fc" id="L105">        return this.txt_user_user;</span>
+    }
+    
+    public JTextField getFieldUserLogin(){
+<span class="fc" id="L109">        return this.fielduser_login;</span>
+    }
+    
+    public JTextField getFieldUserSignup(){
+<span class="fc" id="L113">        return this.fielduser_signup;</span>
+    }
+    
+    public JPasswordField getFieldPswLogin(){
+<span class="fc" id="L117">        return this.fieldpsw_login;</span>
+    }
+    
+    public JPasswordField getFieldPswSignUp(){
+<span class="fc" id="L121">        return this.fieldpsw_signup;</span>
+    }
+    
+    public boolean getIngresoCorrecto(){
+<span class="fc" id="L125">        return this.ingresoCorrecto;</span>
+    }
+    
+    public boolean getRegistroIncorrecto(){
+<span class="fc" id="L129">        return this.registroIncorrecto;</span>
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="fc" id="L156">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="fc" id="L157">        boton_back = new javax.swing.JButton();</span>
+<span class="fc" id="L158">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="fc" id="L159">        jPanel2 = new javax.swing.JPanel();</span>
+<span class="fc" id="L160">        txt_signup = new javax.swing.JLabel();</span>
+<span class="fc" id="L161">        txt_psw_signup = new javax.swing.JLabel();</span>
+<span class="fc" id="L162">        txt_user_user = new javax.swing.JLabel();</span>
+<span class="fc" id="L163">        fieldpsw_signup = new javax.swing.JPasswordField();</span>
+<span class="fc" id="L164">        fielduser_signup = new javax.swing.JTextField();</span>
+<span class="fc" id="L165">        btn_submit_signup = new javax.swing.JButton();</span>
+<span class="fc" id="L166">        jPanel3 = new javax.swing.JPanel();</span>
+<span class="fc" id="L167">        txt_login = new javax.swing.JLabel();</span>
+<span class="fc" id="L168">        txt_psw_login = new javax.swing.JLabel();</span>
+<span class="fc" id="L169">        txt_user_login = new javax.swing.JLabel();</span>
+<span class="fc" id="L170">        fieldpsw_login = new javax.swing.JPasswordField();</span>
+<span class="fc" id="L171">        fielduser_login = new javax.swing.JTextField();</span>
+<span class="fc" id="L172">        btn_submit_login = new javax.swing.JButton();</span>
+<span class="fc" id="L173">        boton_config = new javax.swing.JButton();</span>
+<span class="fc" id="L174">        jButton2 = new javax.swing.JButton();</span>
+<span class="fc" id="L175">        label_fondo = new javax.swing.JLabel();</span>
+
+<span class="fc" id="L177">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L178">        setMinimumSize(new java.awt.Dimension(800, 600));</span>
+<span class="fc" id="L179">        setResizable(false);</span>
+<span class="fc" id="L180">        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="fc" id="L182">        jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));</span>
+<span class="fc" id="L183">        jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));</span>
+<span class="fc" id="L184">        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="fc" id="L186">        boton_back.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/botonBack.png&quot;))); // NOI18N</span>
+<span class="fc" id="L187">        boton_back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));</span>
+<span class="fc" id="L188">        boton_back.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L190">                boton_backMouseClicked(evt);</span>
+<span class="nc" id="L191">            }</span>
+        });
+<span class="fc" id="L193">        boton_back.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="fc" id="L195">                boton_backActionPerformed(evt);</span>
+<span class="fc" id="L196">            }</span>
+        });
+<span class="fc" id="L198">        jPanel1.add(boton_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, 50));</span>
+
+<span class="fc" id="L200">        jLabel4.setIcon(new javax.swing.ImageIcon(&quot;C:\\Users\\lucho\\Documents\\DAMASCHINASDESIGN\\rayo.gif&quot;)); // NOI18N</span>
+<span class="fc" id="L201">        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 50, 110));</span>
+
+<span class="fc" id="L203">        jPanel2.setBackground(new java.awt.Color(173, 211, 1));</span>
+<span class="fc" id="L204">        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));</span>
+
+<span class="fc" id="L206">        txt_signup.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 36)); // NOI18N</span>
+<span class="fc" id="L207">        txt_signup.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L208">        txt_signup.setText(&quot;SIGN UP&quot;);</span>
+
+<span class="fc" id="L210">        txt_psw_signup.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 14)); // NOI18N</span>
+<span class="fc" id="L211">        txt_psw_signup.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L212">        txt_psw_signup.setText(&quot;PASSWORD&quot;);</span>
+
+<span class="fc" id="L214">        txt_user_user.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 14)); // NOI18N</span>
+<span class="fc" id="L215">        txt_user_user.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L216">        txt_user_user.setText(&quot;USER&quot;);</span>
+
+<span class="fc" id="L218">        fielduser_signup.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L220">                fielduser_signupActionPerformed(evt);</span>
+<span class="nc" id="L221">            }</span>
+        });
+
+<span class="fc" id="L224">        btn_submit_signup.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 12)); // NOI18N</span>
+<span class="fc" id="L225">        btn_submit_signup.setText(&quot;SUBMIT&quot;);</span>
+<span class="fc" id="L226">        btn_submit_signup.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="fc" id="L228">                btn_submit_signupActionPerformed(evt);</span>
+<span class="fc" id="L229">            }</span>
+        });
+
+<span class="fc" id="L232">        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);</span>
+<span class="fc" id="L233">        jPanel2.setLayout(jPanel2Layout);</span>
+<span class="fc" id="L234">        jPanel2Layout.setHorizontalGroup(</span>
+<span class="fc" id="L235">            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L236">            .addGroup(jPanel2Layout.createSequentialGroup()</span>
+<span class="fc" id="L237">                .addContainerGap()</span>
+<span class="fc" id="L238">                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L239">                    .addGroup(jPanel2Layout.createSequentialGroup()</span>
+<span class="fc" id="L240">                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L241">                            .addComponent(txt_user_user, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L242">                            .addComponent(txt_psw_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="fc" id="L243">                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="fc" id="L244">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()</span>
+<span class="fc" id="L245">                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="fc" id="L246">                            .addComponent(fielduser_signup, javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L247">                            .addComponent(fieldpsw_signup))</span>
+<span class="fc" id="L248">                        .addGap(15, 15, 15))</span>
+<span class="fc" id="L249">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()</span>
+<span class="fc" id="L250">                        .addGap(0, 0, Short.MAX_VALUE)</span>
+<span class="fc" id="L251">                        .addComponent(btn_submit_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L252">                        .addGap(61, 61, 61))))</span>
+<span class="fc" id="L253">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()</span>
+<span class="fc" id="L254">                .addContainerGap(62, Short.MAX_VALUE)</span>
+<span class="fc" id="L255">                .addComponent(txt_signup, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L256">                .addGap(55, 55, 55))</span>
+        );
+<span class="fc" id="L258">        jPanel2Layout.setVerticalGroup(</span>
+<span class="fc" id="L259">            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L260">            .addGroup(jPanel2Layout.createSequentialGroup()</span>
+<span class="fc" id="L261">                .addComponent(txt_signup)</span>
+<span class="fc" id="L262">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)</span>
+<span class="fc" id="L263">                .addComponent(txt_user_user)</span>
+<span class="fc" id="L264">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="fc" id="L265">                .addComponent(fielduser_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L266">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="fc" id="L267">                .addComponent(txt_psw_signup)</span>
+<span class="fc" id="L268">                .addGap(2, 2, 2)</span>
+<span class="fc" id="L269">                .addComponent(fieldpsw_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L270">                .addGap(28, 28, 28)</span>
+<span class="fc" id="L271">                .addComponent(btn_submit_signup)</span>
+<span class="fc" id="L272">                .addGap(24, 24, 24))</span>
+        );
+
+<span class="fc" id="L275">        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 230, 250));</span>
+
+<span class="fc" id="L277">        jPanel3.setBackground(new java.awt.Color(202, 25, 45));</span>
+<span class="fc" id="L278">        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));</span>
+
+<span class="fc" id="L280">        txt_login.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 36)); // NOI18N</span>
+<span class="fc" id="L281">        txt_login.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L282">        txt_login.setText(&quot;LOGIN&quot;);</span>
+
+<span class="fc" id="L284">        txt_psw_login.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 14)); // NOI18N</span>
+<span class="fc" id="L285">        txt_psw_login.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L286">        txt_psw_login.setText(&quot;PASSWORD&quot;);</span>
+
+<span class="fc" id="L288">        txt_user_login.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 14)); // NOI18N</span>
+<span class="fc" id="L289">        txt_user_login.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L290">        txt_user_login.setText(&quot;USER&quot;);</span>
+
+<span class="fc" id="L292">        fieldpsw_login.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L294">                fieldpsw_loginActionPerformed(evt);</span>
+<span class="nc" id="L295">            }</span>
+        });
+
+<span class="fc" id="L298">        fielduser_login.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L300">                fielduser_loginActionPerformed(evt);</span>
+<span class="nc" id="L301">            }</span>
+        });
+
+<span class="fc" id="L304">        btn_submit_login.setFont(new java.awt.Font(&quot;Bebas&quot;, 3, 12)); // NOI18N</span>
+<span class="fc" id="L305">        btn_submit_login.setText(&quot;SUBMIT&quot;);</span>
+<span class="fc" id="L306">        btn_submit_login.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="fc" id="L308">                btn_submit_loginActionPerformed(evt);</span>
+<span class="fc" id="L309">            }</span>
+        });
+
+<span class="fc" id="L312">        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);</span>
+<span class="fc" id="L313">        jPanel3.setLayout(jPanel3Layout);</span>
+<span class="fc" id="L314">        jPanel3Layout.setHorizontalGroup(</span>
+<span class="fc" id="L315">            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L316">            .addGroup(jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L317">                .addContainerGap()</span>
+<span class="fc" id="L318">                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L319">                    .addGroup(jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L320">                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L321">                            .addComponent(txt_user_login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L322">                            .addComponent(txt_psw_login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="fc" id="L323">                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="fc" id="L324">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L325">                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="fc" id="L326">                            .addComponent(fielduser_login, javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L327">                            .addComponent(fieldpsw_login))</span>
+<span class="fc" id="L328">                        .addGap(15, 15, 15))</span>
+<span class="fc" id="L329">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L330">                        .addGap(0, 57, Short.MAX_VALUE)</span>
+<span class="fc" id="L331">                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L332">                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L333">                                .addComponent(txt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L334">                                .addGap(69, 69, 69))</span>
+<span class="fc" id="L335">                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L336">                                .addComponent(btn_submit_login, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L337">                                .addGap(61, 61, 61))))))</span>
+        );
+<span class="fc" id="L339">        jPanel3Layout.setVerticalGroup(</span>
+<span class="fc" id="L340">            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L341">            .addGroup(jPanel3Layout.createSequentialGroup()</span>
+<span class="fc" id="L342">                .addComponent(txt_login)</span>
+<span class="fc" id="L343">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)</span>
+<span class="fc" id="L344">                .addComponent(txt_user_login)</span>
+<span class="fc" id="L345">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="fc" id="L346">                .addComponent(fielduser_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L347">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="fc" id="L348">                .addComponent(txt_psw_login)</span>
+<span class="fc" id="L349">                .addGap(2, 2, 2)</span>
+<span class="fc" id="L350">                .addComponent(fieldpsw_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L351">                .addGap(28, 28, 28)</span>
+<span class="fc" id="L352">                .addComponent(btn_submit_login)</span>
+<span class="fc" id="L353">                .addGap(24, 24, 24))</span>
+        );
+
+<span class="fc" id="L356">        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 230, 250));</span>
+
+<span class="fc" id="L358">        boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/botonConfig.png&quot;))); // NOI18N</span>
+<span class="fc" id="L359">        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="fc" id="L360">        boton_config.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="fc" id="L362">                boton_configActionPerformed(evt);</span>
+<span class="fc" id="L363">            }</span>
+        });
+<span class="fc" id="L365">        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 50, 50));</span>
+
+<span class="fc" id="L367">        jButton2.setBackground(new java.awt.Color(102, 255, 0));</span>
+<span class="fc" id="L368">        jButton2.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 36)); // NOI18N</span>
+<span class="fc" id="L369">        jButton2.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="fc" id="L370">        jButton2.setText(&quot;INICIAR&quot;);</span>
+<span class="fc" id="L371">        jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());</span>
+<span class="fc" id="L372">        jButton2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L374">                jButton2ActionPerformed(evt);</span>
+<span class="nc" id="L375">            }</span>
+        });
+<span class="fc" id="L377">        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 130, 70));</span>
+
+<span class="fc" id="L379">        label_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/fondo1.jpg&quot;))); // NOI18N</span>
+<span class="fc" id="L380">        jPanel1.add(label_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));</span>
+
+<span class="fc" id="L382">        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));</span>
+
+<span class="fc" id="L384">        pack();</span>
+<span class="fc" id="L385">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void boton_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_backActionPerformed
+        // TODO add your handling code here:
+<span class="fc" id="L389">        Vista_SeleccionDificultad dif = new Vista_SeleccionDificultad(m,config);</span>
+<span class="fc" id="L390">        dif.setLocationRelativeTo(null);</span>
+<span class="fc" id="L391">        dif.setVisible(true);</span>
+<span class="fc" id="L392">        this.dispose();</span>
+
+<span class="fc" id="L394">    }//GEN-LAST:event_boton_backActionPerformed</span>
+
+    private void boton_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_backMouseClicked
+        // TODO add your handling code here:
+
+<span class="nc" id="L399">    }//GEN-LAST:event_boton_backMouseClicked</span>
+
+    private void btn_submit_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_signupActionPerformed
+        
+        /* Esta parte del codigo se fija si no existe un usuario identico sino lo agrega al LOG*/
+        
+<span class="fc" id="L405">        boolean permitido = true;</span>
+<span class="fc" id="L406">        String user = fielduser_signup.getText(); // Usuario ingresado</span>
+<span class="fc" id="L407">        String psw = &quot;&quot;; // Password ingresado</span>
+<span class="fc" id="L408">        char[] psw_field = fieldpsw_signup.getPassword();</span>
+<span class="fc bfc" id="L409" title="All 2 branches covered.">        for (int i = 0 ;i&lt;psw_field.length;i++){</span>
+<span class="fc" id="L410">            psw+=psw_field[i];</span>
+        }
+        
+<span class="fc bfc" id="L413" title="All 2 branches covered.">        for(int i =0 ;i&lt;singleton_bd.getLista().size();i++){</span>
+<span class="fc bfc" id="L414" title="All 2 branches covered.">            if(singleton_bd.getLista().get(i).getUsuario().equals(user)){</span>
+<span class="fc" id="L415">                permitido = false;</span>
+            }
+        }
+<span class="pc bpc" id="L418" title="1 of 2 branches missed.">        if(permitido){</span>
+            //JOptionPane.showMessageDialog(null, &quot;Ta bien!&quot;);
+            //singleton_bd
+            //singleton_bd.actualizarLog();
+<span class="nc" id="L422">            this.registroIncorrecto = true;</span>
+<span class="nc" id="L423">            Usuario nuevo = new Usuario(user,psw,&quot;0&quot;);</span>
+<span class="nc" id="L424">            singleton_bd.agregarUsuario(nuevo);</span>
+<span class="nc" id="L425">            singleton_bd.actualizarLog();</span>
+<span class="nc" id="L426">        }else{</span>
+            
+<span class="fc" id="L428">            JOptionPane.showMessageDialog(null, &quot;yaexiste!&quot;);</span>
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+<span class="fc" id="L438">    }//GEN-LAST:event_btn_submit_signupActionPerformed</span>
+
+    private void btn_submit_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submit_loginActionPerformed
+        // TODO add your handling code here:
+        
+<span class="fc" id="L443">        boolean permitido = false;</span>
+<span class="fc" id="L444">        String user = fielduser_login.getText(); // Usuario ingresado</span>
+<span class="fc" id="L445">        String psw = &quot;&quot;; // Password ingresado</span>
+<span class="fc" id="L446">        char[] psw_field = fieldpsw_login.getPassword();</span>
+<span class="fc bfc" id="L447" title="All 2 branches covered.">        for (int i = 0 ;i&lt;psw_field.length;i++){</span>
+<span class="fc" id="L448">            psw+=psw_field[i];</span>
+        }
+<span class="fc bfc" id="L450" title="All 2 branches covered.">        for(int i =0 ;i&lt;singleton_bd.getLista().size();i++){</span>
+<span class="fc bfc" id="L451" title="All 2 branches covered.">            if(singleton_bd.getLista().get(i).getUsuario().equals(user) &amp;&amp; </span>
+<span class="pc bpc" id="L452" title="1 of 2 branches missed.">                    singleton_bd.getLista().get(i).getPassword().equals(psw)){</span>
+<span class="fc" id="L453">                sesion = singleton_bd.getLista().get(i);</span>
+<span class="fc" id="L454">                permitido = true;</span>
+            }
+        }
+<span class="fc bfc" id="L457" title="All 2 branches covered.">        if(permitido){</span>
+            
+<span class="fc" id="L459">            this.ingresoCorrecto=true;</span>
+<span class="fc" id="L460">            this.jButton2.setVisible(true);</span>
+<span class="fc" id="L461">            JOptionPane.showMessageDialog(null, &quot;Ingreso correcto!&quot;);</span>
+        }else{
+<span class="fc" id="L463">            JOptionPane.showMessageDialog(null, &quot;Usuario/PSW Incorrecto!&quot;);</span>
+        }
+        
+        
+<span class="fc" id="L467">    }//GEN-LAST:event_btn_submit_loginActionPerformed</span>
+
+    private void fielduser_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fielduser_loginActionPerformed
+        // TODO add your handling code here:
+        
+<span class="nc" id="L472">    }//GEN-LAST:event_fielduser_loginActionPerformed</span>
+
+    private void fielduser_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fielduser_signupActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L476">    }//GEN-LAST:event_fielduser_signupActionPerformed</span>
+
+    private void fieldpsw_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldpsw_loginActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L480">    }//GEN-LAST:event_fieldpsw_loginActionPerformed</span>
+
+    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
+        // TODO add your handling code here:\
+        // this.musicaH.sonar(0);
+
+<span class="fc" id="L486">        this.config.setVisible(true);</span>
+<span class="fc" id="L487">        this.config.recibirMusica(m);</span>
+        /*this.m.disperformMusic();*/
+<span class="fc" id="L489">    }//GEN-LAST:event_boton_configActionPerformed</span>
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //NewJFrame nw =  new NewJFrame ();
+        //nw.setVisible(true);
+        //nw.
+        //this.dispose();
+<span class="nc" id="L497">        Vista_SeleccionTableroModoFacil seleccion = new Vista_SeleccionTableroModoFacil(sesion,m,config);</span>
+<span class="nc" id="L498">        seleccion.setLocationRelativeTo(null);</span>
+<span class="nc" id="L499">        seleccion.setVisible(true);</span>
+<span class="nc" id="L500">        this.dispose();</span>
+        
+<span class="nc" id="L502">    }//GEN-LAST:event_jButton2ActionPerformed</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L514" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L515" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L516">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L517">                    break;</span>
+                }
+            }
+<span class="nc" id="L520">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L521">            java.util.logging.Logger.getLogger(Vista_LoginIndividual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L522">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L523">            java.util.logging.Logger.getLogger(Vista_LoginIndividual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L524">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L525">            java.util.logging.Logger.getLogger(Vista_LoginIndividual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L526">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L527">            java.util.logging.Logger.getLogger(Vista_LoginIndividual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L528">        }</span>
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+
+        /* Create and display the form */
+<span class="nc" id="L539">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+            public void run() {
+<span class="nc" id="L541">                new Vista_LoginIndividual().setVisible(true);</span>
+<span class="nc" id="L542">            }</span>
+        });
+<span class="nc" id="L544">    }</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_back;
+    private javax.swing.JButton boton_config;
+    private javax.swing.JButton btn_submit_login;
+    private javax.swing.JButton btn_submit_signup;
+    private javax.swing.JPasswordField fieldpsw_login;
+    private javax.swing.JPasswordField fieldpsw_signup;
+    private javax.swing.JTextField fielduser_login;
+    private javax.swing.JTextField fielduser_signup;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel label_fondo;
+    private javax.swing.JLabel txt_login;
+    private javax.swing.JLabel txt_psw_login;
+    private javax.swing.JLabel txt_psw_signup;
+    private javax.swing.JLabel txt_signup;
+    private javax.swing.JLabel txt_user_login;
+    private javax.swing.JLabel txt_user_user;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

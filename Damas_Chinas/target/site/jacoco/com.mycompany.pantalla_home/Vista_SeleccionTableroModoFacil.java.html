@@ -1,0 +1,1440 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vista_SeleccionTableroModoFacil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Damas_Chinas</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.pantalla_home</a> &gt; <span class="el_source">Vista_SeleccionTableroModoFacil.java</span></div><h1>Vista_SeleccionTableroModoFacil.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.mycompany.pantalla_home;
+import static java.lang.constant.ConstantDescs.NULL;
+import java.util.ArrayList;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author lucho
+ */
+public class Vista_SeleccionTableroModoFacil extends javax.swing.JFrame implements Sujeto {
+
+    private ArrayList&lt;javax.swing.JButton&gt; arrayBotones;
+<span class="nc" id="L20">    public  ArrayList&lt;JButton&gt; publi = new ArrayList&lt;JButton&gt;();</span>
+<span class="nc" id="L21">    public  ArrayList&lt;JButton&gt; ocupados = new ArrayList&lt;JButton&gt;();</span>
+<span class="nc" id="L22">    public  boolean faltaCompletar = false;</span>
+<span class="nc" id="L23">    public  JButton primero = new JButton();</span>
+<span class="nc" id="L24">    public  JButton segundo = new JButton();</span>
+<span class="nc" id="L25">    private ArrayList&lt;Observador&gt; observadores = new ArrayList&lt;Observador&gt;();</span>
+<span class="nc" id="L26">    public  ArrayList&lt;JButton&gt; ganadores = new ArrayList&lt;JButton&gt;();</span>
+    public  int cont_mov;
+    public  int score;
+<span class="nc" id="L29">    public  Usuario sesion = new Usuario();</span>
+/**
+     * Creates new form Vista_Home
+     */
+    public Clip clip;
+    public AudioInputStream audioInput;
+    Music m ;
+<span class="nc" id="L36">    Vista_Config config = new Vista_Config();</span>
+    //boolean backReglas
+    //this.jLabel1.setVisible(false);
+<span class="nc" id="L39">    public Vista_SeleccionTableroModoFacil(Usuario u,Music m,Vista_Config c) {</span>
+<span class="nc" id="L40">        this.arrayBotones = new ArrayList&lt;javax.swing.JButton&gt;();</span>
+        
+<span class="nc" id="L42">        this.m=m;</span>
+<span class="nc" id="L43">        this.config=c;</span>
+<span class="nc" id="L44">        initComponents();</span>
+<span class="nc" id="L45">        this.setLocationRelativeTo(null);</span>
+        //inicioDeSonido(&quot;musicHome.wav&quot;);
+<span class="nc" id="L47">        agregarBotones();</span>
+<span class="nc" id="L48">        this.jLabel1.setText(u.getUsuario());</span>
+<span class="nc" id="L49">        this.jLabel2.setText(u.getRango());</span>
+<span class="nc" id="L50">        this.sesion=u;</span>
+<span class="nc" id="L51">        StatsInGame obs = new StatsInGame();</span>
+<span class="nc" id="L52">        agregarObs(obs);</span>
+        //System.out.println(getBotonLibre().getWidth());
+<span class="nc" id="L54">    }</span>
+    
+   
+<span class="nc" id="L57">    public Vista_SeleccionTableroModoFacil() {</span>
+<span class="nc" id="L58">        this.arrayBotones = new ArrayList&lt;javax.swing.JButton&gt;();</span>
+        
+       
+<span class="nc" id="L61">        initComponents();</span>
+<span class="nc" id="L62">        this.setLocationRelativeTo(null);</span>
+        //inicioDeSonido(&quot;musicHome.wav&quot;);
+<span class="nc" id="L64">        agregarBotones();</span>
+       
+        //System.out.println(getBotonLibre().getWidth());
+<span class="nc" id="L67">    }</span>
+    
+
+    
+    
+<span class="nc" id="L72">    public Vista_SeleccionTableroModoFacil(Music m, Vista_Config c){</span>
+<span class="nc" id="L73">        this.arrayBotones = new ArrayList&lt;JButton&gt;();</span>
+        
+<span class="nc" id="L75">        initComponents();</span>
+<span class="nc" id="L76">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L77">        this.m= m;</span>
+<span class="nc" id="L78">        this.config=c;</span>
+<span class="nc" id="L79">    }</span>
+    
+    public JButton getBotonLibre(){
+<span class="nc" id="L82">        return this.boton_libre;</span>
+    }
+    
+    public JButton getBotonAzul(){
+<span class="nc" id="L86">        return this.boton_azul;</span>
+    }
+    
+    public void llenarGanadores(){
+<span class="nc" id="L90">        ganadores.add(this.jButton4);</span>
+<span class="nc" id="L91">        ganadores.add(this.jButton5);</span>
+<span class="nc" id="L92">        ganadores.add(this.jButton3);</span>
+<span class="nc" id="L93">    }</span>
+    
+    public void movimiento(JButton x){
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        if (this.faltaCompletar==true){</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">            if(x.getBackground().equals(getBotonLibre().getBackground())){</span>
+<span class="nc" id="L98">                this.segundo=x;</span>
+<span class="nc" id="L99">                this.faltaCompletar=false;</span>
+<span class="nc" id="L100">                hacerMovimiento();</span>
+<span class="nc" id="L101">                calculo_mov_score();</span>
+<span class="nc" id="L102">                notificar(cont_mov,score);</span>
+<span class="nc" id="L103">                this.movimientos.setText(String.valueOf(cont_mov));</span>
+<span class="nc" id="L104">                finalizarPartida();</span>
+                //score=0;
+                
+                
+            }else{
+<span class="nc" id="L109">                this.faltaCompletar=false;</span>
+<span class="nc" id="L110">                JOptionPane.showMessageDialog(null,&quot;Movimiento incorrecto!&quot;);</span>
+                
+            }
+            
+        }else{
+<span class="nc" id="L115">            this.primero=x;</span>
+<span class="nc" id="L116">            this.faltaCompletar=true;</span>
+        }
+        
+       
+        
+<span class="nc" id="L121">    }</span>
+    
+    public void calculo_mov_score(){
+        //score=0;
+<span class="nc" id="L125">        cont_mov++;</span>
+        //if(this.segundo.getBackground().equals(getBotonAzul().getBackground())){
+        //    score++;
+        //}
+        
+                
+            
+        
+        
+        
+        
+<span class="nc" id="L136">    }</span>
+    
+    public void actualizarOcupados(){
+<span class="nc" id="L139">        ocupados.clear();</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">        for (int i =0;i&lt;arrayBotones.size();i++){</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">            if(!arrayBotones.get(i).getBackground().equals(getBotonLibre().getBackground())){</span>
+<span class="nc" id="L142">                ocupados.add(arrayBotones.get(i));</span>
+            }
+        }
+<span class="nc" id="L145">        int contador =0;</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">        for (int i =0;i&lt;arrayBotones.size();i++){</span>
+            
+<span class="nc bnc" id="L148" title="All 4 branches missed.">            if(arrayBotones.get(i).equals(this.jButton4) &amp;&amp; arrayBotones.get(i).getBackground().equals(this.boton_azul.getBackground())){</span>
+<span class="nc" id="L149">                contador++;</span>
+<span class="nc bnc" id="L150" title="All 4 branches missed.">            }else if(arrayBotones.get(i).equals(this.jButton5) &amp;&amp; arrayBotones.get(i).getBackground().equals(this.boton_azul.getBackground())){</span>
+<span class="nc" id="L151">                contador++;</span>
+<span class="nc bnc" id="L152" title="All 4 branches missed.">            }else if(arrayBotones.get(i).equals(this.jButton3) &amp;&amp; arrayBotones.get(i).getBackground().equals(this.boton_azul.getBackground())){</span>
+<span class="nc" id="L153">                contador++;</span>
+            }
+        }
+<span class="nc" id="L156">        this.score=contador;</span>
+<span class="nc" id="L157">    }</span>
+    
+    public void hacerMovimiento(){
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for(int i =0; i&lt;arrayBotones.size();i++){</span>
+<span class="nc bnc" id="L161" title="All 2 branches missed.">            if(arrayBotones.get(i).equals(segundo)){</span>
+<span class="nc" id="L162">                arrayBotones.get(i).setBackground(primero.getBackground());</span>
+            }
+        }
+<span class="nc" id="L165">        primero.setBackground(getBotonLibre().getBackground());</span>
+<span class="nc" id="L166">        actualizarOcupados();</span>
+<span class="nc" id="L167">    }</span>
+    
+    public void agregarBotones(){
+
+ 
+<span class="nc" id="L172">        arrayBotones.add(this.jButton3);</span>
+<span class="nc" id="L173">        arrayBotones.add(this.jButton2);</span>
+<span class="nc" id="L174">        arrayBotones.add(jButton4);</span>
+<span class="nc" id="L175">        arrayBotones.add(this.jButton5);</span>
+<span class="nc" id="L176">        arrayBotones.add(this.jButton6);</span>
+<span class="nc" id="L177">        arrayBotones.add(this.jButton7);</span>
+<span class="nc" id="L178">        arrayBotones.add(this.jButton9);</span>
+<span class="nc" id="L179">        arrayBotones.add(this.jButton10);</span>
+<span class="nc" id="L180">        arrayBotones.add(this.jButton11);</span>
+<span class="nc" id="L181">        arrayBotones.add(this.jButton12);</span>
+<span class="nc" id="L182">        arrayBotones.add(this.jButton13);</span>
+<span class="nc" id="L183">        arrayBotones.add(this.jButton14);</span>
+<span class="nc" id="L184">        arrayBotones.add(this.jButton15);</span>
+<span class="nc" id="L185">        arrayBotones.add(this.jButton16);</span>
+<span class="nc" id="L186">        arrayBotones.add(this.jButton17);</span>
+<span class="nc" id="L187">        arrayBotones.add(this.jButton18);</span>
+<span class="nc" id="L188">        arrayBotones.add(this.jButton19);</span>
+<span class="nc" id="L189">        arrayBotones.add(this.jButton20);</span>
+<span class="nc" id="L190">        arrayBotones.add(this.jButton21);</span>
+<span class="nc" id="L191">        arrayBotones.add(this.jButton22);</span>
+<span class="nc" id="L192">        arrayBotones.add(this.jButton23);</span>
+<span class="nc" id="L193">        arrayBotones.add(this.jButton24);</span>
+<span class="nc" id="L194">        arrayBotones.add(this.jButton25);</span>
+<span class="nc" id="L195">        arrayBotones.add(this.jButton26);</span>
+<span class="nc" id="L196">        arrayBotones.add(this.jButton27);</span>
+<span class="nc" id="L197">        arrayBotones.add(this.jButton28);</span>
+<span class="nc" id="L198">        arrayBotones.add(this.jButton30);</span>
+<span class="nc" id="L199">        arrayBotones.add(this.jButton31);</span>
+<span class="nc" id="L200">        arrayBotones.add(this.jButton32);</span>
+<span class="nc" id="L201">        arrayBotones.add(this.jButton33);</span>
+<span class="nc" id="L202">        arrayBotones.add(this.jButton34);</span>
+<span class="nc" id="L203">        arrayBotones.add(this.jButton35);</span>
+<span class="nc" id="L204">        arrayBotones.add(this.jButton36);</span>
+<span class="nc" id="L205">        arrayBotones.add(this.jButton37);</span>
+<span class="nc" id="L206">        arrayBotones.add(this.jButton38);</span>
+<span class="nc" id="L207">        arrayBotones.add(this.jButton39);</span>
+<span class="nc" id="L208">        arrayBotones.add(this.jButton40);</span>
+<span class="nc" id="L209">        arrayBotones.add(this.jButton41);</span>
+<span class="nc" id="L210">        arrayBotones.add(this.jButton42);</span>
+<span class="nc" id="L211">        arrayBotones.add(this.jButton43);</span>
+<span class="nc" id="L212">        arrayBotones.add(this.jButton44);</span>
+<span class="nc" id="L213">        arrayBotones.add(this.jButton45);</span>
+<span class="nc" id="L214">        arrayBotones.add(this.jButton46);</span>
+<span class="nc" id="L215">        arrayBotones.add(this.jButton47);</span>
+<span class="nc" id="L216">        arrayBotones.add(this.jButton48);</span>
+<span class="nc" id="L217">        arrayBotones.add(this.jButton49);</span>
+<span class="nc" id="L218">        arrayBotones.add(this.jButton50);</span>
+<span class="nc" id="L219">        arrayBotones.add(this.jButton51);</span>
+<span class="nc" id="L220">        arrayBotones.add(this.jButton53);</span>
+        
+<span class="nc" id="L222">    }</span>
+    
+    
+    public void analizarBotones(){
+        
+<span class="nc bnc" id="L227" title="All 2 branches missed.">        for (int i =0;i&lt;arrayBotones.size();i++){</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">            if(!arrayBotones.get(i).getBackground().equals(getBotonLibre().getBackground())){</span>
+<span class="nc" id="L229">                ocupados.add(arrayBotones.get(i));</span>
+            }
+        }
+        
+<span class="nc" id="L233">        System.out.println(ocupados.size());</span>
+      
+<span class="nc" id="L235">    }</span>
+    
+ 
+   /* Getters para test */
+    
+    @Override
+    
+    public void notificar(int a, int b){
+<span class="nc bnc" id="L243" title="All 2 branches missed.">        for(int i =0;i&lt;observadores.size();i++){</span>
+<span class="nc" id="L244">            observadores.get(i).update(a,b);</span>
+            
+            
+        }
+<span class="nc" id="L248">    }</span>
+    
+    public void agregarObs(Observador o ){
+<span class="nc" id="L251">        this.observadores.add(o);</span>
+<span class="nc" id="L252">    }</span>
+    
+    
+    public void finalizarPartida(){
+<span class="nc bnc" id="L256" title="All 2 branches missed.">        if(this.jButton3.getBackground().equals(getBotonAzul().getBackground()) &amp;&amp;</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">                this.jButton5.getBackground().equals(getBotonAzul().getBackground()) &amp;&amp;</span>
+<span class="nc bnc" id="L258" title="All 2 branches missed.">                 this.jButton4.getBackground().equals(getBotonAzul().getBackground())){</span>
+<span class="nc" id="L259">            JOptionPane.showMessageDialog(null, &quot;Felicitaciones! Partida finalizada, tus puntos se acumularan&quot;);</span>
+<span class="nc" id="L260">            this.sesion.setRango(8000);</span>
+<span class="nc" id="L261">            Vista_Home home = new Vista_Home(m,config);</span>
+<span class="nc" id="L262">            home.setLocationRelativeTo(null);</span>
+<span class="nc" id="L263">            home.setVisible(true);</span>
+<span class="nc" id="L264">            this.dispose();</span>
+        }
+        
+<span class="nc" id="L267">    }</span>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L290">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L291">        boton_config = new javax.swing.JButton();</span>
+<span class="nc" id="L292">        jButton2 = new javax.swing.JButton();</span>
+<span class="nc" id="L293">        jButton3 = new javax.swing.JButton();</span>
+<span class="nc" id="L294">        jButton4 = new javax.swing.JButton();</span>
+<span class="nc" id="L295">        jButton5 = new javax.swing.JButton();</span>
+<span class="nc" id="L296">        jButton6 = new javax.swing.JButton();</span>
+<span class="nc" id="L297">        jButton7 = new javax.swing.JButton();</span>
+<span class="nc" id="L298">        jButton9 = new javax.swing.JButton();</span>
+<span class="nc" id="L299">        jButton10 = new javax.swing.JButton();</span>
+<span class="nc" id="L300">        jButton11 = new javax.swing.JButton();</span>
+<span class="nc" id="L301">        jButton12 = new javax.swing.JButton();</span>
+<span class="nc" id="L302">        jButton13 = new javax.swing.JButton();</span>
+<span class="nc" id="L303">        jButton14 = new javax.swing.JButton();</span>
+<span class="nc" id="L304">        jButton15 = new javax.swing.JButton();</span>
+<span class="nc" id="L305">        jButton16 = new javax.swing.JButton();</span>
+<span class="nc" id="L306">        jButton17 = new javax.swing.JButton();</span>
+<span class="nc" id="L307">        jButton18 = new javax.swing.JButton();</span>
+<span class="nc" id="L308">        jButton19 = new javax.swing.JButton();</span>
+<span class="nc" id="L309">        jButton20 = new javax.swing.JButton();</span>
+<span class="nc" id="L310">        jButton21 = new javax.swing.JButton();</span>
+<span class="nc" id="L311">        jButton22 = new javax.swing.JButton();</span>
+<span class="nc" id="L312">        jButton23 = new javax.swing.JButton();</span>
+<span class="nc" id="L313">        jButton24 = new javax.swing.JButton();</span>
+<span class="nc" id="L314">        jButton25 = new javax.swing.JButton();</span>
+<span class="nc" id="L315">        jButton26 = new javax.swing.JButton();</span>
+<span class="nc" id="L316">        jButton27 = new javax.swing.JButton();</span>
+<span class="nc" id="L317">        jButton28 = new javax.swing.JButton();</span>
+<span class="nc" id="L318">        jButton30 = new javax.swing.JButton();</span>
+<span class="nc" id="L319">        jButton31 = new javax.swing.JButton();</span>
+<span class="nc" id="L320">        jButton32 = new javax.swing.JButton();</span>
+<span class="nc" id="L321">        jButton33 = new javax.swing.JButton();</span>
+<span class="nc" id="L322">        jButton34 = new javax.swing.JButton();</span>
+<span class="nc" id="L323">        jButton35 = new javax.swing.JButton();</span>
+<span class="nc" id="L324">        jButton36 = new javax.swing.JButton();</span>
+<span class="nc" id="L325">        jButton37 = new javax.swing.JButton();</span>
+<span class="nc" id="L326">        jButton38 = new javax.swing.JButton();</span>
+<span class="nc" id="L327">        jButton39 = new javax.swing.JButton();</span>
+<span class="nc" id="L328">        jButton40 = new javax.swing.JButton();</span>
+<span class="nc" id="L329">        jButton41 = new javax.swing.JButton();</span>
+<span class="nc" id="L330">        jButton42 = new javax.swing.JButton();</span>
+<span class="nc" id="L331">        jButton43 = new javax.swing.JButton();</span>
+<span class="nc" id="L332">        jButton44 = new javax.swing.JButton();</span>
+<span class="nc" id="L333">        jButton45 = new javax.swing.JButton();</span>
+<span class="nc" id="L334">        jButton46 = new javax.swing.JButton();</span>
+<span class="nc" id="L335">        jButton47 = new javax.swing.JButton();</span>
+<span class="nc" id="L336">        jButton48 = new javax.swing.JButton();</span>
+<span class="nc" id="L337">        jButton49 = new javax.swing.JButton();</span>
+<span class="nc" id="L338">        jButton50 = new javax.swing.JButton();</span>
+<span class="nc" id="L339">        jButton51 = new javax.swing.JButton();</span>
+<span class="nc" id="L340">        jButton1 = new javax.swing.JButton();</span>
+<span class="nc" id="L341">        jButton53 = new javax.swing.JButton();</span>
+<span class="nc" id="L342">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L343">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L344">        titulo_mov = new javax.swing.JLabel();</span>
+<span class="nc" id="L345">        exit = new javax.swing.JButton();</span>
+<span class="nc" id="L346">        home = new javax.swing.JButton();</span>
+<span class="nc" id="L347">        movimientos = new javax.swing.JLabel();</span>
+<span class="nc" id="L348">        label_fondo1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L349">        boton_azul = new javax.swing.JButton();</span>
+<span class="nc" id="L350">        boton_libre = new javax.swing.JButton();</span>
+
+<span class="nc" id="L352">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L353">        setMinimumSize(new java.awt.Dimension(800, 600));</span>
+<span class="nc" id="L354">        setResizable(false);</span>
+<span class="nc" id="L355">        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="nc" id="L357">        jPanel1.setMaximumSize(new java.awt.Dimension(800, 600));</span>
+<span class="nc" id="L358">        jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));</span>
+<span class="nc" id="L359">        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
+
+<span class="nc" id="L361">        boton_config.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/botonConfig.png&quot;))); // NOI18N</span>
+<span class="nc" id="L362">        boton_config.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L363">        boton_config.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L365">                boton_configActionPerformed(evt);</span>
+<span class="nc" id="L366">            }</span>
+        });
+<span class="nc" id="L368">        jPanel1.add(boton_config, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 50, 50));</span>
+
+<span class="nc" id="L370">        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L371">        jButton2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L373">                jButton2ActionPerformed(evt);</span>
+<span class="nc" id="L374">            }</span>
+        });
+<span class="nc" id="L376">        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 30, 30));</span>
+
+<span class="nc" id="L378">        jButton3.setBackground(new java.awt.Color(255, 255, 0));</span>
+<span class="nc" id="L379">        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L380">        jButton3.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L382">                jButton3ActionPerformed(evt);</span>
+<span class="nc" id="L383">            }</span>
+        });
+<span class="nc" id="L385">        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 30, 30));</span>
+
+<span class="nc" id="L387">        jButton4.setBackground(new java.awt.Color(255, 255, 0));</span>
+<span class="nc" id="L388">        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L389">        jButton4.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L391">                jButton4ActionPerformed(evt);</span>
+<span class="nc" id="L392">            }</span>
+        });
+<span class="nc" id="L394">        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 30, 30));</span>
+
+<span class="nc" id="L396">        jButton5.setBackground(new java.awt.Color(255, 255, 0));</span>
+<span class="nc" id="L397">        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L398">        jButton5.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L400">                jButton5ActionPerformed(evt);</span>
+<span class="nc" id="L401">            }</span>
+        });
+<span class="nc" id="L403">        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 30, 30));</span>
+
+<span class="nc" id="L405">        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L406">        jButton6.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L408">                jButton6ActionPerformed(evt);</span>
+<span class="nc" id="L409">            }</span>
+        });
+<span class="nc" id="L411">        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 30, 30));</span>
+
+<span class="nc" id="L413">        jButton7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L414">        jButton7.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L416">                jButton7ActionPerformed(evt);</span>
+<span class="nc" id="L417">            }</span>
+        });
+<span class="nc" id="L419">        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 30, 30));</span>
+
+<span class="nc" id="L421">        jButton9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L422">        jButton9.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L424">                jButton9ActionPerformed(evt);</span>
+<span class="nc" id="L425">            }</span>
+        });
+<span class="nc" id="L427">        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 30, 30));</span>
+
+<span class="nc" id="L429">        jButton10.setBackground(new java.awt.Color(204, 0, 204));</span>
+<span class="nc" id="L430">        jButton10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L431">        jButton10.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L433">                jButton10ActionPerformed(evt);</span>
+<span class="nc" id="L434">            }</span>
+        });
+<span class="nc" id="L436">        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 30, 30));</span>
+
+<span class="nc" id="L438">        jButton11.setBackground(new java.awt.Color(204, 255, 255));</span>
+<span class="nc" id="L439">        jButton11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L440">        jButton11.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L442">                jButton11ActionPerformed(evt);</span>
+<span class="nc" id="L443">            }</span>
+        });
+<span class="nc" id="L445">        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 30, 30));</span>
+
+<span class="nc" id="L447">        jButton12.setBackground(new java.awt.Color(255, 204, 204));</span>
+<span class="nc" id="L448">        jButton12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L449">        jButton12.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L451">                jButton12ActionPerformed(evt);</span>
+<span class="nc" id="L452">            }</span>
+        });
+<span class="nc" id="L454">        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 30, 30));</span>
+
+<span class="nc" id="L456">        jButton13.setBackground(new java.awt.Color(204, 255, 255));</span>
+<span class="nc" id="L457">        jButton13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L458">        jButton13.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L460">                jButton13ActionPerformed(evt);</span>
+<span class="nc" id="L461">            }</span>
+        });
+<span class="nc" id="L463">        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 30, 30));</span>
+
+<span class="nc" id="L465">        jButton14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L466">        jButton14.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L468">                jButton14ActionPerformed(evt);</span>
+<span class="nc" id="L469">            }</span>
+        });
+<span class="nc" id="L471">        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 30, 30));</span>
+
+<span class="nc" id="L473">        jButton15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L474">        jButton15.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L476">                jButton15ActionPerformed(evt);</span>
+<span class="nc" id="L477">            }</span>
+        });
+<span class="nc" id="L479">        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 30, 30));</span>
+
+<span class="nc" id="L481">        jButton16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L482">        jButton16.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L484">                jButton16ActionPerformed(evt);</span>
+<span class="nc" id="L485">            }</span>
+        });
+<span class="nc" id="L487">        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 30, 30));</span>
+
+<span class="nc" id="L489">        jButton17.setForeground(new java.awt.Color(204, 0, 204));</span>
+<span class="nc" id="L490">        jButton17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L491">        jButton17.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L493">                jButton17ActionPerformed(evt);</span>
+<span class="nc" id="L494">            }</span>
+        });
+<span class="nc" id="L496">        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 30, 30));</span>
+
+<span class="nc" id="L498">        jButton18.setBackground(new java.awt.Color(204, 0, 204));</span>
+<span class="nc" id="L499">        jButton18.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L500">        jButton18.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L502">                jButton18ActionPerformed(evt);</span>
+<span class="nc" id="L503">            }</span>
+        });
+<span class="nc" id="L505">        jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 30, 30));</span>
+
+<span class="nc" id="L507">        jButton19.setBackground(new java.awt.Color(204, 0, 204));</span>
+<span class="nc" id="L508">        jButton19.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L509">        jButton19.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L511">                jButton19ActionPerformed(evt);</span>
+<span class="nc" id="L512">            }</span>
+        });
+<span class="nc" id="L514">        jPanel1.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 30, 30));</span>
+
+<span class="nc" id="L516">        jButton20.setBackground(new java.awt.Color(255, 204, 204));</span>
+<span class="nc" id="L517">        jButton20.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L518">        jButton20.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L520">                jButton20ActionPerformed(evt);</span>
+<span class="nc" id="L521">            }</span>
+        });
+<span class="nc" id="L523">        jPanel1.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 30, 30));</span>
+
+<span class="nc" id="L525">        jButton21.setBackground(new java.awt.Color(255, 204, 204));</span>
+<span class="nc" id="L526">        jButton21.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L527">        jButton21.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L529">                jButton21ActionPerformed(evt);</span>
+<span class="nc" id="L530">            }</span>
+        });
+<span class="nc" id="L532">        jPanel1.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 30, 30));</span>
+
+<span class="nc" id="L534">        jButton22.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L535">        jButton22.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L537">                jButton22ActionPerformed(evt);</span>
+<span class="nc" id="L538">            }</span>
+        });
+<span class="nc" id="L540">        jPanel1.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 30, 30));</span>
+
+<span class="nc" id="L542">        jButton23.setBackground(new java.awt.Color(204, 255, 204));</span>
+<span class="nc" id="L543">        jButton23.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L544">        jButton23.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L546">                jButton23ActionPerformed(evt);</span>
+<span class="nc" id="L547">            }</span>
+        });
+<span class="nc" id="L549">        jPanel1.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 30, 30));</span>
+
+<span class="nc" id="L551">        jButton24.setBackground(new java.awt.Color(204, 255, 255));</span>
+<span class="nc" id="L552">        jButton24.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L553">        jButton24.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L555">                jButton24ActionPerformed(evt);</span>
+<span class="nc" id="L556">            }</span>
+        });
+<span class="nc" id="L558">        jPanel1.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 30, 30));</span>
+
+<span class="nc" id="L560">        jButton25.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L561">        jButton25.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L563">                jButton25ActionPerformed(evt);</span>
+<span class="nc" id="L564">            }</span>
+        });
+<span class="nc" id="L566">        jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 30, 30));</span>
+
+<span class="nc" id="L568">        jButton26.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L569">        jButton26.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L571">                jButton26ActionPerformed(evt);</span>
+<span class="nc" id="L572">            }</span>
+        });
+<span class="nc" id="L574">        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 30, 30));</span>
+
+<span class="nc" id="L576">        jButton27.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L577">        jButton27.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L579">                jButton27ActionPerformed(evt);</span>
+<span class="nc" id="L580">            }</span>
+        });
+<span class="nc" id="L582">        jPanel1.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 30, 30));</span>
+
+<span class="nc" id="L584">        jButton28.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L585">        jButton28.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L587">                jButton28ActionPerformed(evt);</span>
+<span class="nc" id="L588">            }</span>
+        });
+<span class="nc" id="L590">        jPanel1.add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 30, 30));</span>
+
+<span class="nc" id="L592">        jButton30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L593">        jButton30.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L595">                jButton30ActionPerformed(evt);</span>
+<span class="nc" id="L596">            }</span>
+        });
+<span class="nc" id="L598">        jPanel1.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 30, 30));</span>
+
+<span class="nc" id="L600">        jButton31.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L601">        jButton31.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L603">                jButton31ActionPerformed(evt);</span>
+<span class="nc" id="L604">            }</span>
+        });
+<span class="nc" id="L606">        jPanel1.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 30));</span>
+
+<span class="nc" id="L608">        jButton32.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L609">        jButton32.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L611">                jButton32ActionPerformed(evt);</span>
+<span class="nc" id="L612">            }</span>
+        });
+<span class="nc" id="L614">        jPanel1.add(jButton32, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 30, 30));</span>
+
+<span class="nc" id="L616">        jButton33.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L617">        jButton33.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L619">                jButton33ActionPerformed(evt);</span>
+<span class="nc" id="L620">            }</span>
+        });
+<span class="nc" id="L622">        jPanel1.add(jButton33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 30, 30));</span>
+
+<span class="nc" id="L624">        jButton34.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L625">        jButton34.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L627">                jButton34ActionPerformed(evt);</span>
+<span class="nc" id="L628">            }</span>
+        });
+<span class="nc" id="L630">        jPanel1.add(jButton34, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 30, 30));</span>
+
+<span class="nc" id="L632">        jButton35.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L633">        jButton35.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L635">                jButton35ActionPerformed(evt);</span>
+<span class="nc" id="L636">            }</span>
+        });
+<span class="nc" id="L638">        jPanel1.add(jButton35, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, 30));</span>
+
+<span class="nc" id="L640">        jButton36.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L641">        jButton36.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L643">                jButton36ActionPerformed(evt);</span>
+<span class="nc" id="L644">            }</span>
+        });
+<span class="nc" id="L646">        jPanel1.add(jButton36, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 30, 30));</span>
+
+<span class="nc" id="L648">        jButton37.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L649">        jButton37.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L651">                jButton37ActionPerformed(evt);</span>
+<span class="nc" id="L652">            }</span>
+        });
+<span class="nc" id="L654">        jPanel1.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 30, 30));</span>
+
+<span class="nc" id="L656">        jButton38.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L657">        jButton38.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L659">                jButton38ActionPerformed(evt);</span>
+<span class="nc" id="L660">            }</span>
+        });
+<span class="nc" id="L662">        jPanel1.add(jButton38, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 30, 30));</span>
+
+<span class="nc" id="L664">        jButton39.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L665">        jButton39.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L667">                jButton39ActionPerformed(evt);</span>
+<span class="nc" id="L668">            }</span>
+        });
+<span class="nc" id="L670">        jPanel1.add(jButton39, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 30, 30));</span>
+
+<span class="nc" id="L672">        jButton40.setBackground(new java.awt.Color(204, 255, 204));</span>
+<span class="nc" id="L673">        jButton40.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L674">        jButton40.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L676">                jButton40ActionPerformed(evt);</span>
+<span class="nc" id="L677">            }</span>
+        });
+<span class="nc" id="L679">        jPanel1.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 30, 30));</span>
+
+<span class="nc" id="L681">        jButton41.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L682">        jButton41.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L684">                jButton41ActionPerformed(evt);</span>
+<span class="nc" id="L685">            }</span>
+        });
+<span class="nc" id="L687">        jPanel1.add(jButton41, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 30, 30));</span>
+
+<span class="nc" id="L689">        jButton42.setBackground(new java.awt.Color(204, 255, 204));</span>
+<span class="nc" id="L690">        jButton42.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L691">        jButton42.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L693">                jButton42ActionPerformed(evt);</span>
+<span class="nc" id="L694">            }</span>
+        });
+<span class="nc" id="L696">        jPanel1.add(jButton42, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 30, 30));</span>
+
+<span class="nc" id="L698">        jButton43.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L699">        jButton43.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L701">                jButton43ActionPerformed(evt);</span>
+<span class="nc" id="L702">            }</span>
+        });
+<span class="nc" id="L704">        jPanel1.add(jButton43, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 30, 30));</span>
+
+<span class="nc" id="L706">        jButton44.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L707">        jButton44.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L709">                jButton44ActionPerformed(evt);</span>
+<span class="nc" id="L710">            }</span>
+        });
+<span class="nc" id="L712">        jPanel1.add(jButton44, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 30, 30));</span>
+
+<span class="nc" id="L714">        jButton45.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L715">        jButton45.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L717">                jButton45ActionPerformed(evt);</span>
+<span class="nc" id="L718">            }</span>
+        });
+<span class="nc" id="L720">        jPanel1.add(jButton45, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 30, 30));</span>
+
+<span class="nc" id="L722">        jButton46.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L723">        jButton46.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L725">                jButton46ActionPerformed(evt);</span>
+<span class="nc" id="L726">            }</span>
+        });
+<span class="nc" id="L728">        jPanel1.add(jButton46, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 30, 30));</span>
+
+<span class="nc" id="L730">        jButton47.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L731">        jButton47.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L733">                jButton47ActionPerformed(evt);</span>
+<span class="nc" id="L734">            }</span>
+        });
+<span class="nc" id="L736">        jPanel1.add(jButton47, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 30, 30));</span>
+
+<span class="nc" id="L738">        jButton48.setBackground(new java.awt.Color(0, 0, 204));</span>
+<span class="nc" id="L739">        jButton48.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L740">        jButton48.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L742">                jButton48ActionPerformed(evt);</span>
+<span class="nc" id="L743">            }</span>
+        });
+<span class="nc" id="L745">        jPanel1.add(jButton48, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 30, 30));</span>
+
+<span class="nc" id="L747">        jButton49.setBackground(new java.awt.Color(0, 0, 204));</span>
+<span class="nc" id="L748">        jButton49.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L749">        jButton49.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L751">                jButton49ActionPerformed(evt);</span>
+<span class="nc" id="L752">            }</span>
+        });
+<span class="nc" id="L754">        jPanel1.add(jButton49, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 30, 30));</span>
+
+<span class="nc" id="L756">        jButton50.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L757">        jButton50.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L759">                jButton50ActionPerformed(evt);</span>
+<span class="nc" id="L760">            }</span>
+        });
+<span class="nc" id="L762">        jPanel1.add(jButton50, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 30, 30));</span>
+
+<span class="nc" id="L764">        jButton51.setBackground(new java.awt.Color(0, 0, 204));</span>
+<span class="nc" id="L765">        jButton51.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L766">        jButton51.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L768">                jButton51ActionPerformed(evt);</span>
+<span class="nc" id="L769">            }</span>
+        });
+<span class="nc" id="L771">        jPanel1.add(jButton51, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 30, 30));</span>
+
+<span class="nc" id="L773">        jButton1.setBackground(new java.awt.Color(153, 255, 0));</span>
+<span class="nc" id="L774">        jButton1.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 48)); // NOI18N</span>
+<span class="nc" id="L775">        jButton1.setText(&quot;START&quot;);</span>
+<span class="nc" id="L776">        jButton1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L778">                jButton1ActionPerformed(evt);</span>
+<span class="nc" id="L779">            }</span>
+        });
+<span class="nc" id="L781">        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, -1, -1));</span>
+
+<span class="nc" id="L783">        jButton53.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L784">        jButton53.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L786">                jButton53ActionPerformed(evt);</span>
+<span class="nc" id="L787">            }</span>
+        });
+<span class="nc" id="L789">        jPanel1.add(jButton53, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 30, 30));</span>
+
+<span class="nc" id="L791">        jLabel1.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 36)); // NOI18N</span>
+<span class="nc" id="L792">        jLabel1.setForeground(new java.awt.Color(0, 255, 255));</span>
+<span class="nc" id="L793">        jLabel1.setText(&quot;jLabel1&quot;);</span>
+<span class="nc" id="L794">        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 170, 60));</span>
+
+<span class="nc" id="L796">        jLabel2.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L797">        jLabel2.setForeground(new java.awt.Color(204, 204, 0));</span>
+<span class="nc" id="L798">        jLabel2.setText(&quot;jLabel2&quot;);</span>
+<span class="nc" id="L799">        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));</span>
+
+<span class="nc" id="L801">        titulo_mov.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 36)); // NOI18N</span>
+<span class="nc" id="L802">        titulo_mov.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L803">        titulo_mov.setText(&quot;MOVIMIENTOS&quot;);</span>
+<span class="nc" id="L804">        jPanel1.add(titulo_mov, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 200, 60));</span>
+
+<span class="nc" id="L806">        exit.setBackground(new java.awt.Color(204, 0, 0));</span>
+<span class="nc" id="L807">        exit.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L808">        exit.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L809">        exit.setText(&quot;exit&quot;);</span>
+<span class="nc" id="L810">        exit.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L812">                exitActionPerformed(evt);</span>
+<span class="nc" id="L813">            }</span>
+        });
+<span class="nc" id="L815">        jPanel1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, -1, -1));</span>
+
+<span class="nc" id="L817">        home.setBackground(new java.awt.Color(255, 153, 0));</span>
+<span class="nc" id="L818">        home.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L819">        home.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L820">        home.setText(&quot;home&quot;);</span>
+<span class="nc" id="L821">        home.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L823">                homeActionPerformed(evt);</span>
+<span class="nc" id="L824">            }</span>
+        });
+<span class="nc" id="L826">        jPanel1.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 530, -1, -1));</span>
+
+<span class="nc" id="L828">        movimientos.setFont(new java.awt.Font(&quot;Bebas&quot;, 1, 48)); // NOI18N</span>
+<span class="nc" id="L829">        movimientos.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L830">        movimientos.setText(&quot;0&quot;);</span>
+<span class="nc" id="L831">        jPanel1.add(movimientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, -1, -1));</span>
+
+<span class="nc" id="L833">        label_fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/fondoFacil.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L834">        jPanel1.add(label_fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));</span>
+
+<span class="nc" id="L836">        boton_azul.setBackground(new java.awt.Color(0, 0, 204));</span>
+<span class="nc" id="L837">        boton_azul.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L838">        boton_azul.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L840">                boton_azulActionPerformed(evt);</span>
+<span class="nc" id="L841">            }</span>
+        });
+<span class="nc" id="L843">        jPanel1.add(boton_azul, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 30, 30));</span>
+
+<span class="nc" id="L845">        boton_libre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L846">        jPanel1.add(boton_libre, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 30, 30));</span>
+
+<span class="nc" id="L848">        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));</span>
+
+<span class="nc" id="L850">        pack();</span>
+<span class="nc" id="L851">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
+        // TODO add your handling code here:\
+        // this.musicaH.sonar(0);
+
+<span class="nc" id="L857">        this.config.setVisible(true);</span>
+<span class="nc" id="L858">        this.config.recibirMusica(m);</span>
+        /*this.m.disperformMusic();*/
+<span class="nc" id="L860">    }//GEN-LAST:event_boton_configActionPerformed</span>
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L864" title="All 4 branches missed.">        if(!ocupados.contains(jButton2) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L865">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L867">            movimiento(jButton2);</span>
+        }
+<span class="nc" id="L869">    }//GEN-LAST:event_jButton2ActionPerformed</span>
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L873" title="All 4 branches missed.">        if(!ocupados.contains(jButton3) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L874">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L876">            movimiento(jButton3);</span>
+        }
+        
+<span class="nc" id="L879">    }//GEN-LAST:event_jButton3ActionPerformed</span>
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+       
+<span class="nc bnc" id="L884" title="All 4 branches missed.">        if(!ocupados.contains(jButton4) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L885">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L887">            movimiento(jButton4);</span>
+        }
+<span class="nc" id="L889">    }//GEN-LAST:event_jButton4ActionPerformed</span>
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+<span class="nc bnc" id="L894" title="All 4 branches missed.">        if(!ocupados.contains(jButton5) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L895">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L897">            movimiento(jButton5);</span>
+        }
+<span class="nc" id="L899">    }//GEN-LAST:event_jButton5ActionPerformed</span>
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L903" title="All 4 branches missed.">        if(!ocupados.contains(jButton6) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L904">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L906">            movimiento(jButton6);</span>
+        }
+<span class="nc" id="L908">    }//GEN-LAST:event_jButton6ActionPerformed</span>
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L912" title="All 4 branches missed.">        if(!ocupados.contains(jButton7) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L913">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L915">            movimiento(jButton7);</span>
+        }
+<span class="nc" id="L917">    }//GEN-LAST:event_jButton7ActionPerformed</span>
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L921" title="All 4 branches missed.">        if(!ocupados.contains(jButton9) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L922">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L924">            movimiento(jButton9);</span>
+        }
+<span class="nc" id="L926">    }//GEN-LAST:event_jButton9ActionPerformed</span>
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L930" title="All 4 branches missed.">        if(!ocupados.contains(jButton10) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L931">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L933">            movimiento(jButton10);</span>
+        }
+        
+<span class="nc" id="L936">    }//GEN-LAST:event_jButton10ActionPerformed</span>
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L940" title="All 4 branches missed.">        if(!ocupados.contains(jButton11) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L941">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L943">            movimiento(jButton11);</span>
+        }
+<span class="nc" id="L945">    }//GEN-LAST:event_jButton11ActionPerformed</span>
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L949" title="All 4 branches missed.">        if(!ocupados.contains(jButton12) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L950">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L952">            movimiento(jButton12);</span>
+        }
+<span class="nc" id="L954">    }//GEN-LAST:event_jButton12ActionPerformed</span>
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L958" title="All 4 branches missed.">        if(!ocupados.contains(jButton13) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L959">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L961">            movimiento(jButton13);</span>
+        }
+<span class="nc" id="L963">    }//GEN-LAST:event_jButton13ActionPerformed</span>
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L967" title="All 4 branches missed.">        if(!ocupados.contains(jButton14) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L968">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L970">            movimiento(jButton14);</span>
+        }
+<span class="nc" id="L972">    }//GEN-LAST:event_jButton14ActionPerformed</span>
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L976" title="All 4 branches missed.">        if(!ocupados.contains(jButton15) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L977">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L979">            movimiento(jButton15);</span>
+        }
+<span class="nc" id="L981">    }//GEN-LAST:event_jButton15ActionPerformed</span>
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L985" title="All 4 branches missed.">        if(!ocupados.contains(jButton16) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L986">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L988">            movimiento(jButton16);</span>
+        }
+<span class="nc" id="L990">    }//GEN-LAST:event_jButton16ActionPerformed</span>
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L994" title="All 4 branches missed.">        if(!ocupados.contains(jButton17) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L995">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L997">            movimiento(jButton17);</span>
+        }
+<span class="nc" id="L999">    }//GEN-LAST:event_jButton17ActionPerformed</span>
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1003" title="All 4 branches missed.">        if(!ocupados.contains(jButton18) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1004">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1006">            movimiento(jButton18);</span>
+        }
+<span class="nc" id="L1008">    }//GEN-LAST:event_jButton18ActionPerformed</span>
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1012" title="All 4 branches missed.">        if(!ocupados.contains(jButton19) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1013">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1015">            movimiento(jButton19);</span>
+        }
+<span class="nc" id="L1017">    }//GEN-LAST:event_jButton19ActionPerformed</span>
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1021" title="All 4 branches missed.">        if(!ocupados.contains(jButton20) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1022">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1024">            movimiento(jButton20);</span>
+        }
+<span class="nc" id="L1026">    }//GEN-LAST:event_jButton20ActionPerformed</span>
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1030" title="All 4 branches missed.">        if(!ocupados.contains(jButton21) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1031">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1033">            movimiento(jButton21);</span>
+        }
+<span class="nc" id="L1035">    }//GEN-LAST:event_jButton21ActionPerformed</span>
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        // TODO add your handling code here:
+        
+<span class="nc bnc" id="L1040" title="All 4 branches missed.">        if(!ocupados.contains(jButton22) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1041">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1043">            movimiento(jButton22);</span>
+        }
+<span class="nc" id="L1045">    }//GEN-LAST:event_jButton22ActionPerformed</span>
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1049" title="All 4 branches missed.">        if(!ocupados.contains(jButton23) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1050">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1052">            movimiento(jButton23);</span>
+        }
+<span class="nc" id="L1054">    }//GEN-LAST:event_jButton23ActionPerformed</span>
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1058" title="All 4 branches missed.">        if(!ocupados.contains(jButton24) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1059">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1061">            movimiento(jButton24);</span>
+        }
+<span class="nc" id="L1063">    }//GEN-LAST:event_jButton24ActionPerformed</span>
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1067" title="All 4 branches missed.">        if(!ocupados.contains(jButton25) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1068">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1070">            movimiento(jButton25);</span>
+        }
+<span class="nc" id="L1072">    }//GEN-LAST:event_jButton25ActionPerformed</span>
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1076" title="All 4 branches missed.">        if(!ocupados.contains(jButton26) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1077">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1079">            movimiento(jButton26);</span>
+        }
+<span class="nc" id="L1081">    }//GEN-LAST:event_jButton26ActionPerformed</span>
+
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1085" title="All 4 branches missed.">        if(!ocupados.contains(jButton27) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1086">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1088">            movimiento(jButton27);</span>
+        }
+<span class="nc" id="L1090">    }//GEN-LAST:event_jButton27ActionPerformed</span>
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1094" title="All 4 branches missed.">        if(!ocupados.contains(jButton28) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1095">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1097">            movimiento(jButton28);</span>
+        }
+<span class="nc" id="L1099">    }//GEN-LAST:event_jButton28ActionPerformed</span>
+
+    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1103" title="All 4 branches missed.">        if(!ocupados.contains(jButton30) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1104">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1106">            movimiento(jButton30);</span>
+        }
+<span class="nc" id="L1108">    }//GEN-LAST:event_jButton30ActionPerformed</span>
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1112" title="All 4 branches missed.">        if(!ocupados.contains(jButton31) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1113">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1115">            movimiento(jButton31);</span>
+        }
+<span class="nc" id="L1117">    }//GEN-LAST:event_jButton31ActionPerformed</span>
+
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1121" title="All 4 branches missed.">        if(!ocupados.contains(jButton32) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1122">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1124">            movimiento(jButton32);</span>
+        }
+<span class="nc" id="L1126">    }//GEN-LAST:event_jButton32ActionPerformed</span>
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1130" title="All 4 branches missed.">        if(!ocupados.contains(jButton33) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1131">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1133">            movimiento(jButton33);</span>
+        }
+<span class="nc" id="L1135">    }//GEN-LAST:event_jButton33ActionPerformed</span>
+
+    private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1139" title="All 4 branches missed.">        if(!ocupados.contains(jButton34) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1140">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1142">            movimiento(jButton3);</span>
+        }
+<span class="nc" id="L1144">    }//GEN-LAST:event_jButton34ActionPerformed</span>
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1148" title="All 4 branches missed.">        if(!ocupados.contains(jButton35) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1149">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1151">            movimiento(jButton35);</span>
+        }
+<span class="nc" id="L1153">    }//GEN-LAST:event_jButton35ActionPerformed</span>
+
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1157" title="All 4 branches missed.">        if(!ocupados.contains(jButton36) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1158">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1160">            movimiento(jButton36);</span>
+        }
+<span class="nc" id="L1162">    }//GEN-LAST:event_jButton36ActionPerformed</span>
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1166" title="All 4 branches missed.">        if(!ocupados.contains(jButton37) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1167">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1169">            movimiento(jButton37);</span>
+        }
+<span class="nc" id="L1171">    }//GEN-LAST:event_jButton37ActionPerformed</span>
+
+    private void jButton38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton38ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1175" title="All 4 branches missed.">        if(!ocupados.contains(jButton38) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1176">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1178">            movimiento(jButton38);</span>
+        }
+<span class="nc" id="L1180">    }//GEN-LAST:event_jButton38ActionPerformed</span>
+
+    private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1184" title="All 4 branches missed.">        if(!ocupados.contains(jButton39) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1185">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1187">            movimiento(jButton39);</span>
+        }
+<span class="nc" id="L1189">    }//GEN-LAST:event_jButton39ActionPerformed</span>
+
+    private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1193" title="All 4 branches missed.">        if(!ocupados.contains(jButton40) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1194">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1196">            movimiento(jButton40);</span>
+        }
+<span class="nc" id="L1198">    }//GEN-LAST:event_jButton40ActionPerformed</span>
+
+    private void jButton41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton41ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1202" title="All 4 branches missed.">        if(!ocupados.contains(jButton41) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1203">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1205">            movimiento(jButton41);</span>
+        }
+<span class="nc" id="L1207">    }//GEN-LAST:event_jButton41ActionPerformed</span>
+
+    private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1211" title="All 4 branches missed.">        if(!ocupados.contains(jButton42) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1212">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1214">            movimiento(jButton42);</span>
+        }
+<span class="nc" id="L1216">    }//GEN-LAST:event_jButton42ActionPerformed</span>
+
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1220" title="All 4 branches missed.">        if(!ocupados.contains(jButton43) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1221">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1223">            movimiento(jButton43);</span>
+        }
+<span class="nc" id="L1225">    }//GEN-LAST:event_jButton43ActionPerformed</span>
+
+    private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1229" title="All 4 branches missed.">        if(!ocupados.contains(jButton44) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1230">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1232">            movimiento(jButton44);</span>
+        }
+<span class="nc" id="L1234">    }//GEN-LAST:event_jButton44ActionPerformed</span>
+
+    private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1238" title="All 4 branches missed.">        if(!ocupados.contains(jButton45) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1239">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1241">            movimiento(jButton45);</span>
+        }
+<span class="nc" id="L1243">    }//GEN-LAST:event_jButton45ActionPerformed</span>
+
+    private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1247" title="All 4 branches missed.">        if(!ocupados.contains(jButton46) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1248">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1250">            movimiento(jButton46);</span>
+        }
+<span class="nc" id="L1252">    }//GEN-LAST:event_jButton46ActionPerformed</span>
+
+    private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1256" title="All 4 branches missed.">        if(!ocupados.contains(jButton47) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1257">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1259">            movimiento(jButton47);</span>
+        }
+<span class="nc" id="L1261">    }//GEN-LAST:event_jButton47ActionPerformed</span>
+
+    private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1265" title="All 4 branches missed.">        if(!ocupados.contains(jButton48) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1266">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1268">            movimiento(jButton48);</span>
+        }
+<span class="nc" id="L1270">    }//GEN-LAST:event_jButton48ActionPerformed</span>
+
+    private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
+        // TODO add your handling code here:\
+<span class="nc bnc" id="L1274" title="All 4 branches missed.">        if(!ocupados.contains(jButton49) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1275">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1277">            movimiento(jButton49);</span>
+        }
+        
+<span class="nc" id="L1280">    }//GEN-LAST:event_jButton49ActionPerformed</span>
+
+    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1284" title="All 4 branches missed.">        if(!ocupados.contains(jButton50) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1285">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1287">            movimiento(jButton50);</span>
+        }
+<span class="nc" id="L1289">    }//GEN-LAST:event_jButton50ActionPerformed</span>
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1293" title="All 4 branches missed.">        if(!ocupados.contains(jButton51) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1294">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1296">            movimiento(jButton51);</span>
+        }
+<span class="nc" id="L1298">    }//GEN-LAST:event_jButton51ActionPerformed</span>
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:\
+<span class="nc" id="L1302">       this.cont_mov=0;</span>
+<span class="nc" id="L1303">       analizarBotones();</span>
+<span class="nc" id="L1304">       jButton1.setVisible(false);</span>
+<span class="nc" id="L1305">    }//GEN-LAST:event_jButton1ActionPerformed</span>
+
+    private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
+        // TODO add your handling code here:
+<span class="nc bnc" id="L1309" title="All 4 branches missed.">        if(!ocupados.contains(jButton53) &amp;&amp; faltaCompletar ==false){</span>
+<span class="nc" id="L1310">            JOptionPane.showMessageDialog(null, &quot;No hay ficha&quot;);</span>
+        }else{
+<span class="nc" id="L1312">            movimiento(jButton53);</span>
+        }
+        
+<span class="nc" id="L1315">    }//GEN-LAST:event_jButton53ActionPerformed</span>
+
+    private void boton_azulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_azulActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L1319">    }//GEN-LAST:event_boton_azulActionPerformed</span>
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L1323">        System.exit(0);</span>
+<span class="nc" id="L1324">    }//GEN-LAST:event_exitActionPerformed</span>
+
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+        // TODO add your handling code here:
+<span class="nc" id="L1328">        Vista_Home home = new Vista_Home(m,config);</span>
+<span class="nc" id="L1329">        home.setLocationRelativeTo(null);</span>
+<span class="nc" id="L1330">        home.setVisible(true);</span>
+<span class="nc" id="L1331">        this.dispose();</span>
+<span class="nc" id="L1332">    }//GEN-LAST:event_homeActionPerformed</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L1344" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L1345" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L1346">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L1347">                    break;</span>
+                }
+            }
+<span class="nc" id="L1350">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L1351">            java.util.logging.Logger.getLogger(Vista_SeleccionTableroModoFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L1352">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L1353">            java.util.logging.Logger.getLogger(Vista_SeleccionTableroModoFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L1354">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L1355">            java.util.logging.Logger.getLogger(Vista_SeleccionTableroModoFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L1356">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L1357">            java.util.logging.Logger.getLogger(Vista_SeleccionTableroModoFacil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L1358">        }</span>
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+        //&lt;/editor-fold&gt;
+
+        /* Create and display the form */
+<span class="nc" id="L1369">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+            public void run() {
+<span class="nc" id="L1371">                new Vista_SeleccionTableroModoFacil().setVisible(true);</span>
+<span class="nc" id="L1372">            }</span>
+        });
+<span class="nc" id="L1374">    }</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_azul;
+    private javax.swing.JButton boton_config;
+    private javax.swing.JButton boton_libre;
+    private javax.swing.JButton exit;
+    private javax.swing.JButton home;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
+    private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton40;
+    private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton44;
+    private javax.swing.JButton jButton45;
+    private javax.swing.JButton jButton46;
+    private javax.swing.JButton jButton47;
+    private javax.swing.JButton jButton48;
+    private javax.swing.JButton jButton49;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton50;
+    private javax.swing.JButton jButton51;
+    private javax.swing.JButton jButton53;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel label_fondo1;
+    private javax.swing.JLabel movimientos;
+    private javax.swing.JLabel titulo_mov;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

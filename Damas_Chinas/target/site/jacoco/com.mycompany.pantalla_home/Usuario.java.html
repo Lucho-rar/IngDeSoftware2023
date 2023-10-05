@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Damas_Chinas</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.pantalla_home</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.pantalla_home;
+
+/**
+ *
+ * @author lucho
+ */
+public class Usuario {
+    String usuario;
+    String password;
+    String rango;
+    int puntos;
+<span class="fc" id="L16">    public Usuario(String u,String p, String pts){</span>
+<span class="fc" id="L17">        this.usuario=u;</span>
+<span class="fc" id="L18">        this.password=p;</span>
+<span class="fc" id="L19">        this.puntos = Integer.parseInt(pts);</span>
+<span class="fc" id="L20">        this.calculoRango();</span>
+<span class="fc" id="L21">    }</span>
+<span class="fc" id="L22">    public Usuario(){</span>
+        
+<span class="fc" id="L24">    }</span>
+    
+    public String getUsuario(){
+<span class="fc" id="L27">        return usuario;</span>
+    }
+    public String getPassword(){
+<span class="fc" id="L30">        return password;</span>
+    }
+    public int getPuntos(){
+<span class="fc" id="L33">        return puntos;</span>
+    }
+    public String getRango(){
+<span class="nc" id="L36">        return rango;</span>
+    }
+    public void setRango(int x){
+<span class="nc" id="L39">        this.puntos=puntos +x;</span>
+<span class="nc" id="L40">        calculoRango();</span>
+<span class="nc" id="L41">    }</span>
+    public void calculoRango(){
+<span class="fc bfc" id="L43" title="All 4 branches covered.">        if(puntos&gt;0 &amp;&amp; puntos&lt;1000){</span>
+<span class="fc" id="L44">            this.rango=&quot;BRONCE&quot;;</span>
+        }
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">        else if(puntos&gt;1000 &amp;&amp; puntos&lt;3500){</span>
+<span class="nc" id="L47">            this.rango=&quot;PLATA&quot;;</span>
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">        }else if(puntos&gt;3500 &amp;&amp; puntos&lt;5000){</span>
+<span class="fc" id="L49">            this.rango=&quot;ORO&quot;;</span>
+        }else{
+<span class="fc" id="L51">            this.rango=&quot;PLATINO&quot;;</span>
+        }
+<span class="fc" id="L53">    }</span>
+    
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
