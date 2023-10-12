@@ -37,7 +37,6 @@
         <exec.mainClass>com.mycompany.pantalla_home.Pantalla_Home</exec.mainClass>
     </properties>
     <name>Damas_Chinas</name>
-
     <build>
 
         <plugins>
@@ -73,7 +72,7 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
-             <plugin>
+            <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.7.0.1746</version>
