@@ -39,7 +39,7 @@ jobs:
     - name: Check Minimum Code Coverage
       run: |
         coverage=$(cat target/site/jacoco/index.html | grep -oP '(?<=<td class="ctr2">)[0-9]+%' | sed 's/%//')
-        if [ "$coverage" -lt 5 ]; then
+        if [ "$coverage" -lt 90 ]; then
           echo "Minimum code coverage not met: $coverage%"
           exit 1
         fi
