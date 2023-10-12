@@ -117,7 +117,7 @@ jobs:
     - name: Running Horusec Security
       run: |
         curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-        horusec start -p="./home/runner/work/IngDeSoftware2023/IngDeSoftware2023" -e="true"
+        horusec start -p="/home/runner/work/IngDeSoftware2023/IngDeSoftware2023/" -e="true"
     
       
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
