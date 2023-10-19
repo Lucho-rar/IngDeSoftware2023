@@ -120,8 +120,7 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Horusec
       run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-          horusec start -D -p="./" -e="true"
+          docker run -v /var/run/docker.sock:/var/run/docker.sock \ -v $(pwd):/src/horusec \ horuszup/horusec-cli:latest horusec start -p /src/horusec -P $(pwd) --config-file-path=/src/horusec/horusec-config.json
 
 
     - name: Upload artefact
