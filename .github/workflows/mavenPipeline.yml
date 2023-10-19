@@ -119,7 +119,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Horusec
-      run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/src/horusec horuszup/horusec-cli:latest horusec start -p /src/horusec -P $(pwd) --config-file-path=/src/horusec/horusec-config.json
+      run: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v $(pwd):/src/horusec horuszup/horusec-cli:latest horusec start -D -p /src/horusec -P $(pwd) --config-file-path=/src/horusec/horusec-config.json
     - name: Upload artefact
       uses: actions/upload-artifact@v3
       with:
