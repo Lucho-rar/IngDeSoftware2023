@@ -119,7 +119,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Horusec
-      run: curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest horusec start -p="./" -e="true"
+      run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
+          horusec start -p="./" -e="true"
+
+
     - name: Upload artefact
       uses: actions/upload-artifact@v3
       with:
