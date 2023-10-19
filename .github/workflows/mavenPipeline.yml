@@ -149,7 +149,7 @@ jobs:
         - name: SonarQube Scan
           run: |
            mvn clean install
-           mvn sonar:sonar -Dsonar.token=SONAR_TOKEN
+           mvn clean verify sonar:sonar -Dsonar.projectKey=SonarQDamas -Dsonar.projectName='SonarQDamas' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_698125f4fb1ec2cfa2116d4d5148c718e56aaf88
       #
 #  horusec-security:
 #    name: horusec-security
