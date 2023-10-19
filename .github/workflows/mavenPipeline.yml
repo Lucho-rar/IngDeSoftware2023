@@ -150,16 +150,8 @@ jobs:
           run: mvn -B package --file pom.xml
         - name: SonarQube Scan
           uses: sonarsource/sonarqube-scan-action@master
-          env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           with:
-            projectBaseDir: .
-            args: >
-             -Dsonar.projectKey=${{ github.event.repository.name}}
-             -Dsonar.projectName=${{ github.event.repository.name}}  
-             -Dsonar.source=. 
-             -Dsonar.sourceEncoding=UTF-8   
+             projectBaseDir: . 
       #
 #  horusec-security:
 #    name: horusec-security
