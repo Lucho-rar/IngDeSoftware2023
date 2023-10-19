@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.pantalla_home.Vista_HomeTest" time="0.745" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.pantalla_home.Vista_HomeTest" time="1.264" tests="6" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="sonar.projectName" value="&apos;PruebaSQ&apos;"/>
+    <property name="sonar.projectName" value="&apos;SonarQDamas&apos;"/>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sonar.host.url" value="http://localhost:9000"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
     <property name="sun.boot.library.path" value="C:\Program Files\OpenLogic\jdk-17.0.8.7-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\lucho\AppData\Local\Temp\surefire16849280885241446841\surefirebooter6612079531207841735.jar C:\Users\lucho\AppData\Local\Temp\surefire16849280885241446841 2023-10-12T15-46-34_448-jvmRun1 surefire3704020910204266296tmp surefire_07497836597997341216tmp"/>
+    <property name="sun.java.command" value="C:\Users\lucho\AppData\Local\Temp\surefire12171881689407859519\surefirebooter10105485481717171930.jar C:\Users\lucho\AppData\Local\Temp\surefire12171881689407859519 2023-10-19T15-33-38_566-jvmRun1 surefire2798398233562845581tmp surefire_05939173083940163453tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas\target\test-classes;C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas\target\classes;C:\Users\lucho\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE170\AbsoluteLayout-RELEASE170.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\lucho\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\lucho\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\lucho\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\lucho\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\lucho\AppData\Local\Temp\surefire16849280885241446841\surefirebooter6612079531207841735.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\lucho\AppData\Local\Temp\surefire12171881689407859519\surefirebooter10105485481717171930.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.8+7-adhoc..jdk17u"/>
@@ -46,14 +46,14 @@
     <property name="localRepository" value="C:\Users\lucho\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://techsupport.roguewave.com/"/>
     <property name="java.io.tmpdir" value="C:\Users\lucho\AppData\Local\Temp\"/>
-    <property name="sonar.token" value="sqp_f30c230eca2e44cbdaf861983f04241ec57c0a77"/>
+    <property name="sonar.token" value="sqp_698125f4fb1ec2cfa2116d4d5148c718e56aaf88"/>
     <property name="java.version" value="17.0.8"/>
     <property name="user.dir" value="C:\Users\lucho\Documents\TrabajoIngSw\IngDeSoftware2023\Damas_Chinas"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="sonar.projectKey" value="PruebaSQ"/>
+    <property name="sonar.projectKey" value="SonarQDamas"/>
     <property name="java.library.path" value="C:\Program Files\OpenLogic\jdk-17.0.8.7-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\OpenLogic\jdk-17.0.8.7-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Workbench 8.0 CE;C:\maven\bin;C:\Program Files\OpenLogic\jdk-17.0.8.7-hotspot\\bin;C:\Program Files\PuTTY\;C:\Program Files\MongoDB\Server\6.0\bin;C:\Program Files\nodejs\;C:\Program Files\php-8.2.8-Win32-vs16-x64;C:\Users\lucho\AppData\Local\Microsoft\WindowsApps;C:\Users\lucho\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MongoDB\Server\6.0\bin;C:\Users\lucho\AppData\Roaming\npm;C:\Users\lucho\Downloads\sonar-scanner-cli-5.0.1.3006-windows\sonar-scanner-5.0.1.3006-windows\bin;C:\Users\lucho\Downloads\sonarqube-10.2.1.78527\sonarqube-10.2.1.78527\bin\windows-x86-64;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.vendor" value="OpenLogic"/>
@@ -62,9 +62,9 @@
     <property name="java.class.version" value="61.0"/>
   </properties>
   <testcase name="test_exit" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0"/>
-  <testcase name="test_config" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.024"/>
-  <testcase name="test_reglas" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.179"/>
-  <testcase name="test_home_inicial" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.049"/>
-  <testcase name="test_jugar" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.185"/>
-  <testcase name="test_stats" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.302"/>
+  <testcase name="test_config" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.022"/>
+  <testcase name="test_reglas" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.183"/>
+  <testcase name="test_home_inicial" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.037"/>
+  <testcase name="test_jugar" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.249"/>
+  <testcase name="test_stats" classname="com.mycompany.pantalla_home.Vista_HomeTest" time="0.768"/>
 </testsuite>
