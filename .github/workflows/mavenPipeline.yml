@@ -147,9 +147,10 @@ jobs:
             distribution: 'temurin'
             cache: maven
         - name: SonarQube Scan
-          run: |
-           mvn clean install
-           mvn clean verify sonar:sonar
+          uses: sonarsource/sonarqube-scan-action@master
+          env:
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       #
 #  horusec-security:
 #    name: horusec-security
