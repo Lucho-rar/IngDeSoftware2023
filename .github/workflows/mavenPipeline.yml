@@ -121,7 +121,7 @@ jobs:
     - name: Horusec
       run: |
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-          horusec start -D -p="./"
+          horusec start -D -p="./" -o"=json" -O=horusec-config.json
 
 
     - name: Upload artefact
