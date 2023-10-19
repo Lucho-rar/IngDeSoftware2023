@@ -150,6 +150,9 @@ jobs:
           run: mvn -B package --file pom.xml
         - name: SonarQube Scan
           uses: sonarsource/sonarqube-scan-action@master
+          env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           with:
              projectBaseDir: . 
       #
