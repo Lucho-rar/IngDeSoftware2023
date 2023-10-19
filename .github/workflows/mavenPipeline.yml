@@ -147,13 +147,10 @@ jobs:
             distribution: 'temurin'
             cache: maven
         - name: SonarQube Scan
-          uses: sonarsource/sonarqube-scan-action@master
-          env:
-           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          with: 
-           args: >
-            -Dsonar.projectKey=SonarQDamas
+          uses: kitabisa/sonarqube-action@v1.2.0
+          with:
+              host: ${{ secrets.SONAR_HOST_URL }}
+              login: ${{ secrets.SONAR_TOKEN }}
       #
 #  horusec-security:
 #    name: horusec-security
