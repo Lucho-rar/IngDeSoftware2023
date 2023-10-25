@@ -29,7 +29,7 @@ jobs:
         cache: maven
     - name: test
       run: |
-          export DISPLAY=:0.0
+          export DISPLAY=:0
           cd Damas_Chinas
           mvn compile
           mvn test
