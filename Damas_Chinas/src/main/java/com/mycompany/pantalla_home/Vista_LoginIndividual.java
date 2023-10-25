@@ -425,7 +425,7 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             singleton_bd.actualizarLog();
         }else{
             
-            JOptionPane.showMessageDialog(null, "yaexiste!");
+            //JOptionPane.showMessageDialog(null, "yaexiste!");
         }
         
         
@@ -458,9 +458,9 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             
             this.ingresoCorrecto=true;
             this.jButton2.setVisible(true);
-            JOptionPane.showMessageDialog(null, "Ingreso correcto!");
+            //JOptionPane.showMessageDialog(null, "Ingreso correcto!");
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario/PSW Incorrecto!");
+            //JOptionPane.showMessageDialog(null, "Usuario/PSW Incorrecto!");
         }
         
         
