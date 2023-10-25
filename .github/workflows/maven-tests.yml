@@ -28,10 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: test
-      run: |
-          cd .\Damas_Chinas\
-          mvn compile
-          mvn test
+      run: mvn -f Damas_Chinas/pom.xml package
     
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
