@@ -29,7 +29,14 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: '17'
-
+    - name: Levantar
+      run: |
+          cd Damas_Chinas
+          mvn compile
+    - name: Test unitarios
+      run: |
+          cd Damas_Chinas
+          mvn test
     - name: Build with Maven
       run: mvn -B package -Pcoverage
 
