@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: test
-      run: mvn -X -f Damas_Chinas/pom.xml package
+      run: xvfb-run mvn -X -f Damas_Chinas/pom.xml package
     
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
