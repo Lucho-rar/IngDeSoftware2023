@@ -27,7 +27,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: test
+  copla:
+      -name: godeta
       run: xvfb-run mvn -f Damas_Chinas/pom.xml test
     
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
