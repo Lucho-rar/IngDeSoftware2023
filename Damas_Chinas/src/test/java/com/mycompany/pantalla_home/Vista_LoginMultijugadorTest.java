@@ -32,7 +32,11 @@ public class Vista_LoginMultijugadorTest {
     }
     
     /*Test Boton Back 
+<<<<<<< HEAD:src/test/java/com/mycompany/pantalla_home/Vista_LoginMultijugadorTest.java
+    
+=======
     @Test
+>>>>>>> 4d63b9aa1b55f4dc44a997e7cf10aa2bfc2a90b5:Damas_Chinas/src/test/java/com/mycompany/pantalla_home/Vista_LoginMultijugadorTest.java
     public void test_boton_back(){
         Vista_LoginMultijugador vl = new Vista_LoginMultijugador();
         vl.setVisible(true);

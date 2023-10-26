@@ -33,7 +33,11 @@ public class Vista_ConfigTest {
         assertTrue(vc.getLabelDisabled().isVisible());
     }
     /*
+<<<<<<< HEAD:src/test/java/com/mycompany/pantalla_home/Vista_ConfigTest.java
+    
+=======
     @Test
+>>>>>>> 4d63b9aa1b55f4dc44a997e7cf10aa2bfc2a90b5:Damas_Chinas/src/test/java/com/mycompany/pantalla_home/Vista_ConfigTest.java
     public void test_mute(){
         Vista_Config vc = new Vista_Config();
         vc.recibirMusica(m);
@@ -43,7 +47,7 @@ public class Vista_ConfigTest {
         assertFalse(vc.getLabelEnabled().isVisible());
     }
     
-    @Test
+    
     public void test_desmute(){
         Vista_Config vc = new Vista_Config();
         vc.recibirMusica(m);

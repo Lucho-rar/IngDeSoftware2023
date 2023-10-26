@@ -48,7 +48,11 @@ public class Vista_SeleccionModoTest {
        // Si se apreta el boton se desactiva  la pantalla completa
     }
     /* Boton Back 
+<<<<<<< HEAD:src/test/java/com/mycompany/pantalla_home/Vista_SeleccionModoTest.java
+    
+=======
     @Test
+>>>>>>> 4d63b9aa1b55f4dc44a997e7cf10aa2bfc2a90b5:Damas_Chinas/src/test/java/com/mycompany/pantalla_home/Vista_SeleccionModoTest.java
     public void test_boton_back(){
         Vista_SeleccionModo vista_modo = new Vista_SeleccionModo();
         vista_modo.setVisible(true);
