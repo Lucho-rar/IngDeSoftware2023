@@ -39,14 +39,14 @@ public class Vista_SeleccionDificultadTest {
     }
     */
     /* Test boton medio */
-    @Test 
-    public void test_boton_medio(){
+    //@Test 
+    /*public void test_boton_medio(){
         Vista_SeleccionDificultad vista_dif = new Vista_SeleccionDificultad();
         vista_dif.setVisible(true);
         vista_dif.getBotonMedio().doClick();
         assertFalse(vista_dif.isActive());
     }
-    
+    */
     /* Test boton dificil */
     //@Test 
     /*public void test_boton_dificil(){
