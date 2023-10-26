@@ -27,10 +27,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-  copla:
-    runs-on: ubuntu-latest
-    steps:
-    - name: godeta
       run: xvfb-run mvn -f Damas_Chinas/pom.xml test
     
     
