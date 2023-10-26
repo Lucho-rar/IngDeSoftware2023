@@ -27,6 +27,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: test
       run: xvfb-run mvn -f Damas_Chinas/pom.xml test
     
     
