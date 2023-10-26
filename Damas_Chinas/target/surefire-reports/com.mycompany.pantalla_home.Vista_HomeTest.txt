@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.pantalla_home.Vista_HomeTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.198 s - in com.mycompany.pantalla_home.Vista_HomeTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.653 s - in com.mycompany.pantalla_home.Vista_HomeTest

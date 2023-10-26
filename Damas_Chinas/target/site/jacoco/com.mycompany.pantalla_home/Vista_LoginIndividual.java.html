@@ -423,9 +423,9 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
 <span class="nc" id="L423">            Usuario nuevo = new Usuario(user,psw,&quot;0&quot;);</span>
 <span class="nc" id="L424">            singleton_bd.agregarUsuario(nuevo);</span>
 <span class="nc" id="L425">            singleton_bd.actualizarLog();</span>
-<span class="nc" id="L426">        }else{</span>
+        }else{
             
-<span class="fc" id="L428">            JOptionPane.showMessageDialog(null, &quot;yaexiste!&quot;);</span>
+            //JOptionPane.showMessageDialog(null, &quot;yaexiste!&quot;);
         }
         
         
@@ -458,9 +458,9 @@ public class Vista_LoginIndividual extends javax.swing.JFrame {
             
 <span class="fc" id="L459">            this.ingresoCorrecto=true;</span>
 <span class="fc" id="L460">            this.jButton2.setVisible(true);</span>
-<span class="fc" id="L461">            JOptionPane.showMessageDialog(null, &quot;Ingreso correcto!&quot;);</span>
+            //JOptionPane.showMessageDialog(null, &quot;Ingreso correcto!&quot;);
         }else{
-<span class="fc" id="L463">            JOptionPane.showMessageDialog(null, &quot;Usuario/PSW Incorrecto!&quot;);</span>
+            //JOptionPane.showMessageDialog(null, &quot;Usuario/PSW Incorrecto!&quot;);
         }
         
         

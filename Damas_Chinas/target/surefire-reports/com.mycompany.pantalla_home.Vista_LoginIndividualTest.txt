@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.pantalla_home.Vista_LoginIndividualTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.828 s - in com.mycompany.pantalla_home.Vista_LoginIndividualTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.231 s - in com.mycompany.pantalla_home.Vista_LoginIndividualTest
