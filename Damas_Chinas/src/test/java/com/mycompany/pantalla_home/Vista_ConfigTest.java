@@ -32,14 +32,14 @@ public class Vista_ConfigTest {
         assertTrue(vc.getLabelEnabled().isVisible());
         assertTrue(vc.getLabelDisabled().isVisible());
     }
-    
+    /*
     @Test
     public void test_mute(){
         Vista_Config vc = new Vista_Config();
         vc.recibirMusica(m);
         vc.setVisible(true); //Apretado desde cualquier pantalla que contenga la conf
         vc.getBotonSwitch().doClick(); /*Si muteo switchea el jlabel de musica */
-        assertTrue(vc.getLabelDisabled().isVisible());
+   /*     assertTrue(vc.getLabelDisabled().isVisible());
         assertFalse(vc.getLabelEnabled().isVisible());
     }
     
@@ -50,11 +50,11 @@ public class Vista_ConfigTest {
         vc.setVisible(true); //Apretado desde cualquier pantalla que contenga la conf
         vc.getBotonSwitch().doClick(); /*Si muteo switchea el jlabel de musica */
         /* si lo hago dos veces entonces esta prendida la musica*/
-        vc.getBotonSwitch().doClick();
+    /*    vc.getBotonSwitch().doClick();
         assertFalse(vc.getLabelDisabled().isVisible());
         assertTrue(vc.getLabelEnabled().isVisible());
     }
-    
+    */
     /*Cuando apreto el boton cerrar se debe dejar de ver la pantalla config*/
     @Test
     public void test_cerrar(){

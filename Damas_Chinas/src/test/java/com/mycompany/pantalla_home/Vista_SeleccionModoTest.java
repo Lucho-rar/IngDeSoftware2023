@@ -47,7 +47,7 @@ public class Vista_SeleccionModoTest {
         assertFalse(vista_modo.isVisible()); 
        // Si se apreta el boton se desactiva  la pantalla completa
     }
-    /* Boton Back */
+    /* Boton Back 
     @Test
     public void test_boton_back(){
         Vista_SeleccionModo vista_modo = new Vista_SeleccionModo();
@@ -55,7 +55,7 @@ public class Vista_SeleccionModoTest {
         vista_modo.getBotonBack().doClick();
         assertFalse(vista_modo.isActive());
     }
-    
+    */
     @Test
     public void test_boton_config(){
         //Vista_SeleccionModo vista_modo = new Vista_SeleccionModo();

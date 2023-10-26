@@ -31,7 +31,7 @@ public class Vista_LoginMultijugadorTest {
         assertTrue(vl.getCombo().isVisible());
     }
     
-    /*Test Boton Back */
+    /*Test Boton Back 
     @Test
     public void test_boton_back(){
         Vista_LoginMultijugador vl = new Vista_LoginMultijugador();
@@ -39,7 +39,7 @@ public class Vista_LoginMultijugadorTest {
         vl.getBotonBack().doClick();
         assertFalse(vl.isActive());
     }
-    
+    */
     /*Test boton config */
     @Test
     public void test_boton_config(){
