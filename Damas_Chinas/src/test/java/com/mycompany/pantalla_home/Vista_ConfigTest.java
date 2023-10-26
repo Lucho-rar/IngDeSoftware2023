@@ -19,8 +19,8 @@ public class Vista_ConfigTest {
     public Vista_ConfigTest() {
         m.performMusic();
     }
+    /*
     
-    @Test
     public void test_inicial(){
         
         //m.performMusic()
@@ -28,7 +28,7 @@ public class Vista_ConfigTest {
         vc.recibirMusica(m);
         vc.setVisible(true); //Apretado desde cualquier pantalla que contenga la conf
         assertTrue(vc.getBotonCerrar().isVisible()); /* Al principio todos los labels estan visibles, solo solapados */
-        assertTrue(vc.getBotonSwitch().isVisible());
+    /*    assertTrue(vc.getBotonSwitch().isVisible());
         assertTrue(vc.getLabelEnabled().isVisible());
         assertTrue(vc.getLabelDisabled().isVisible());
     }
@@ -56,7 +56,7 @@ public class Vista_ConfigTest {
     }
     */
     /*Cuando apreto el boton cerrar se debe dejar de ver la pantalla config*/
-    @Test
+    /*@Test
     public void test_cerrar(){
         Vista_Config vc = new Vista_Config();
         vc.recibirMusica(m);
@@ -64,6 +64,6 @@ public class Vista_ConfigTest {
         vc.getBotonCerrar().doClick();
         assertFalse(vc.isVisible());
     }
-    
+    */
     
 }

@@ -31,11 +31,6 @@ public class Vista_SeleccionDificultadTest {
     }
     
     /* Test boton facil 
-<<<<<<< HEAD:src/test/java/com/mycompany/pantalla_home/Vista_SeleccionDificultadTest.java
-    
-=======
-    @Test
->>>>>>> 4d63b9aa1b55f4dc44a997e7cf10aa2bfc2a90b5:Damas_Chinas/src/test/java/com/mycompany/pantalla_home/Vista_SeleccionDificultadTest.java
     public void test_boton_facil(){
         Vista_SeleccionDificultad vista_dif = new Vista_SeleccionDificultad();
         vista_dif.setVisible(true);
