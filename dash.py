@@ -2,7 +2,7 @@ import sys
 import os
 import json
 import pandas as pd
-from pydantic import BaseModel, Field, PrivateAttr  # Importar las clases necesarias de pydantic
+from pydantic import BaseModel, Field, PrivateAttr
 
 RED = '\033[91m'
 RESET = '\033[0m'
@@ -46,7 +46,15 @@ if os.path.isfile(fileInput):
     if count_critical > 5:
         if allow_failure:
             print_color("Este repositorio supera las vulnerabilidades críticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
-            #exitCode = 1
+            exitCode = 1
+
+    total_vulnerabilities = vulnerabilities.shape[0]
+    
+    # Calcular porcentajes
+    percentage_critical = (count_critical / total_vulnerabilities) * 100
+    percentage_high = (vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'HIGH'].shape[0] / total_vulnerabilities) * 100
+    percentage_medium = (vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'MEDIUM'].shape[0] / total_vulnerabilities) * 100
+    percentage_low = (vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'LOW'].shape[0] / total_vulnerabilities) * 100
 
     print("Vulnerabilidades Críticas:", count_critical)
     print("*******************************************")
@@ -54,12 +62,9 @@ if os.path.isfile(fileInput):
     print("Reporte de Vulnerabilidades 🐛: ")
     print("*******************************************")
 
-    # Generar un informe interactivo HTML
-    try:
-        #profile = ProfileReport(vulnerabilities, title='Informe de Vulnerabilidades')
-        #profile.to_file("informe_vulnerabilidades.html")
-        vulnerabilities.to_html("informe_vulnerabilidades.html", index=False)
-    except Exception as e:
-        print(f"Error al generar el informe: {e}")
+    print("Porcentaje de Vulnerabilidades Críticas: {:.2f}%".format(percentage_critical))
+    print("Porcentaje de Vulnerabilidades High: {:.2f}%".format(percentage_high))
+    print("Porcentaje de Vulnerabilidades Medium: {:.2f}%".format(percentage_medium))
+    print("Porcentaje de Vulnerabilidades Low: {:.2f}%".format(percentage_low))
 
-    sys.exit(exitCode)
+sys.exit(exitCode)
