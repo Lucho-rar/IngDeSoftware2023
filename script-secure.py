@@ -1,8 +1,12 @@
+
+"""  By Rossana Suarez
+     Roxs Security-tools
+     python security-tools horusec.json horusec
+  """
+
 import sys
 import os
 import json
-import pandas as pd
-import plotly.express as px
 
 RED = '\033[91m'
 RESET = '\033[0m'
@@ -13,11 +17,11 @@ def print_color(message, color):
 
 def severity(severity):
     severity = severity.upper()
-    if severity == 'ERROR':
+    if (severity == 'ERROR'):
         return 'HIGH'
-    if severity in ('WARNING', 'UNKNOWN', 'MODERATE'):
-        return 'MEDIUM'
-    if severity == 'INFO':
+    if (severity == 'WARNING' or severity == 'UNKNOWN' or severity == 'MODERATE'):
+        return "MEDIUM"
+    if (severity == 'INFO'):
         return 'LOW'    
     return severity
 
@@ -26,48 +30,40 @@ vulnerabilities = []
 fileInput = sys.argv[1]
 tool = sys.argv[2]
 
-if os.path.isfile(fileInput):
-    allow_failure = True
-    with open(fileInput, 'r') as f:
+if (os.path.isfile(fileInput)):
+        allow_failure = True
+with open(fileInput, 'r') as f:
         issues_dict = json.load(f)
 
-    if tool == 'horusec':
+if tool == 'horusec':
         try:
             if issues_dict['analysisVulnerabilities'] is not None:
                 for issue in issues_dict['analysisVulnerabilities']:
-                    issue['vulnerabilities']['severity'] = severity(issue['vulnerabilities']['severity'])
+                    issue['vulnerabilities']["severity"] = severity(issue['vulnerabilities']["severity"])
                     vulnerabilities.append(issue)
         except Exception:
             print("Incorrect horusec file format")                
-    else:
-        print("File input does not exist")
+else:
+    print("File input does not exist")
 
-    count_critical = 0
-    allowed_critical = 5
+count_bypassed = 0
+count_critical = 0
+allowed_critical = 5
 
-    if len(vulnerabilities) > 0:
-        for issue in vulnerabilities:
-            if issue['vulnerabilities']['severity'] == 'HIGH' or issue['vulnerabilities']['severity'] == 'CRITICAL':
+if (len(vulnerabilities) > 0):
+    for issue in vulnerabilities:
+            if (issue['vulnerabilities']['severity'] == 'HIGH' or issue['vulnerabilities']['severity'] == 'CRITICAL'):
                 count_critical += 1
     
-        print("*******************************************")
-        print("Roxs-security-tools")
-        print("Reporte de Vulnerabilidades 🐛: ")
-        print("Vulnerabilidades Críticas:", count_critical)
-        print("*******************************************")
+    print("*******************************************")
+    print("Roxs-security-tools")
+    print("Reporte de Vulnerabilidades 🐛: ")
+    print("Vulnerabilidades Críticas:", count_critical)
+    print("*******************************************")
 
-        # Crear un DataFrame de pandas
-        df = pd.DataFrame(vulnerabilities)
-
-        # Crear un gráfico interactivo de barras con Plotly Express
-        fig = px.bar(df, x='vulnerabilities.severity', title='Vulnerabilidades Detectadas')
-
-        # Guardar el gráfico como un archivo HTML
-        fig.write_html('informe_interactivo.html')
-
-    if count_critical > allowed_critical:
-        if allow_failure:
-            print_color("Este repositorio supera las vulnerabilidades críticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
-            exitCode = 1
+if count_critical > allowed_critical:
+    if allow_failure:
+        print_color("Este repositorio supera las vulnerabilidades criticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
+        exitCode = 1
 
 sys.exit(exitCode)
