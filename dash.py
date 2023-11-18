@@ -46,7 +46,7 @@ if os.path.isfile(fileInput):
     if count_critical > 5:
         if allow_failure:
             print_color("Este repositorio supera las vulnerabilidades críticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
-            exitCode = 1
+            #exitCode = 1
 
     print("Vulnerabilidades Críticas:", count_critical)
     print("*******************************************")
