@@ -3,6 +3,7 @@ import os
 import json
 import pandas as pd
 from pandas_profiling import ProfileReport
+from pydantic import BaseModel, Field, PrivateAttr  # Importar las clases necesarias de pydantic
 
 RED = '\033[91m'
 RESET = '\033[0m'
@@ -43,12 +44,11 @@ if os.path.isfile(fileInput):
 
     count_critical = vulnerabilities[vulnerabilities['vulnerabilities.severity'].isin(['HIGH', 'CRITICAL'])].shape[0]
 
-    if count_critical > 5:  # Suponiendo que 5 es el límite permitido
+    if count_critical > 5:
         if allow_failure:
             print_color("Este repositorio supera las vulnerabilidades críticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
             exitCode = 1
 
-    # Ahora puedes trabajar con 'vulnerabilities' DataFrame para generar informes, visualizaciones, etc.
     print("Vulnerabilidades Críticas:", count_critical)
     print("*******************************************")
     print("Roxs-security-tools")
@@ -56,7 +56,10 @@ if os.path.isfile(fileInput):
     print("*******************************************")
 
     # Generar un informe interactivo HTML
-    profile = ProfileReport(vulnerabilities, title='Informe de Vulnerabilidades')
-    profile.to_file("informe_vulnerabilidades.html")
+    try:
+        profile = ProfileReport(vulnerabilities, title='Informe de Vulnerabilidades')
+        profile.to_file("informe_vulnerabilidades.html")
+    except Exception as e:
+        print(f"Error al generar el informe: {e}")
 
-sys.exit(exitCode)
+    sys.exit(exitCode)
