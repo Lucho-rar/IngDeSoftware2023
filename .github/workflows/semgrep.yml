@@ -45,7 +45,6 @@ jobs:
           horusec start -D -p="./" -o"=json" -O=horusec-config.json
     - name: Run security Tools
       run: |
-          python -m pip install pydantic==1.8.3
           python -m pip install plotly pandas pandas-profiling
           python dash.py Damas_Chinas/horusec-config.json horusec
 
