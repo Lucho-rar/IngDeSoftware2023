@@ -56,6 +56,9 @@ if os.path.isfile(fileInput):
     percentage_medium = (vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'MEDIUM'].shape[0] / total_vulnerabilities) * 100
     percentage_low = (vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'LOW'].shape[0] / total_vulnerabilities) * 100
 
+    # Calcular porcentaje de lenguajes
+    language_percentage = vulnerabilities['vulnerabilities.language'].value_counts(normalize=True) * 100
+
     print("Vulnerabilidades Críticas:", count_critical)
     print("*******************************************")
     print("Roxs-security-tools")
@@ -66,5 +69,9 @@ if os.path.isfile(fileInput):
     print("Porcentaje de Vulnerabilidades High: {:.2f}%".format(percentage_high))
     print("Porcentaje de Vulnerabilidades Medium: {:.2f}%".format(percentage_medium))
     print("Porcentaje de Vulnerabilidades Low: {:.2f}%".format(percentage_low))
+
+    print("\nPorcentaje de Lenguajes:")
+    for language, percentage in language_percentage.items():
+        print("{:20s}: {:.2f}%".format(language, percentage))
 
 sys.exit(exitCode)
