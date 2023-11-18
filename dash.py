@@ -2,6 +2,7 @@ import sys
 import os
 import json
 import pandas as pd
+import plotly.express as px
 from pydantic import BaseModel, Field, PrivateAttr
 
 RED = '\033[91m'
@@ -74,4 +75,10 @@ if os.path.isfile(fileInput):
     for language, percentage in language_percentage.items():
         print("{:20s}: {:.2f}%".format(language, percentage))
 
+
+    fig = px.bar(x=language_percentage.index, y=language_percentage.values, labels={'x': 'Lenguaje', 'y': 'Porcentaje'})
+    fig.update_layout(title_text='Porcentaje de Lenguajes en Vulnerabilidades', title_x=0.5)
+
+    # Guardar el gráfico como un archivo HTML
+    fig.write_html("informe_interactivo.html")
 sys.exit(exitCode)
