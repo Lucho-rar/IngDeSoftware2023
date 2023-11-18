@@ -57,6 +57,11 @@ jobs:
       run: |
           python dash.py Damas_Chinas/horusec-config.json horusec
 
+    - name: Upload artefact
+      uses: actions/upload-artifact@v3
+      with:
+        name: horusec
+        path: Damas_Chinas/horusec-config.json
 
 #python -m pip install pandas pandas-profiling
           
@@ -69,9 +74,5 @@ jobs:
     - name: List files in the directory
       run: ls -R
 
-    - name: Upload artefact
-      uses: actions/upload-artifact@v3
-      with:
-        name: horusec
-        path: horusec-config.json
+
     
