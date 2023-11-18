@@ -1,0 +1,24 @@
+[
+    {
+      "ID": "1",
+      "Severity": "High",
+      "Vulnerability": "SQL Injection",
+      "File": "app/controller/user.py",
+      "Line": 25
+    },
+    {
+      "ID": "2",
+      "Severity": "Medium",
+      "Vulnerability": "Cross-Site Scripting (XSS)",
+      "File": "app/view/home.html",
+      "Line": 10
+    },
+    {
+      "ID": "3",
+      "Severity": "Low",
+      "Vulnerability": "Command Injection",
+      "File": "app/service/command_executor.py",
+      "Line": 15
+    }
+  ]
+  

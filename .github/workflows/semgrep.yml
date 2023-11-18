@@ -45,7 +45,14 @@ jobs:
           horusec start -D -p="./" -o"=json" -O=horusec-config.json
     - name: Run security Tools
       run: |
+          python -m pip install plotly pandas
           python script-secure.py Damas_Chinas/horusec-config.json horusec
+      
+    - name: Subir html
+      uses: actions/upload-artifact@v3
+      with:
+        name: informeinteractivo
+        path: informe_interactivo.html
     - name: List files in the directory
       run: ls -R
 
