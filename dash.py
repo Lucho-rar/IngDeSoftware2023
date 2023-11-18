@@ -2,7 +2,6 @@ import sys
 import os
 import json
 import pandas as pd
-from pandas_profiling import ProfileReport
 from pydantic import BaseModel, Field, PrivateAttr  # Importar las clases necesarias de pydantic
 
 RED = '\033[91m'
@@ -57,8 +56,9 @@ if os.path.isfile(fileInput):
 
     # Generar un informe interactivo HTML
     try:
-        profile = ProfileReport(vulnerabilities, title='Informe de Vulnerabilidades')
-        profile.to_file("informe_vulnerabilidades.html")
+        #profile = ProfileReport(vulnerabilities, title='Informe de Vulnerabilidades')
+        #profile.to_file("informe_vulnerabilidades.html")
+        vulnerabilities.to_html("informe_vulnerabilidades.html", index=False)
     except Exception as e:
         print(f"Error al generar el informe: {e}")
 
