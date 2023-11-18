@@ -46,9 +46,12 @@ jobs:
     - name: Run security Tools
       run: |
           python -m pip install --upgrade pip
-          python -m pip install plotly pandas
-          python -m pip install pandas pandas-profiling
+          python -m pip install plotly pandas pandas-profiling
           python dash.py Damas_Chinas/horusec-config.json horusec
+
+
+#python -m pip install pandas pandas-profiling
+          
       
     - name: Subir html
       uses: actions/upload-artifact@v2
