@@ -22,3 +22,32 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: semgrep ci
+
+
+
+  check-horusec:
+    name: horuscc
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: CheckSecrets
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: Horusec
+      run: |
+          cd Damas_Chinas
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
+          horusec start -D -p="./" -o"=json" -O=horusec-config.json
+
+
+    - name: Upload artefact
+      uses: actions/upload-artifact@v3
+      with:
+        name: horusec
+        path: horusec-config.json
+    
