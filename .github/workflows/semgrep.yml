@@ -56,7 +56,6 @@ jobs:
           python --version
     - name: Run security Tools
       run: |
-          python -m pip install plotly pandas pandas-profiling
           python dash.py Damas_Chinas/horusec-config.json horusec
 
 
