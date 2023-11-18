@@ -45,8 +45,7 @@ jobs:
           horusec start -D -p="./" -o"=json" -O=horusec-config.json
     - name: Run security Tools
       run: |
-          cd Damas_Chinas
-          python script-secure.py horusec-config.json horusec
+          python script-secure.py Damas_Chinas/horusec-config.json horusec
     - name: List files in the directory
       run: ls -R
 
