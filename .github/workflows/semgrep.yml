@@ -80,17 +80,29 @@ jobs:
           secrets: |
                    admin/secret/data/development SEMPGREP_APP_TOKEN | TOK_SEMGREP
   
-
-  semgrep:
-    name: semgrep/ci
-    runs-on: ubuntu-20.04
-    env:
-      SEMGREP_APP_TOKEN: ${{ env.TOK_SEMGREP }}
-    container:
-      image: returntocorp/semgrep
+  secrets-2:
+    permissions:
+      contents: read
+      id-token: write
+    name: secrrr
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - run: semgrep ci
+      - name: import secr
+        id : imps
+        uses: hashicorp/vault-action@v2
+        with:
+          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200
+          token: ${{ secrets.VAULT_TOKEN }}
+          tlsSkipVerify: true
+          secrets: |
+                   admin/secret/data/development SEMPGREP_APP_TOKEN | TOK_SEMGREP
+      - name : sequity
+        uses: actions/checkout@v3
+        env: 
+          SEMGREP_APP_TOKEN: ${{env.TOK_SEMGREP}}
+      - run: sempgrepc ci
+
+
 
 
     
