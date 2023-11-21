@@ -81,10 +81,10 @@ jobs:
         id: import-secrets
         uses: hashicorp/vault-action@v2
         with:
-          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200
+          url:  https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-                  /v1/admin/secret/data/ accessKey | as ;
+                  /v1/admin/secret/data/data accessKey | as ;
                   
 
     
