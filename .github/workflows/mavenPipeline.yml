@@ -23,11 +23,7 @@ jobs:
           token: ${{secrets.VAULT_TOKEN}}
           tlsSkipVerify: true
           secrets: |
-                  admin/secret/data/development SEMGREP_DEPLOYMENT_ID
-                  admin/secret/data/development TOKEN_GITHUB
-                  admin/secret/data/development VAULT_TOKEN
-                  admin/secret/data/development VAULT_URL
-
+                  admin/secret/data/dev VALOR
   process-resources:
 
     runs-on: ubuntu-latest
