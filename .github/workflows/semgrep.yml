@@ -80,7 +80,7 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN }}
           tlsSkipVerify: true
           secrets: |
-                   admin/secret/data/development SEMPGREP_APP_TOKEN | TOK_SEMGREP
+                   admin/secret/data/development SEMGREP_APP_TOKEN | TOK_SEMGREP
       - name : sequity
         uses: actions/checkout@v3
         env: 
