@@ -12,16 +12,6 @@ on:
   - cron: 9 10 * * *
 name: Semgrep
 jobs:
-  semgrep:
-    name: semgrep/ci
-    runs-on: ubuntu-20.04
-    env:
-      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
-    container:
-      image: returntocorp/semgrep
-    steps:
-    - uses: actions/checkout@v3
-    - run: semgrep ci
 
 
 
@@ -88,7 +78,19 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN }}
           tlsSkipVerify: true
           secrets: |
-                   admin/secret/data/dev VALOR
-                  
+                   admin/secret/data/development SEMPGREP_APP_TOKEN | TOK_SEMGREP
+  
+
+  semgrep:
+    name: semgrep/ci
+    runs-on: ubuntu-20.04
+    env:
+      SEMGREP_APP_TOKEN: ${{ env.TOK_SEMGREP }}
+    container:
+      image: returntocorp/semgrep
+    steps:
+    - uses: actions/checkout@v3
+    - run: semgrep ci
+
 
     
