@@ -63,22 +63,7 @@ jobs:
     - name: List files in the directory
       run: ls -R
 
-  secrets:
-    permissions:
-      contents: read
-      id-token: write
-    name: secretos
-    runs-on: ubuntu-latest
-    steps:
-      - name: import Secretos
-        id: import-secrets
-        uses: hashicorp/vault-action@v2
-        with:
-          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200
-          token: ${{ secrets.VAULT_TOKEN }}
-          tlsSkipVerify: true
-          secrets: |
-                   admin/secret/data/development SEMPGREP_APP_TOKEN | TOK_SEMGREP
+
   
   secrets-2:
     permissions:
