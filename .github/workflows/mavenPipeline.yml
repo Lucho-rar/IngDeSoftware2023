@@ -25,6 +25,9 @@ jobs:
           secrets1: | 
                    admin/secret/data/development VAULT_URL | VAULT_URL_TOK ;
                    admin/secret/data/development VAULT_TOKEN | VAULT_TOK_UR;
+                   admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
+          run: |
+              echo ${{TOKEN_GIT}}
 
   process-resources:
 
@@ -212,7 +215,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{TOKEN_GIT}}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
