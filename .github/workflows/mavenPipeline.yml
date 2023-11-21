@@ -25,7 +25,7 @@ jobs:
           secrets1: | 
                    admin/secret/data/development VAULT_URL | VAULT_URL_TOK ;
                    admin/secret/data/development VAULT_TOKEN | VAULT_TOK_UR;
-                   admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
+                   admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT
           run: |
               echo ${{env.TOKEN_GIT}}
 
