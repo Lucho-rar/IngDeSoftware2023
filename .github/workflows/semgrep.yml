@@ -74,6 +74,9 @@ jobs:
       run: ls -R
 
   secrets:
+    permissions:
+      contents: read
+      id-token: write
     name: secretos
     runs-on: ubuntu-latest
     steps:
