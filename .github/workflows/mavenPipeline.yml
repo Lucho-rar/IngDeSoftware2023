@@ -8,6 +8,27 @@ on:
     branches: [ "main" ]
 
 jobs:
+  importar-secretos:
+    permissions:
+        contents: read
+        id-token: write
+    name: secretos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Import secrets
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200/
+          token: ${{secrets.VAULT_TOKEN}}
+          tlsSkipVerify: true
+          secrets: |
+                  admin/secret/data/development SEMGREP_APP_TOKEN
+                  admin/secret/data/development SEMGREP_DEPLOYMENT_ID
+                  admin/secret/data/development TOKEN_GITHUB
+                  admin/secret/data/development VAULT_TOKEN
+                  admin/secret/data/development VAULT_URL
+
   process-resources:
 
     runs-on: ubuntu-latest
