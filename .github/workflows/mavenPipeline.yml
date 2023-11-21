@@ -24,6 +24,7 @@ jobs:
           tlsSkipVerify: true
           secrets: |
                    admin/secret/data/development VAULT_URL
+                   admin/secret/data/development TOKEN_GITHUB
   process-resources:
 
     runs-on: ubuntu-latest
