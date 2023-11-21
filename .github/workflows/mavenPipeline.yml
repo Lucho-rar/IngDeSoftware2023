@@ -22,9 +22,10 @@ jobs:
           url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200/
           token: ${{secrets.VAULT_TOKEN}}
           tlsSkipVerify: true
-          secrets1: admin/secret/data/development VAULT_URL
-          secrets2: admin/secret/data/development TOKEN_GITHUB
-                   
+          secrets1: | 
+                   admin/secret/data/development VAULT_URL | VAULT_URL_TOK ;
+                   admin/secret/data/development VAULT_TOKEN | VAULT_TOK_UR;
+
   process-resources:
 
     runs-on: ubuntu-latest
