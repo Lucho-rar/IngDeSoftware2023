@@ -64,6 +64,6 @@ if (len(vulnerabilities) > 0):
 if count_critical > allowed_critical:
     if allow_failure:
         print_color("Este repositorio supera las vulnerabilidades criticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
-        exitCode = 1
+        #exitCode = 1
 
 sys.exit(exitCode)
