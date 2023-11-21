@@ -139,7 +139,7 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
           horusec start -D -p="./" -o"=json" -O=horusec-config.json
     - name: Run Security tools
-      run: python script-secure.py horusec-config.json horusec
+      run: python script-secure.py Damas_Chinas/horusec-config.json horusec
 
     - name: Upload artefact
       uses: actions/upload-artifact@v3
