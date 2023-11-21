@@ -27,7 +27,7 @@ jobs:
                    admin/secret/data/development VAULT_TOKEN | VAULT_TOK_UR;
                    admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
           run: |
-              echo ${{TOKEN_GIT}}
+              echo ${{env.TOKEN_GIT}}
 
   process-resources:
 
