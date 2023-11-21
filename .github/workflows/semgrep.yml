@@ -64,15 +64,7 @@ jobs:
         path: Damas_Chinas/horusec-config.json
 
 #python -m pip install pandas pandas-profiling
-          
-    - name: Configurar HashiCorp Vault
-      run: |
-          export VAULT_ADDR="https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200"
-          vault login -method=github token=$$GITHUB_TOKEN
 
-    - name: Acceder a Secretos
-      run: |
-           secret_value=$(vault kv get -namespace=admin -mount="secret" "admin/dev")    
     - name: Subir html        
       uses: actions/upload-artifact@v2
       with:
@@ -81,5 +73,18 @@ jobs:
     - name: List files in the directory
       run: ls -R
 
+  secrets:
+    name: secretos
+    runs-on: ubuntu-latest
+    steps:
+      - name: import Secretos
+        id: import-secrets
+        uses: hashicorp/vault-action@v2
+        with:
+          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+                  secret/data/ci/aws accessKey | AWS_ACCESS_KEY_ID ;
+                  
 
     
