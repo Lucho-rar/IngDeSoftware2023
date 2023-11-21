@@ -18,6 +18,7 @@ jobs:
   check-horusec:
     name: horuscc
     runs-on: ubuntu-latest
+    environment: Development
     steps:
     - uses: actions/checkout@v3
     - name: CheckSecrets
@@ -51,6 +52,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: horusec
+        uses: 
         path: Damas_Chinas/horusec-config.json
 
 #python -m pip install pandas pandas-profiling
@@ -63,30 +65,22 @@ jobs:
     - name: List files in the directory
       run: ls -R
 
-
-  
-  secrets-2:
-    permissions:
-      contents: read
-      id-token: write
-    name: secrrr
+    
+  check-envi:
+    name: enviroment
     runs-on: ubuntu-latest
+    environment: Prod
     steps:
-      - name: import secr
-        id : imps
-        uses: hashicorp/vault-action@v2
-        with:
-          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200
-          token: ${{ secrets.VAULT_TOKEN }}
-          tlsSkipVerify: true
-          secrets: |
-                   admin/secret/data/development SEMGREP_APP_TOKEN | TOK_SEMGREP
-      - name : sequity
-        uses: actions/checkout@v3
-        env: 
-          SEMGREP_APP_TOKEN: ${{env.TOK_SEMGREP}}
-      - run: sempgrepc ci
-
+    - uses: actions/checkout@v3
+    - name: Checking
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: check
+      run: |
+          echo Hola estoy en prod!
 
 
 
