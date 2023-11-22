@@ -158,8 +158,8 @@ jobs:
     - name: Informe interactivo
       uses: actions/upload-artifact@v2
       with:
-        name: informe interactivo
-        path: informeinteractivo.html
+        name: informe_interactivo
+        path: informe_interactivo.html
 
   import-cifr:
     name: Secrets
@@ -178,7 +178,9 @@ jobs:
   check-sonarQ:
     name: sonarQ
     runs-on: ubuntu-latest
-    needs: check-horusec
+    needs: 
+      - check-horusec
+      - import-cifr
     steps:
 #      - name: importar secretos
 #        id: import-secrets
