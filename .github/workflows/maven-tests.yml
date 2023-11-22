@@ -13,8 +13,8 @@ jobs:
     name: vault
     runs-on: ubuntu-latest
     env:
-      HCP_CLIENT_ID: A
-      HCP_CLIENT_SECRET: B
+      HCP_CLIENT_ID: Kle7dFmj95S64ePFYcuRaO4SaDDuVULD
+      HCP_CLIENT_SECRET: gTpDzXETEwZ2iPL1mgx1XqRQuda-UwT0EFX5t7em74RCZJGu-OczeF0hXtVTkbsQ
     steps:
       - name: check
         uses: actions/checkout@v2
