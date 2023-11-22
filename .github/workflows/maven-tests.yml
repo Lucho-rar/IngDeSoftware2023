@@ -41,8 +41,8 @@ jobs:
             --request GET \
             --header "Authorization: Bearer $HCP_API_TOKEN" | jq )
             
-            echo "Respuesta VAULT_TOKEN: $VAULT_TOKEN
-            echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV   
+            echo "Respuesta VAULT_TOKEN: $VAULT_TOKEN"
+            echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
             echo "$VAULT_TOKEN" > vault.txt
       - name: cargar
         uses: actions/upload-artifact@v2
