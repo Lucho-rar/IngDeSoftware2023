@@ -10,7 +10,7 @@ on:
 jobs:
   
   process-resources:
-
+    environment: Development
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
           cd Damas_Chinas
           mvn process-resources
   compile:
-
+    environment: Development
     runs-on: ubuntu-latest
     needs: process-resources
     steps:
@@ -43,6 +43,7 @@ jobs:
           mvn compile
 
   process-classes:
+    environment: Development
     runs-on: ubuntu-latest
     needs: compile
     steps:
@@ -59,6 +60,7 @@ jobs:
           mvn process-classes
           
   process-test-resources:
+    environment: Development
     runs-on: ubuntu-latest
     needs: process-classes
     steps:
@@ -75,6 +77,7 @@ jobs:
           mvn process-test-resources
 
   process-test-compile:
+      environment: Development
       runs-on: ubuntu-latest
       needs: process-test-resources
       steps:
@@ -90,7 +93,7 @@ jobs:
             cd Damas_Chinas
             mvn test-compile
   tests:
-
+    environment: Development
     runs-on: ubuntu-latest
     needs: process-test-compile
     steps:
@@ -107,6 +110,7 @@ jobs:
       
       
   prepare-package:
+    environment: Development
     runs-on: ubuntu-latest
     needs: tests
     steps:
@@ -121,7 +125,7 @@ jobs:
       run: mvn prepare-package
 
   check-horusec:
-
+    environment: Development
     runs-on: ubuntu-latest
     needs: prepare-package
     steps:
@@ -162,6 +166,7 @@ jobs:
         path: informe_interactivo.html
 
   import-cifr:
+    environment: Development
     name: Secrets
     runs-on: ubuntu-latest
     steps:
@@ -174,8 +179,11 @@ jobs:
           tlsSkipVerify: true 
           secrets: |
                    admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
+                   admin/secret/data/development SONAR_TOKEN | SONAR_TOK;
+                   admin/secret/data/development SONAR_HOST_URL | SONAR_HOST;
 
   check-sonarQ:
+    environment: Development
     name: sonarQ
     runs-on: ubuntu-latest
     needs: 
@@ -213,8 +221,8 @@ jobs:
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{env.TOKEN_GIT}}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ env.SONAR_TOK }}
+          SONAR_HOST_URL: ${{ env.SONAR_HOST }}
         run: |
             echo Run SonarQube Simulation ! ! !
             
