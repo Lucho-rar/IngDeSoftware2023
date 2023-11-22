@@ -29,6 +29,8 @@ jobs:
               "client_id": "'$HCP_CLIENT_ID'",
               "client_secret": "'$HCP_CLIENT_SECRET'"
               }' | jq -r .access_token)
+            echo "c:  $HCP_CLIENT_ID"
+            echo "HCP_API_TOKEN=$HCP_API_TOKEN" >> $GITHUB_ENV 
             
       - name:  gettok
         id: sonar-tok
