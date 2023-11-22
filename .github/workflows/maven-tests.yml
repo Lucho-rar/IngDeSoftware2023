@@ -39,7 +39,8 @@ jobs:
             VAULT_TOKEN=$(curl \
             --location "https://api.cloud.hashicorp.com/secrets/2023-06-13/organizations/3ef78803-15d7-47fb-b3f1-a1265680841b/projects/2b9322b9-f5cb-4f22-b027-c30b171c103c/apps/damaschinas/open" \
             --request GET \
-            --header "Authorization: Bearer $HCP_API_TOKEN" | jq '.secret.version.value' )
+            --header "Authorization: Bearer $HCP_API_TOKEN" | jq )
+            
             echo "Respuesta VAULT_TOKEN: $VAULT_TOKEN
             echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV   
             echo "$VAULT_TOKEN" > vault.txt
