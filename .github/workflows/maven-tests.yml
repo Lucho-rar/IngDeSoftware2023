@@ -23,13 +23,12 @@ jobs:
           fi
     - name: Guardar valor DR en un archivo de artefacto
       run: echo "$DR" > dr.txt
-      post-actions:
-        - name: Subir archivo de artefacto
-          if: always()
-          uses: actions/upload-artifact@v2
-          with:
-            name: dr-artifact
-            path: dr.txt
+    - name: Subir archivo de artefacto
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: dr-artifact
+        path: dr.txt
 
   otro-trabajo:
     needs: mi-trabajo
