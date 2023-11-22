@@ -86,8 +86,23 @@ if os.path.isfile(fileInput):
     fig = px.bar(x=language_percentage.index, y=language_percentage.values, labels={'x': 'Lenguaje', 'y': 'Porcentaje'})
     fig.update_layout(title_text='Porcentaje de Lenguajes en Vulnerabilidades', title_x=0.5)
 
-    
-    
+
+    #fig1 = px.bar(x=percentage_critical.index, y=percentage_critical.values, labels={'x': 'Vuln. Criticas', 'y': 'Porcentaje'})
+    #fig1.update_layout(title_text='Porcentaje de Lenguajes en Vulnerabilidades', title_x=0.5)
+    fig1 = px.bar(x=['Critico', 'High', 'Medium', 'Low'],
+                  y=[percentage_critical, percentage_high, percentage_medium, percentage_low],
+                  labels={'x': 'Tipo de severidad', 'y':'Porcentaje'},
+                  title= 'Porcentaje de vulnerabilidades por severidades'
+                  )
+    fig1.update_layout(title_x = 0.5)
+    informe_texto = """
+    <h2> Informe de vulnerabilidades <h2>
+    """
+
+
+
     # Guardar el gráfico como un archivo HTML
-    fig.write_html("informe_interactivo.html")
+    fig1.write_html("informe_interactivo.html", full_html=False)
+    with open("informe_interactivo.html", "a") as file:
+        file.write(informe_texto)
 sys.exit(exitCode)
