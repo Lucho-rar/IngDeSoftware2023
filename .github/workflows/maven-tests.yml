@@ -14,9 +14,9 @@ jobs:
       FLAG: 0 
     steps:
     - name: Inicio
-      run: Estoy variando la flag
+      run: "Estoy variando la flag"
     - name: El valor es
-      run: echo $FLAG
+      run: "echo $FLAG"
     - name: Con If
       run: |
           if [ "$FLAG" -eq "1" ]; then
@@ -31,4 +31,4 @@ jobs:
           echo "::set-env name=FLAG::1"
 
     - name: Ult Valor VAS
-      run: echo $FLAG
+      run: echo "$FLAG"
