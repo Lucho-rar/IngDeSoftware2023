@@ -27,7 +27,6 @@ jobs:
       id: set-dr
       run: |
           echo "DR=1" >> $GITHUB_ENV
-          echo "::set-output name=id::1"
 
   otro-trabajo:
     needs: mi-trabajo
