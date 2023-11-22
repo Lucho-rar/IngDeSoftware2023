@@ -14,7 +14,7 @@ jobs:
       FLAG: 0 
     steps:
     - name: Inicio
-      run: "Estoy variando la flag"
+      run: echo "Estoy variando la flag"
     - name: El valor es
       run: "echo $FLAG"
     - name: Con If
