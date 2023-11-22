@@ -175,7 +175,7 @@ jobs:
           token: ${{secrets.VAULT_TOKEN}}
           tlsSkipVerify: true 
           secrets: |
-                  admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT
+                  admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
