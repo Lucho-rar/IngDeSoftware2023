@@ -9,6 +9,8 @@ on:
 jobs:
   mi-trabajo:
     runs-on: ubuntu-latest
+    env:
+      DR: 0 
     steps:
     - name: Inicio
       run: echo "Estoy variando la flag"
@@ -21,24 +23,9 @@ jobs:
           echo "La bandera es 0, ejecuta acciones alternativas."
           # Realiza acciones alternativas
           fi
-    - name: Guardar valor DR en un archivo de artefacto
-      run: echo "$DR" > dr.txt
-    - name: Subir archivo de artefacto
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: dr-artifact
-        path: dr.txt
-
-  otro-trabajo:
-    needs: mi-trabajo
-    runs-on: ubuntu-latest
-    steps:
-    - name: Descargar archivo de artefacto
-      uses: actions/download-artifact@v2
-      with:
-        name: dr-artifact
-    - name: Leer valor DR
+    - name: Cambiar valor
       run: |
-        DR=$(cat dr-artifact/dr.txt)
-        echo "El valor de DR es $DR"
+          echo "DR=1" >> $GITHUB_ENV
+
+    - name: Ult Valor VAS
+      run: echo "$DR"

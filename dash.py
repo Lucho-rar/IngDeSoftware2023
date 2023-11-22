@@ -69,7 +69,7 @@ if os.path.isfile(fileInput):
     print("Vulnerabilidades Medium: ",count_medium)
     print("Vulnerabilidades Low: ",count_low)
     print("*******************************************")
-    print("Roxs-security-tools")
+    print("Security - Tools")
     print("Reporte de Vulnerabilidades 🐛: ")
     print("*******************************************")
 
