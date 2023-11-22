@@ -181,6 +181,19 @@ jobs:
                    admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
                    admin/secret/data/development SONAR_TOKEN | SONAR_TOK;
                    admin/secret/data/development SONAR_HOST_URL | SONAR_HOST;
+                   admin/secret/data/development SEMGREP_APP_TOKEN | SEMGREP_APP_TOK;
+  check-semgrep:
+    
+    name: Semgrep
+    runs-on: ubuntu-latest
+    container:
+      image: returntocorp/semgrep
+    if: (github.actor != 'dependabot[bot]')
+    steps:
+      - uses: actions/checkout@v3
+      - run: semgrep ci
+        env:
+          SEMGREP_APP_TOKEN: ${{ env.SEMGREP_APP_TOK }}
 
   check-sonarQ:
     environment: Development
