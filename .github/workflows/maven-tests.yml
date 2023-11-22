@@ -8,50 +8,27 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-
-  check-sonarQ:
-    name: sonarQ
+  mi-trabajo:
     runs-on: ubuntu-latest
+    env:
+      FLAG: 0 
     steps:
-      - name: importar secretos
-        id: import-secrets
-        uses: hashicorp/vault-action@v2
-        with:
-          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200/
-          token: ${{secrets.VAULT_TOKEN}}
-          tlsSkipVerify: true 
-          secrets: |
-                   admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT ;
+    - name: Inicio
+      run: Estoy variando la flag
+    - name: El valor es
+      run: echo $FLAG
+    - name: Con If
+      run: |
+          if [ "$FLAG" -eq "1" ]; then
+          echo "La bandera es 1, realiza acciones basadas en esto."
+          # Realiza acciones basadas en la bandera
+          else
+          echo "La bandera es 0, ejecuta acciones alternativas."
+          # Realiza acciones alternativas
+          fi
+    - name: Cambiar valor
+      run: |
+          echo "::set-env name=FLAG::1"
 
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Set up JDK 17
-        uses: actions/setup-java@v1
-        with:
-          java-version: 17
-      - name: Cache SonarQube packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache Maven packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
-        #env:
-        #  GITHUB_TOKEN: ${{env.TOKEN_GIT}}  # Needed to get PR information, if any
-        #  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #  SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: |
-#           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-     
-      
-      
-
-    
+    - name: UltValor
+      run: echo $FLAG
