@@ -140,13 +140,13 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
           horusec start -D -p="./" -o"=json" -O=horusec-config.json
     - name: Run Security tools
-      run: python script-secure.py Damas_Chinas/horusec-config.json horusec
+      run: python dash.py Damas_Chinas/horusec-config.json horusec
 
     - name: Upload artefact
       uses: actions/upload-artifact@v3
       with:
         name: horusec
-        path: horusec-config.json
+        path: Damas_Chinas/horusec-config.json
 
 
   check-sonarQ:
@@ -214,9 +214,10 @@ jobs:
     permissions: 
       pages: write
       id-token: write
-    environment:
-      name: productions
+    environment: 
+      name: Prod
       url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

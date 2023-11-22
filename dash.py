@@ -42,9 +42,13 @@ if os.path.isfile(fileInput):
     else:
         print("File input does not exist")
 
-    count_critical = vulnerabilities[vulnerabilities['vulnerabilities.severity'].isin(['HIGH', 'CRITICAL'])].shape[0]
+    #count_critical = vulnerabilities[vulnerabilities['vulnerabilities.severity'].isin(['HIGH', 'CRITICAL'])].shape[0]
+    count_critical = vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'CRITICAL'].shape[0]
+    count_high = vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'HIGH'].shape[0]
+    count_medium = vulnerabilities[vulnerabilities['vulnerabilities.severity'] == 'MEDIUM'].shape[0]
+    count_low = vulnerabilities [vulnerabilities['vulnerabilities.severity'] == 'LOW'].shape[0]
 
-    if count_critical > 5:
+    if count_critical > 3 or count_high > 5 or count_medium or 10:
         if allow_failure:
             print_color("Este repositorio supera las vulnerabilidades críticas permitidas, no podrá desplegar en PRODUCCIÓN 🔥.", RED)
             #exitCode = 1
@@ -61,6 +65,9 @@ if os.path.isfile(fileInput):
     language_percentage = vulnerabilities['vulnerabilities.language'].value_counts(normalize=True) * 100
 
     print("Vulnerabilidades Críticas:", count_critical)
+    print("Vulnerabilidades High: ",count_high)
+    print("Vulnerabilidades Medium: ",count_medium)
+    print("Vulnerabilidades Low: ",count_low)
     print("*******************************************")
     print("Roxs-security-tools")
     print("Reporte de Vulnerabilidades 🐛: ")
