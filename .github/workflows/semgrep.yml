@@ -12,76 +12,37 @@ on:
   - cron: 9 10 * * *
 name: Semgrep
 jobs:
-
-
-
-  check-horusec:
-    name: horuscc
+  semgrep-full:
     runs-on: ubuntu-latest
-    environment: Development
+    container:
+      image: returntocorp/semgrep
+
     steps:
-    - uses: actions/checkout@v3
-    - name: CheckSecrets
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Horusec
-      run: |
-          cd Damas_Chinas
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-          horusec start -D -p="./" -o"=json" -O=horusec-config.json
 
-    - name: Instalar dependencias
-      run: |
-            pip install pandas==1.3.3
-            pip install pydantic==1.8.2
-            pip install plotly==5.3.1
-    - name: Check
-      run:  |
-          python -m pip --version
-          python --version
-    - name: Run security Tools
-      run: |
-          python dash.py Damas_Chinas/horusec-config.json horusec
+      # step 1
+      - name: clone application source code
+        uses: actions/checkout@v3
 
-    - name: Upload artefact
-      uses: actions/upload-artifact@v3
-      with:
-        name: horusec
-        uses: 
-        path: Damas_Chinas/horusec-config.json
+      # step 2
+      - name: full scan
+        run: |
+          semgrep \
+            --sarif --output report.sarif \
+            --metrics=off \
+            --config="p/default"
 
-#python -m pip install pandas pandas-profiling
-
-    - name: Subir html        
-      uses: actions/upload-artifact@v2
-      with:
-        name: informeinteractivo
-        path: informe_interactivo.html
-    - name: List files in the directory
-      run: ls -R
-
-    
-  check-envi:
-    name: enviroment
-    runs-on: ubuntu-latest
-    environment: Prod
-    steps:
-    - uses: actions/checkout@v3
-    - name: Checking
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: check
-      run: |
-          echo Hola estoy en prod!
-
-
+      # step 3
+      
+      - name: save report as pipeline artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: report.sarif
+          path: report.sarif
+          
+      # step 4
+      - name: Download report
+        uses: actions/download-artifact@v2
+        with: 
+          name: report.sarif
 
     
