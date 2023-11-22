@@ -13,8 +13,8 @@ jobs:
     name: vault
     runs-on: ubuntu-latest
     env:
-      HCP_CLIENT_ID: Kle7dFmj95S64ePFYcuRaO4SaDDuVULD
-      HCP_CLIENT_SECRET: gTpDzXETEwZ2iPL1mgx1XqRQuda-UwT0EFX5t7em74RCZJGu-OczeF0hXtVTkbsQ
+      HCP_CLIENT_ID: WllWXksYuQp2sArbSQPBBhrD3OJuqD7a
+      HCP_CLIENT_SECRET: ba8gPt60dZ6K2Egn_fey4tkbsxYIIges5xYb5aGt7GJmOPAo6nnApCrFdy_sPh1D
     steps:
       - name: check
         uses: actions/checkout@v2
@@ -39,6 +39,6 @@ jobs:
             VAULT_TOKEN=$(curl \
             --location "https://api.cloud.hashicorp.com/secrets/2023-06-13/organizations/3ef78803-15d7-47fb-b3f1-a1265680841b/projects/2b9322b9-f5cb-4f22-b027-c30b171c103c/apps/damaschinas/open" \
             --request GET \
-            --header "Authorization: Bearer $HCP_API_TOKEN" | jq -r '.secret.version.value')
+            --header "Authorization: Bearer $HCP_API_TOKEN" | jq )
             echo "Respuesta ee VAULT_TOKEN: $VAULT_TOKEN"
               
