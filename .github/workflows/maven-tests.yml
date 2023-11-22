@@ -28,7 +28,7 @@ jobs:
           fi
     - name: Cambiar valor
       run: |
-          echo "::set-env name=FLAG::1"
+          echo "FLAG=1" >> $GITHUB_ENV
 
     - name: Ult Valor VAS
       run: echo "$FLAG"
