@@ -69,6 +69,7 @@ jobs:
     container: returntocorp/semgrep
     steps:
       - uses: actions/checkout@v3
-      - run: semgrep ci
+      - run: semgrep login --auth ${SEMGREP_APP_TOKEN}
         env:
           SEMGREP_APP_TOKEN: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK  }}
+      - run: semgrep ci
