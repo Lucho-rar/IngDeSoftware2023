@@ -39,6 +39,17 @@ jobs:
             admin/secret/data/development SONAR_TOKEN | ${{ secrets.SONAR_TOK }};
             admin/secret/data/development SONAR_HOST_URL | ${{ secrets.SONAR_HOST }};
             admin/secret/data/development SEMGREP_APP_TOKEN | ${{ secrets.SEMGREP_APP_TOK }};
+      - name: clavar secrets
+        id: clav
+        run: |
+              echo "TOKEN_GIT=${{ steps.imp_sec.outputs.TOKEN_GIT }}" >> $GITHUB_ENV
+              echo "SONAR_TOK=${{ steps.imp_sec.outputs.SONAR_TOK }}" >> $GITHUB_ENV
+              echo "SONAR_HOST=${{ steps.imp_sec.outputs.SONAR_HOST }}" >> $GITHUB_ENV
+              echo "SEMGREP_APP_TOK=${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}" >> $GITHUB_ENV
+              echo "::set-env name=TOKEN_GIT::${{ steps.imp_sec.outputs.TOKEN_GIT }}"
+              echo "::set-env name=SONAR_TOK::${{ steps.imp_sec.outputs.SONAR_TOK }}"
+              echo "::set-env name=SONAR_HOST::${{ steps.imp_sec.outputs.SONAR_HOST }}"
+              echo "::set-env name=SEMGREP_APP_TOK::${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}"
   
   otro-job:
     runs-on: ubuntu-latest
