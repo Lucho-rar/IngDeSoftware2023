@@ -38,11 +38,11 @@ jobs:
             admin/secret/data/development TOKEN_GITHUB | ${{ secrets.TOKEN_GIT }};
             admin/secret/data/development SONAR_TOKEN | ${{ secrets.SONAR_TOK }};
             admin/secret/data/development SONAR_HOST_URL | ${{ secrets.SONAR_HOST }};
-            admin/secret/data/development SEMGREP_APP_TOKEN | SEMPGREP_APP_TOK;
+            admin/secret/data/development SEMGREP_APP_TOKEN | SEMGREP_APP_TOKEN;
       - name: clavar secrets
         id: clav
         run: |
-              echo "SEMGREP_APP_TOK_VAR=$SEMGREP_APP_TOK" >> $GITHUB_ENV     
+              echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV     
               
   
   otro-job:
@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Obtener secretos del job anterior
         run: |
-            echo "too $SEMPGREP_APP_TOK"
+            echo "too $SEMGREP_APP_TOKEN"
             echo "TOKEN_GIT: ${{ needs.import-cifr.outputs.TOKEN_GIT }}"
             echo "SONAR_TOK: ${{ needs.import-cifr.outputs.SONAR_TOK }}"
             echo "SONAR_HOST: ${{ needs.import-cifr.outputs.SONAR_HOST }}"
