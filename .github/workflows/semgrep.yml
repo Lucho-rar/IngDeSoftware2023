@@ -65,3 +65,4 @@ jobs:
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
             $VAULT_ADDR/v1/secret/data/sample-secret | jq -r ".data")
             echo "SECRET=$SECRET" >> $GITHUB_ENV
+            echo "Secret : $SECRET"
