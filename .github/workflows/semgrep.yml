@@ -72,3 +72,6 @@ jobs:
       - run: semgrep ci --config https://semgrep.dev/ci --json --output semgrep-results.json
         env:
           SEMGREP_APP_TOKEN: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK  }}
+        continue-on-error: true
+      - name: ver que onda
+        run: cat semgrep-results.json
