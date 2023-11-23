@@ -63,6 +63,6 @@ jobs:
         run: |
             SECRET=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
-            $VAULT_ADDR/v1/secret/data/data| jq -r ".data")
+            $VAULT_ADDR/v1/secret/data/data | jq -r ".data")
             echo "SECRET=$SECRET" >> $GITHUB_ENV
             echo "holaa $SECRET"
