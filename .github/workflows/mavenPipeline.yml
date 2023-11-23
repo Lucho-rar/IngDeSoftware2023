@@ -169,25 +169,31 @@ jobs:
     environment: Development
     name: Secrets
     runs-on: ubuntu-latest
-    outputs:
-      id: imp_sec
-      TOKEN_GIT: ${{ steps.imp_sec.outputs.TOKEN_GIT }}
-      SONAR_TOK: ${{ steps.imp_sec.outputs.SONAR_TOK }}
-      SONAR_HOST: ${{ steps.imp_sec.outputs.SONAR_HOST }}
-      SEMGREP_APP_TOK: ${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}
     steps:
-      - name: importar_secretos
-        id: imp_sec
-        uses: hashicorp/vault-action@v2
+      - name: Configuracion de vault
+        run: |
+            echo "VAULT_ADDR=https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200" >> $GITHUB_ENV
+            echo "VAULT_NAMESPACE=admin" >> $GITHUB_ENV
+      - name: Token de vault
+        run: |
+             VAULT_TOKEN=$(curl -s --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+             --request POST --data '{"role_id": "9592a17f-4399-2243-a219-7d2a97b516a4", "secret_id": "47174514-b5a2-d0b2-ab9b-064e3e8eae60"}' \
+             $VAULT_ADDR/v1/auth/approle/login | jq -r '.auth.client_token')
+             echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
+      - name: Get Token Semgrep
+        run: |
+            SEMGREP_APP_TOKEN=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.development.SEMGREP_APP_TOKEN")
+            echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
+            touch SEMGREP_APP_TOKEN.txt
+            echo "$SEMGREP_APP_TOKEN" > SEMGREP_APP_TOKEN.txt
+      - name: Upload artifact - semgrep
+        uses: actions/upload-artifact@v2
         with:
-          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200/
-          token: ${{secrets.VAULT_TOKEN}}
-          tlsSkipVerify: true 
-          secrets: |
-                   admin/secret/data/development TOKEN_GITHUB |  ${{ secrets.TOKEN_GIT }};
-                   admin/secret/data/development SONAR_TOKEN | ${{ secrets.SONAR_TOK }};
-                   admin/secret/data/development SONAR_HOST_URL | ${{ secrets.SONAR_HOST }};
-                   admin/secret/data/development SEMGREP_APP_TOKEN |  ${{ secrets.SEMGREP_APP_TOK }};
+          name: SEMGREP_APP_TOKEN
+          path: SEMGREP_APP_TOKEN.txt
+
   
   sempgrep:
     name: semgrepCI
@@ -195,11 +201,20 @@ jobs:
     needs: import-cifr
     container: returntocorp/semgrep
     steps:
-      - uses: actions/checkout@v3
-      - run: semgrep ci
-        env:
-          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOK }}
-            
+      - name: Obtener el artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: SEMGREP_APP_TOKEN
+      - name: Read artifact
+        run: |
+            SEMGREP_APP_TOKEN=$(cat SEMGREP_APP_TOKEN.txt)
+            echo "SEMGREP_APP_TOKEN: $SEMGREP_APP_TOKEN"
+            echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
+
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run semgrep
+        run: semgrep ci
 
 
   check-sonarQ:
