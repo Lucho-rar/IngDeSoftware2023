@@ -49,25 +49,20 @@ jobs:
     runs-on: ubuntu-latest
     needs: import-cifr
     steps:
-      - name: Obtener secretos del job anterior
+      - name: Configurar vault
         run: |
-            echo "too $SEMGREP_APP_TOKEN"
-            echo "TOKEN_GIT: ${{ needs.import-cifr.outputs.TOKEN_GIT }}"
-            echo "SONAR_TOK: ${{ needs.import-cifr.outputs.SONAR_TOK }}"
-            echo "SONAR_HOST: ${{ needs.import-cifr.outputs.SONAR_HOST }}"
-            echo "SEMGREP_APP_TOK: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK }}"
-
-
-  sempgrep:
-    name: semgrep/ci
-    runs-on: ubuntu-latest
-    needs: import-cifr
-    container: returntocorp/semgrep
-    steps:
-      - uses: actions/checkout@v3
-      - run: semgrep ci
-        env:
-          SEMGREP_APP_TOKEN: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK  }}
-        continue-on-error: true
-      - name: ver que onda
-        run: cat semgrep-results.json
+             echo "VAULT_ADDR=https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200" >> $GITHUB_ENV
+             echo "VAULT_NAMESPACE=admin" >> $GITHUB_ENV
+      - name: Obtener tok
+        run: |
+            VAULT_TOKEN=$(curl -s --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+             --request POST --data '{"role_id": "9592a17f-4399-2243-a219-7d2a97b516a4", "secret_id": "47174514-b5a2-d0b2-ab9b-064e3e8eae60"}' \
+            $VAULT_ADDR/v1/auth/approle/login | jq -r '.auth.client_token')
+            echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
+      - name: tercer paso
+        run: |
+            SECRET=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+            $VAULT_ADDR/v1/secret/data/sample-secret | jq -r ".data")
+            echo "SECRET=$SECRET" >> $GITHUB_ENV
+        
