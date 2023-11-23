@@ -47,6 +47,7 @@ jobs:
   
   otro-job:
     runs-on: ubuntu-latest
+    needs: import-cifr
     steps:
       - name: Configurar vault
         run: |
@@ -62,7 +63,7 @@ jobs:
         run: |
             SECRETO=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
-            $VAULT_ADDR/v1/secret/data/development| jq -r ".data.development.as")
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.token_semgrep")
             echo "SECRETO=$SECRETO" >> $GITHUB_ENV
             touch secreto.txt
             echo "$SECRETO" > secreto.txt
