@@ -65,11 +65,14 @@ jobs:
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
             $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.as")
             echo "SECRETO=$SECRETO" >> $GITHUB_ENV
-            echo "::set-output name=SECRETO::$SECRETO" 
+            touch secreto.txt
+            echo "$SECRETO" > secreto.txt
 
-      - name: HAGAA
-        run: |
-              echo "$SECRETO"
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: secreto
+          path: secreto.txt
 
   sempgrep:
     name: semgrepCI
@@ -77,7 +80,12 @@ jobs:
     needs: import-cifr
     container: returntocorp/semgrep
     steps:
-      - uses: actions/checkout@v3
-      - run: semgrep ci
-        env:
-          SEMGREP_APP_TOKEN: ${{ needs.tercer-paso.outputs.as_value }}
+      - name: down
+        uses: actions/download-artifact@v2
+        with:
+          name: secreto
+      - name: leer
+        run: |
+            SEC = $(cat secreto.txt)
+            echo "eeepa : $SEC"
+
