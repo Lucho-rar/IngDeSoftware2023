@@ -65,4 +65,10 @@ jobs:
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
             $VAULT_ADDR/v1/secret/data/sample-secret | jq -r ".data")
             echo "SECRET=$SECRET" >> $GITHUB_ENV
+      - name: voy a probar con semgrep
+        run: |
+            SEMGREP_APP_TOKEN=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+            $VAULT_ADDR/v1/secret/data/development | jq -r ".data")
+            echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
         
