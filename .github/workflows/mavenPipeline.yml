@@ -188,11 +188,42 @@ jobs:
             echo "token_semgrep=$token_semgrep" >> $GITHUB_ENV
             touch token_semgrep.txt
             echo "$token_semgrep" > token_semgrep.txt
-      - name: Upload
+      - name: Upload token semgrep
         uses: actions/upload-artifact@v2
         with:
           name: token_semgrep
           path: token_semgrep.txt
+
+      - name: Get Token Sonar
+        run: |
+            token_sonar=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.token_sonar")
+            echo "token_sonar=$token_sonar" >> $GITHUB_ENV
+            touch token_sonar.txt
+            echo "$token_sonar" > token_sonar.txt
+      
+      - name: Upload token sonar
+        uses: actions/upload-artifact@v2
+        with:
+          name: token_sonar
+          path: token_sonar.txt
+
+      - name: Get Token GitHub
+        run: |
+            token_git=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.token_git")
+            echo "token_git=$token_git" >> $GITHUB_ENV
+            touch token_git.txt
+            echo "$token_git" > token_git.txt
+
+      - name: Upload token sonar
+        uses: actions/upload-artifact@v2
+        with:
+          name: token_git
+          path: token_git.txt
+        
 
   
   sempgrep:
@@ -221,19 +252,8 @@ jobs:
     environment: Development
     name: sonarQ
     runs-on: ubuntu-latest
-    needs: 
-      - check-horusec
-      - import-cifr
+    needs: [check-horusec, import-cifr]
     steps:
-#      - name: importar secretos
-#        id: import-secrets
-#        uses: hashicorp/vault-action@v2
-#        with:
-#          url: https://sample-cluster-public-vault-0266fbaf.0bff476f.z1.hashicorp.cloud:8200/
-#          token: ${{secrets.VAULT_TOKEN}}
-#          tlsSkipVerify: true 
-#          secrets: |
-#                  admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -253,6 +273,26 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+        
+      - name: Artifact - sonar
+        uses: actions/download-artifact@v2
+        with:
+          name: token_sonar
+      - name: Artifact - gihtub
+        uses: actions/download-artifact@v2
+        with:
+          name: token_git
+      - name: Read artifact
+        run: |
+             SONAR_TOK=$(cat token_sonar.txt)
+             echo "SONAR_TOK: $SONAR_TOK"
+             echo "SONAR_TOK=$SONAR_TOK" >> $GITHUB_ENV
+
+             TOKEN_GIT=$(cat token_git.txt)
+             echo "TOKEN_GIT: $TOKEN_GIT"
+             echo "TOKEN_GIT=$TOKEN_GIT" >> $GITHUB_ENV
+    
+
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{env.TOKEN_GIT}}  # Needed to get PR information, if any
