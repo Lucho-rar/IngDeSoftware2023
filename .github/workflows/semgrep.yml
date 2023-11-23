@@ -19,8 +19,13 @@ jobs:
     environment: Development
     name: Secrets
     runs-on: ubuntu-latest
+    if: (github.actor != 'dependabot[bot]')
     outputs:
       id: imp_sec
+      TOKEN_GIT: ${{ steps.imp_sec.outputs.TOKEN_GIT }}
+      SONAR_TOK: ${{ steps.imp_sec.outputs.SONAR_TOK }}
+      SONAR_HOST: ${{ steps.imp_sec.outputs.SONAR_HOST }}
+      SEMGREP_APP_TOK: ${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}
     steps:
       - name: importar_secretos
         id: imp_sec
@@ -34,11 +39,6 @@ jobs:
                    admin/secret/data/development SONAR_TOKEN | SONAR_TOK;
                    admin/secret/data/development SONAR_HOST_URL | SONAR_HOST;
                    admin/secret/data/development SEMGREP_APP_TOKEN | SEMGREP_APP_TOK;
-      - name: Setear variables de salida
-        run: echo "SECRET_TOKEN_GIT=${{ env.TOKEN_GIT }}" >> $GITHUB_ENV
-          echo "SECRET_SONAR_TOK=${{ env.SONAR_TOK }}" >> $GITHUB_ENV
-          echo "SECRET_SONAR_HOST=${{ env.SONAR_HOST }}" >> $GITHUB_ENV
-          echo "SECRET_SEMGREP_APP_TOK=${{ env.SEMGREP_APP_TOK }}" >> $GITHUB_ENV
 
   otro-job:
       runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
       steps:
         - name: Obtener secretos del job anterior
           run: |
-            echo "TOKEN_GIT: ${{ needs.import-cifr.outputs.SECRET_TOKEN_GIT }}"
-            echo "SONAR_TOK: ${{ needs.import-cifr.outputs.SECRET_SONAR_TOK }}"
-            echo "SONAR_HOST: ${{ needs.import-cifr.outputs.SECRET_SONAR_HOST }}"
-            echo "SEMGREP_APP_TOK: ${{ needs.import-cifr.outputs.SECRET_SEMGREP_APP_TOK }}"
+            echo "TOKEN_GIT: ${{ needs.import-cifr.outputs.TOKEN_GIT }}"
+            echo "SONAR_TOK: ${{ needs.import-cifr.outputs.SONAR_TOK }}"
+            echo "SONAR_HOST: ${{ needs.import-cifr.outputs.SONAR_HOST }}"
+            echo "SEMGREP_APP_TOK: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK }}"
