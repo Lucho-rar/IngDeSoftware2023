@@ -65,3 +65,7 @@ jobs:
               --header "X-Vault-Namespace: admin" \
               $VAULT_ADDR/v1/secret/data/data | jq -r ".data")
               echo "LEF=$LEF" >> $GITHUB_ENV
+
+      - name: HAGAA
+        run: |
+              echo "asf"
