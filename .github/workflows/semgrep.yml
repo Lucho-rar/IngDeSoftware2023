@@ -69,6 +69,6 @@ jobs:
         run: |
             SEMGREP_APP_TOKEN=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
-            $VAULT_ADDR/v1/secret/data/development | jq -r ".data")
+            $VAULT_ADDR/v1/secret/data/development | jq -r ".data.SEMGREP_APP_TOKEN")
             echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
         
