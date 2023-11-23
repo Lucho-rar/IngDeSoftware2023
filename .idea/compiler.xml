@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Pantalla_Home" />
+        <module name="IngDeSoftware2023" />
       </profile>
     </annotationProcessing>
   </component>
