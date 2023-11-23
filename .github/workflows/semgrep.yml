@@ -78,6 +78,7 @@ jobs:
     name: semgrepCI
     runs-on: ubuntu-latest
     needs: [otro-job]
+    container: returntocorp/semgrep
     steps:
       - name: down
         uses: actions/download-artifact@v2
@@ -85,8 +86,13 @@ jobs:
           name: secreto
       - name: leer
         run: |
-            SONAR_TOKEN=$(cat secreto.txt)
-            echo "SONAR_TOKEN: $SONAR_TOKEN"
-      - name: post
-        uses: actions/checkout@v3
+            SEMGREP_APP_TOKEN=$(cat secreto.txt)
+            echo "SEMGREP_APP_TOKEN: $SEMGREP_APP_TOKEN"
+            echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
+
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: sem
+        run: semgrep ci
+        
       
