@@ -61,7 +61,7 @@ jobs:
             echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
       - name: tercer paso
         run: |
-              curl --header "X-Vault-Token: $VAULT_TOKEN" \
+              curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
               --header "X-Vault-Namespace: admin" \
               $VAULT_ADDR/v1/secret/data/data | jq -r ".data.data"
 
