@@ -46,10 +46,10 @@ jobs:
               echo "SONAR_TOK=${{ steps.imp_sec.outputs.SONAR_TOK }}" >> $GITHUB_ENV
               echo "SONAR_HOST=${{ steps.imp_sec.outputs.SONAR_HOST }}" >> $GITHUB_ENV
               echo "SEMGREP_APP_TOK=${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}" >> $GITHUB_ENV
-              echo "::set-env name=TOKEN_GIT::${{ steps.imp_sec.outputs.TOKEN_GIT }}"
-              echo "::set-env name=SONAR_TOK::${{ steps.imp_sec.outputs.SONAR_TOK }}"
-              echo "::set-env name=SONAR_HOST::${{ steps.imp_sec.outputs.SONAR_HOST }}"
-              echo "::set-env name=SEMGREP_APP_TOK::${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}"
+              echo "::set-output name=TOKEN_GIT::${{ steps.imp_sec.outputs.TOKEN_GIT }}"
+              echo "::set-output name=SONAR_TOK::${{ steps.imp_sec.outputs.SONAR_TOK }}"
+              echo "::set-output name=SONAR_HOST::${{ steps.imp_sec.outputs.SONAR_HOST }}"
+              echo "::set-output name=SEMGREP_APP_TOK::${{ steps.imp_sec.outputs.SEMGREP_APP_TOK }}"
   
   otro-job:
     runs-on: ubuntu-latest
@@ -57,8 +57,7 @@ jobs:
     steps:
       - name: Obtener secretos del job anterior
         run: |
-          echo "TOKEN_GIT: ${{ secrets.TOKEN_GIT }}"
-          echo "SONAR_TOK: ${{ secrets.SONAR_TOK }}"
-          echo "SONAR_HOST: ${{ secrets.SONAR_HOST }}"
-          echo "SEMGREP_APP_TOK: ${{ secrets.SEMGREP_APP_TOK }}"
-  
+            echo "TOKEN_GIT: ${{ needs.import-cifr.outputs.TOKEN_GIT }}"
+            echo "SONAR_TOK: ${{ needs.import-cifr.outputs.SONAR_TOK }}"
+            echo "SONAR_HOST: ${{ needs.import-cifr.outputs.SONAR_HOST }}"
+            echo "SEMGREP_APP_TOK: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK }}"
