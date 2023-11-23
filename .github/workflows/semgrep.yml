@@ -61,10 +61,9 @@ jobs:
             echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
       - name: tercer paso
         run: |
-              LEF=$(curl --header "X-Vault-Token: $VAULT_TOKEN" \
+              curl --header "X-Vault-Token: $VAULT_TOKEN" \
               --header "X-Vault-Namespace: admin" \
               $VAULT_ADDR/v1/secret/data/data | jq -r ".data.data")
-              echo "LEF=$LEF" >> $GITHUB_ENV
 
       - name: HAGAA
         run: |
