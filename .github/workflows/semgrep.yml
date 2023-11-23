@@ -61,10 +61,11 @@ jobs:
             echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
       - name: tercer paso
         run: |
-            curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            SECRETO=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
-            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.as"
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.as")
+            echo "SECRETO=$SECRETO" >> $GITHUB_ENV
 
       - name: HAGAA
         run: |
-              echo "asf"
+              echo "$SECRETO"
