@@ -182,17 +182,17 @@ jobs:
              echo "VAULT_TOKEN=$VAULT_TOKEN" >> $GITHUB_ENV
       - name: Get Token Semgrep
         run: |
-            SEMGREP_APP_TOKEN=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
+            token_semgrep=$(curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
-            $VAULT_ADDR/v1/secret/data/development| jq -r ".data.development.SEMGREP_APP_TOKEN")
-            echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
-            touch SEMGREP_APP_TOKEN.txt
-            echo "$SEMGREP_APP_TOKEN" > SEMGREP_APP_TOKEN.txt
-      - name: Upload artifact - semgrep
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.token_semgrep")
+            echo "token_semgrep=$token_semgrep" >> $GITHUB_ENV
+            touch token_semgrep.txt
+            echo "$token_semgrep" > token_semgrep.txt
+      - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: SEMGREP_APP_TOKEN
-          path: SEMGREP_APP_TOKEN.txt
+          name: token_semgrep
+          path: token_semgrep.txt
 
   
   sempgrep:
@@ -204,10 +204,10 @@ jobs:
       - name: Obtener el artifact
         uses: actions/download-artifact@v2
         with:
-          name: SEMGREP_APP_TOKEN
+          name: token_semgrep
       - name: Read artifact
         run: |
-            SEMGREP_APP_TOKEN=$(cat SEMGREP_APP_TOKEN.txt)
+            SEMGREP_APP_TOKEN=$(cat token_semgrep.txt)
             echo "SEMGREP_APP_TOKEN: $SEMGREP_APP_TOKEN"
             echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN" >> $GITHUB_ENV
 
