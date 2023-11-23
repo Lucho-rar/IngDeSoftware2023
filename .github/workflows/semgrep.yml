@@ -63,7 +63,7 @@ jobs:
         run: |
             curl -s --header "X-Vault-Token: $VAULT_TOKEN" \
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
-            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data"
+            $VAULT_ADDR/v1/secret/data/data| jq -r ".data.data.as"
 
       - name: HAGAA
         run: |
