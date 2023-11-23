@@ -63,7 +63,7 @@ jobs:
         run: |
               LEF=$(curl --header "X-Vault-Token: $VAULT_TOKEN" \
               --header "X-Vault-Namespace: admin" \
-              $VAULT_ADDR/v1/secret/data/data | jq -r ".data")
+              $VAULT_ADDR/v1/secret/data/data | jq -r ".data.data")
               echo "LEF=$LEF" >> $GITHUB_ENV
 
       - name: HAGAA
