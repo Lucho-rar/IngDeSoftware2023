@@ -71,4 +71,5 @@ jobs:
             --header "X-Vault-Namespace: $VAULT_NAMESPACE" \
             $VAULT_ADDR/v1/secret/data/development | jq -r ".data")
             echo "SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN_RISING" >> $GITHUB_ENV
+            echo "$SEMGREP_APP_TOKEN_RISING"
         
