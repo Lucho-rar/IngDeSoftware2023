@@ -169,6 +169,7 @@ jobs:
     environment: Development
     name: Secrets
     runs-on: ubuntu-latest
+    needs: check-horusec
     steps:
       - name: Configuracion de vault
         run: |
@@ -229,7 +230,7 @@ jobs:
   sempgrep:
     name: semgrepCI
     runs-on: ubuntu-latest
-    needs: import-cifr
+    needs: [import-cifr, check-horusec]
     container: returntocorp/semgrep
     steps:
       - name: Obtener el artifact
