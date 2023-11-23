@@ -35,18 +35,19 @@ jobs:
           token: ${{secrets.VAULT_TOKEN}}
           tlsSkipVerify: true 
           secrets: |
-                   admin/secret/data/development TOKEN_GITHUB | TOKEN_GIT;
-                   admin/secret/data/development SONAR_TOKEN | SONAR_TOK;
-                   admin/secret/data/development SONAR_HOST_URL | SONAR_HOST;
-                   admin/secret/data/development SEMGREP_APP_TOKEN | SEMGREP_APP_TOK;
-
+            admin/secret/data/development TOKEN_GITHUB | ${{ secrets.TOKEN_GIT }};
+            admin/secret/data/development SONAR_TOKEN | ${{ secrets.SONAR_TOK }};
+            admin/secret/data/development SONAR_HOST_URL | ${{ secrets.SONAR_HOST }};
+            admin/secret/data/development SEMGREP_APP_TOKEN | ${{ secrets.SEMGREP_APP_TOK }};
+  
   otro-job:
-      runs-on: ubuntu-latest
-      needs: import-cifr
-      steps:
-        - name: Obtener secretos del job anterior
-          run: |
-            echo "TOKEN_GIT: ${{ needs.import-cifr.outputs.TOKEN_GIT }}"
-            echo "SONAR_TOK: ${{ needs.import-cifr.outputs.SONAR_TOK }}"
-            echo "SONAR_HOST: ${{ needs.import-cifr.outputs.SONAR_HOST }}"
-            echo "SEMGREP_APP_TOK: ${{ needs.import-cifr.outputs.SEMGREP_APP_TOK }}"
+    runs-on: ubuntu-latest
+    needs: import-cifr
+    steps:
+      - name: Obtener secretos del job anterior
+        run: |
+          echo "TOKEN_GIT: ${{ secrets.TOKEN_GIT }}"
+          echo "SONAR_TOK: ${{ secrets.SONAR_TOK }}"
+          echo "SONAR_HOST: ${{ secrets.SONAR_HOST }}"
+          echo "SEMGREP_APP_TOK: ${{ secrets.SEMGREP_APP_TOK }}"
+  
